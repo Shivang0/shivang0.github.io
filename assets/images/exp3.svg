@@ -7,7 +7,7 @@
   <foreignObject>
   <div id="one">
     <div id="two" xmlns="http://www.w3.org/1999/xhtml">
-      <img src="1" href="1" onerror="javascript:alert(1)"></img>
+      <img src="1" href="1" onerror="javascript:alert(document.cookie)"></img>
     </div>
   </div>
   </foreignObject>
