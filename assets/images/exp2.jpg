@@ -7,7 +7,7 @@
   <foreignObject>
   <div id="one">
     <div id="two" xmlns="http://www.w3.org/1999/xhtml">
-      <a href="javascript:alert(1)">asdf</a>
+      <img src=1 href=1 onerror="javascript:alert(1)"></img>
     </div>
   </div>
   </foreignObject>
