@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Standards & Frameworks - NIST, ISO, Industry Guidelines</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-light: #8b5cf6;
+            --secondary-color: #f97316;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-bg: #0f1419;
+            --dark-surface: #1a1f2e;
+            --dark-card: #252a3d;
+            --light-bg: #ffffff;
+            --light-surface: #f8fafc;
+            --light-card: #ffffff;
+            --text-primary-dark: #f1f5f9;
+            --text-secondary-dark: #94a3b8;
+            --text-primary-light: #1e293b;
+            --text-secondary-light: #475569;
+            --border-dark: #334155;
+            --border-light: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: var(--dark-bg);
+            --surface-color: var(--dark-surface);
+            --card-bg: var(--dark-card);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+        }
+
+        [data-theme="light"] {
+            --bg-color: var(--light-bg);
+            --surface-color: var(--light-surface);
+            --card-bg: var(--light-card);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: var(--surface-color);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .standard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .standard-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .standard-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nist-logo { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+        .iso-logo { background: linear-gradient(135deg, #dc2626, #ef4444); }
+        .owasp-logo { background: linear-gradient(135deg, #059669, #10b981); }
+        .industry-logo { background: linear-gradient(135deg, var(--warning-color), var(--secondary-color)); }
+
+        .standard-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .standard-version {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .standard-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .framework-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .framework-list li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            font-weight: 500;
+        }
+
+        .standard-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--surface-color);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .compliance-matrix {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .matrix-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .matrix-table th {
+            background: var(--surface-color);
+            font-weight: 600;
+        }
+
+        .compliance-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-covered { background: var(--success-color); color: white; }
+        .status-partial { background: var(--warning-color); color: white; }
+        .status-missing { background: var(--danger-color); color: white; }
+
+        .implementation-guide {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .guide-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .guide-steps li {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--surface-color);
+            border-radius: 8px;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .guide-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .resources-section {
+            margin-top: 3rem;
+        }
+
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-link {
+            background: var(--surface-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .resource-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        /* Training Modules Styles */
+        .training-modules-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Progress Dashboard */
+        .progress-dashboard {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--surface-color);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            margin-bottom: 3rem;
+        }
+
+        .path-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .path-visualization {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .path-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .path-nodes {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .path-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .path-node:hover {
+            transform: scale(1.1);
+        }
+
+        .node-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .path-node.foundation .node-icon { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+        .path-node.development .node-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .path-node.deployment .node-icon { background: linear-gradient(135deg, var(--secondary-color), #ea580c); }
+        .path-node.generative .node-icon { background: linear-gradient(135deg, var(--primary-light), #7c3aed); }
+        .path-node.defensive .node-icon { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+
+        .path-node span {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        /* Modules Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .foundation-bg { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+        .development-bg { background: linear-gradient(135deg, #10b981, #059669); }
+        .deployment-bg { background: linear-gradient(135deg, var(--secondary-color), #ea580c); }
+        .generative-bg { background: linear-gradient(135deg, var(--primary-light), #7c3aed); }
+        .defensive-bg { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+
+        .module-info {
+            flex: 1;
+        }
+
+        .module-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .difficulty {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty.beginner { background: var(--success-color); color: white; }
+        .difficulty.intermediate { background: var(--warning-color); color: white; }
+        .difficulty.advanced { background: var(--danger-color); color: white; }
+
+        .duration {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .module-status {
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary-color) 0deg, var(--border-color) 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .progress-circle::before {
+            content: '';
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--card-bg);
+            position: absolute;
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            z-index: 1;
+        }
+
+        .module-content {
+            margin-bottom: 2rem;
+        }
+
+        .module-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .learning-objectives,
+        .key-topics,
+        .practical-exercises,
+        .prerequisites {
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4,
+        .key-topics h4,
+        .practical-exercises h4,
+        .prerequisites h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .learning-objectives ul,
+        .practical-exercises ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .learning-objectives li,
+        .exercise-list li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .learning-objectives li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: 700;
+        }
+
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topic-tag {
+            background: var(--surface-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .exercise-list li i {
+            color: var(--primary-color);
+            width: 1rem;
+            text-align: center;
+        }
+
+        .module-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Certification Section */
+        .certification-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .certification-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .cert-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            transition: width 0.3s ease;
+        }
+
+        .cert-progress span {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .standards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+
+            .matrix-table {
+                font-size: 0.875rem;
+            }
+
+            .matrix-table th,
+            .matrix-table td {
+                padding: 0.5rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .path-nodes {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .path-line {
+                display: none;
+            }
+
+            .progress-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .module-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .topic-tags {
+                gap: 0.25rem;
+            }
+
+            .certification-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="header">
+        <nav class="nav-container">
+            <a href="ai_security_checklist.html" class="logo">
+                <i class="fas fa-balance-scale"></i>
+                AI Security Standards
+            </a>
+            <ul class="nav-links">
+                <li><a href="ai_security_checklist.html">Checklist</a></li>
+                <li><a href="ai_security_checklist.html#llm-security">LLM Security</a></li>
+                <li><a href="ai_security_checklist.html#redteaming">Red Teaming</a></li>
+                <li><a href="prompts.html">Prompts</a></li>
+                <li><a href="ai_security_checklist.html#threats">Threats</a></li>
+                <li><a href="#standards" class="active">Standards</a></li>
+                <li><a href="#training-modules">Training</a></li>
+                <li><a href="ai_security_checklist.html#tools">Tools</a></li>
+                <li><a href="ai_security_checklist.html#resources">Resources</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1 class="page-title">AI Security Standards</h1>
+            <p class="page-subtitle">Comprehensive guide to NIST, ISO, OWASP, and industry frameworks for AI security governance and compliance</p>
+        </div>
+
+        <div class="standards-grid">
+            <!-- NIST AI Risk Management Framework -->
+            <div class="standard-card">
+                <div class="standard-header">
+                    <div class="standard-logo nist-logo">NIST</div>
+                    <div class="standard-info">
+                        <h3>AI Risk Management Framework</h3>
+                        <div class="standard-version">NIST AI RMF 1.0 (2023)</div>
+                    </div>
+                </div>
+                <p class="standard-description">
+                    The NIST AI Risk Management Framework provides a comprehensive approach to managing AI risks throughout the AI lifecycle. It establishes governance, risk assessment, and mitigation strategies for trustworthy AI systems.
+                </p>
+                <ul class="framework-list">
+                    <li><strong>GOVERN:</strong> AI governance and oversight</li>
+                    <li><strong>MAP:</strong> AI risk identification and assessment</li>
+                    <li><strong>MEASURE:</strong> AI performance and risk metrics</li>
+                    <li><strong>MANAGE:</strong> Risk mitigation and response</li>
+                </ul>
+                <div class="standard-actions">
+                    <a href="https://www.nist.gov/itl/ai-risk-management-framework" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Standard
+                    </a>
+                    <a href="#implementation-guide" class="btn btn-secondary">
+                        <i class="fas fa-cogs"></i> Implementation
+                    </a>
+                </div>
+            </div>
+
+            <!-- ISO/IEC 23053 -->
+            <div class="standard-card">
+                <div class="standard-header">
+                    <div class="standard-logo iso-logo">ISO</div>
+                    <div class="standard-info">
+                        <h3>ISO/IEC 23053:2022</h3>
+                        <div class="standard-version">Framework for AI Systems Using ML</div>
+                    </div>
+                </div>
+                <p class="standard-description">
+                    International standard providing a framework for description of AI systems using machine learning. Defines AI system characteristics, life cycle processes, and risk management approaches.
+                </p>
+                <ul class="framework-list">
+                    <li><strong>AI System Description:</strong> Standardized documentation</li>
+                    <li><strong>Life Cycle Processes:</strong> Development to deployment</li>
+                    <li><strong>Risk Management:</strong> Systematic risk assessment</li>
+                    <li><strong>Quality Assurance:</strong> Testing and validation</li>
+                </ul>
+                <div class="standard-actions">
+                    <a href="https://www.iso.org/standard/74438.html" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Standard
+                    </a>
+                    <a href="#implementation-guide" class="btn btn-secondary">
+                        <i class="fas fa-cogs"></i> Implementation
+                    </a>
+                </div>
+            </div>
+
+            <!-- OWASP AI Security -->
+            <div class="standard-card">
+                <div class="standard-header">
+                    <div class="standard-logo owasp-logo">OWASP</div>
+                    <div class="standard-info">
+                        <h3>OWASP AI Security Guide</h3>
+                        <div class="standard-version">Top 10 for LLMs & ML Security</div>
+                    </div>
+                </div>
+                <p class="standard-description">
+                    Open source security guidance for AI applications, including the Top 10 vulnerabilities for Large Language Models and comprehensive ML security guidelines.
+                </p>
+                <ul class="framework-list">
+                    <li><strong>LLM Top 10:</strong> Critical LLM vulnerabilities</li>
+                    <li><strong>ML Security:</strong> Machine learning attack vectors</li>
+                    <li><strong>Testing Guide:</strong> AI security testing methods</li>
+                    <li><strong>Mitigation:</strong> Security controls and defenses</li>
+                </ul>
+                <div class="standard-actions">
+                    <a href="https://owasp.org/www-project-ai-security-and-privacy-guide/" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Guide
+                    </a>
+                    <a href="#implementation-guide" class="btn btn-secondary">
+                        <i class="fas fa-cogs"></i> Implementation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Industry Best Practices -->
+            <div class="standard-card">
+                <div class="standard-header">
+                    <div class="standard-logo industry-logo">IND</div>
+                    <div class="standard-info">
+                        <h3>Industry Best Practices</h3>
+                        <div class="standard-version">Vendor-Neutral Guidelines</div>
+                    </div>
+                </div>
+                <p class="standard-description">
+                    Collection of industry-standard best practices from leading organizations, research institutions, and security vendors for comprehensive AI security implementation.
+                </p>
+                <ul class="framework-list">
+                    <li><strong>MITRE ATLAS:</strong> AI threat landscape</li>
+                    <li><strong>CSA AI Guidelines:</strong> Cloud security alliance</li>
+                    <li><strong>IEEE Standards:</strong> Technical specifications</li>
+                    <li><strong>Vendor Frameworks:</strong> Implementation guides</li>
+                </ul>
+                <div class="standard-actions">
+                    <a href="#resources" class="btn btn-primary">
+                        <i class="fas fa-link"></i> View Resources
+                    </a>
+                    <a href="#implementation-guide" class="btn btn-secondary">
+                        <i class="fas fa-cogs"></i> Implementation
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compliance Matrix -->
+        <div class="compliance-matrix">
+            <h2 class="matrix-title">Standards Compliance Matrix</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+                Assessment of how our AI Security Checklist aligns with major standards and frameworks
+            </p>
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Control Area</th>
+                        <th>NIST AI RMF</th>
+                        <th>ISO/IEC 23053</th>
+                        <th>OWASP</th>
+                        <th>Industry</th>
+                        <th>Coverage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Governance & Strategy</strong></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-partial">Partial</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secure Design</strong></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>95%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Development Security</strong></td>
+                        <td><span class="compliance-status status-partial">Partial</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>90%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Runtime Security</strong></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-partial">Partial</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Security</strong></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-partial">Partial</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monitoring & Response</strong></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-partial">Partial</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td><span class="compliance-status status-covered">Covered</span></td>
+                        <td>87%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Implementation Guide -->
+        <div class="implementation-guide">
+            <h2 style="margin-bottom: 1.5rem;">Implementation Roadmap</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Step-by-step approach to implementing AI security standards in your organization
+            </p>
+            <ol class="guide-steps">
+                <li>
+                    <strong>Assessment & Gap Analysis</strong><br>
+                    Evaluate current AI security posture against selected standards. Identify gaps in governance, technical controls, and processes.
+                </li>
+                <li>
+                    <strong>Standards Selection & Prioritization</strong><br>
+                    Choose applicable standards based on your industry, risk profile, and regulatory requirements. Prioritize implementation phases.
+                </li>
+                <li>
+                    <strong>Governance Framework Establishment</strong><br>
+                    Implement AI governance structure, policies, and oversight mechanisms as required by NIST AI RMF and ISO standards.
+                </li>
+                <li>
+                    <strong>Technical Controls Implementation</strong><br>
+                    Deploy security controls for AI development, deployment, and operations following OWASP guidelines and industry practices.
+                </li>
+                <li>
+                    <strong>Risk Management Integration</strong><br>
+                    Integrate AI-specific risks into existing risk management frameworks and establish continuous monitoring processes.
+                </li>
+                <li>
+                    <strong>Testing & Validation</strong><br>
+                    Conduct security testing using our prompt collection and validation against compliance requirements.
+                </li>
+                <li>
+                    <strong>Continuous Improvement</strong><br>
+                    Establish metrics, regular assessments, and update processes to maintain compliance and improve security posture.
+                </li>
+            </ol>
+        </div>
+
+        <!-- RAR Training Modules Section -->
+        <div class="training-modules-section" id="training-modules">
+            <h2 class="section-title">Red AI Range (RAR) Training Modules</h2>
+            <p class="section-description">
+                Comprehensive hands-on training programs designed to build expertise in AI security testing, attack simulation, and defensive strategies. Progress through structured learning paths with practical exercises and real-world scenarios.
+            </p>
+
+            <!-- Training Progress Dashboard -->
+            <div class="progress-dashboard">
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number">0/5</span>
+                            <span class="stat-label">Modules Completed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number">0%</span>
+                            <span class="stat-label">Progress</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Certificates Earned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Path -->
+            <div class="learning-path">
+                <h3 class="path-title">AI Security Learning Path</h3>
+                <div class="path-visualization">
+                    <div class="path-line"></div>
+                    <div class="path-nodes">
+                        <div class="path-node foundation" data-module="1">
+                            <div class="node-icon"><i class="fas fa-foundation"></i></div>
+                            <span>Foundations</span>
+                        </div>
+                        <div class="path-node development" data-module="2">
+                            <div class="node-icon"><i class="fas fa-code"></i></div>
+                            <span>Development</span>
+                        </div>
+                        <div class="path-node deployment" data-module="3">
+                            <div class="node-icon"><i class="fas fa-server"></i></div>
+                            <span>Deployment</span>
+                        </div>
+                        <div class="path-node generative" data-module="4">
+                            <div class="node-icon"><i class="fas fa-robot"></i></div>
+                            <span>Generative AI</span>
+                        </div>
+                        <div class="path-node defensive" data-module="5">
+                            <div class="node-icon"><i class="fas fa-shield-alt"></i></div>
+                            <span>Defense</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Modules Grid -->
+            <div class="modules-grid">
+                <!-- Module 1: Foundations of AI Security -->
+                <div class="module-card" data-module="1">
+                    <div class="module-header">
+                        <div class="module-icon foundation-bg">
+                            <i class="fas fa-foundation"></i>
+                        </div>
+                        <div class="module-info">
+                            <h3>Module 1: Foundations of AI Security</h3>
+                            <div class="module-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 8-12 hours</span>
+                            </div>
+                        </div>
+                        <div class="module-status">
+                            <div class="progress-circle" data-progress="0">
+                                <span class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content">
+                        <p class="module-description">
+                            Build foundational knowledge of AI/ML systems, security principles, and establish secure development environments for AI projects.
+                        </p>
+                        
+                        <div class="learning-objectives">
+                            <h4>Learning Objectives</h4>
+                            <ul>
+                                <li>Understand AI/ML fundamentals and security implications</li>
+                                <li>Set up secure development environments</li>
+                                <li>Apply security essentials to AI systems</li>
+                                <li>Identify common AI security vulnerabilities</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-topics">
+                            <h4>Key Topics</h4>
+                            <div class="topic-tags">
+                                <span class="topic-tag">AI/ML Fundamentals</span>
+                                <span class="topic-tag">Secure Development</span>
+                                <span class="topic-tag">Security Essentials</span>
+                                <span class="topic-tag">Vulnerability Landscape</span>
+                            </div>
+                        </div>
+
+                        <div class="practical-exercises">
+                            <h4>Practical Exercises</h4>
+                            <ul class="exercise-list">
+                                <li><i class="fas fa-laptop-code"></i> Set up secure ML development environment</li>
+                                <li><i class="fas fa-search"></i> Vulnerability assessment of sample AI application</li>
+                                <li><i class="fas fa-tools"></i> Configure security tools for AI projects</li>
+                            </ul>
+                        </div>
+
+                        <div class="prerequisites">
+                            <h4>Prerequisites</h4>
+                            <p>Basic understanding of software development and security concepts</p>
+                        </div>
+                    </div>
+
+                    <div class="module-actions">
+                        <button class="btn btn-primary module-start" onclick="startModule(1)">
+                            <i class="fas fa-play"></i> Start Module
+                        </button>
+                        <button class="btn btn-secondary module-preview" onclick="previewModule(1)">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 2: Model Development Attacks -->
+                <div class="module-card" data-module="2">
+                    <div class="module-header">
+                        <div class="module-icon development-bg">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="module-info">
+                            <h3>Module 2: Model Development Attacks</h3>
+                            <div class="module-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 10-14 hours</span>
+                            </div>
+                        </div>
+                        <div class="module-status">
+                            <div class="progress-circle" data-progress="0">
+                                <span class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content">
+                        <p class="module-description">
+                            Learn to execute sophisticated attacks targeting the model development phase, including poisoning attacks, tampering, and supply chain vulnerabilities.
+                        </p>
+                        
+                        <div class="learning-objectives">
+                            <h4>Learning Objectives</h4>
+                            <ul>
+                                <li>Execute data and model poisoning attacks</li>
+                                <li>Perform model tampering and backdoor insertion</li>
+                                <li>Exploit supply chain vulnerabilities in ML pipelines</li>
+                                <li>Develop countermeasures for development-phase attacks</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-topics">
+                            <h4>Key Topics</h4>
+                            <div class="topic-tags">
+                                <span class="topic-tag">Poisoning Attacks</span>
+                                <span class="topic-tag">Model Tampering</span>
+                                <span class="topic-tag">Supply Chain Security</span>
+                                <span class="topic-tag">Backdoor Attacks</span>
+                            </div>
+                        </div>
+
+                        <div class="practical-exercises">
+                            <h4>Practical Exercises</h4>
+                            <ul class="exercise-list">
+                                <li><i class="fas fa-virus"></i> Execute label flipping and feature collision attacks</li>
+                                <li><i class="fas fa-bug"></i> Insert backdoors into neural networks</li>
+                                <li><i class="fas fa-link"></i> Compromise ML supply chain dependencies</li>
+                            </ul>
+                        </div>
+
+                        <div class="prerequisites">
+                            <h4>Prerequisites</h4>
+                            <p>Module 1 completion, intermediate Python/ML knowledge</p>
+                        </div>
+                    </div>
+
+                    <div class="module-actions">
+                        <button class="btn btn-primary module-start disabled" onclick="startModule(2)" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
+                        <button class="btn btn-secondary module-preview" onclick="previewModule(2)">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 3: Attacks on Deployed AI -->
+                <div class="module-card" data-module="3">
+                    <div class="module-header">
+                        <div class="module-icon deployment-bg">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="module-info">
+                            <h3>Module 3: Attacks on Deployed AI</h3>
+                            <div class="module-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 12-16 hours</span>
+                            </div>
+                        </div>
+                        <div class="module-status">
+                            <div class="progress-circle" data-progress="0">
+                                <span class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content">
+                        <p class="module-description">
+                            Master runtime attacks against deployed AI systems, including evasion techniques, model extraction, and privacy attacks on production systems.
+                        </p>
+                        
+                        <div class="learning-objectives">
+                            <h4>Learning Objectives</h4>
+                            <ul>
+                                <li>Execute adversarial evasion attacks</li>
+                                <li>Perform model theft and extraction</li>
+                                <li>Conduct data inference and membership attacks</li>
+                                <li>Implement privacy-preserving AI techniques</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-topics">
+                            <h4>Key Topics</h4>
+                            <div class="topic-tags">
+                                <span class="topic-tag">Evasion Attacks</span>
+                                <span class="topic-tag">Model Theft</span>
+                                <span class="topic-tag">Data Inference</span>
+                                <span class="topic-tag">Privacy-Preserving AI</span>
+                            </div>
+                        </div>
+
+                        <div class="practical-exercises">
+                            <h4>Practical Exercises</h4>
+                            <ul class="exercise-list">
+                                <li><i class="fas fa-mask"></i> Generate adversarial examples with FGSM/PGD</li>
+                                <li><i class="fas fa-download"></i> Extract model parameters via API queries</li>
+                                <li><i class="fas fa-user-secret"></i> Conduct membership inference attacks</li>
+                            </ul>
+                        </div>
+
+                        <div class="prerequisites">
+                            <h4>Prerequisites</h4>
+                            <p>Module 2 completion, understanding of adversarial ML</p>
+                        </div>
+                    </div>
+
+                    <div class="module-actions">
+                        <button class="btn btn-primary module-start disabled" onclick="startModule(3)" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
+                        <button class="btn btn-secondary module-preview" onclick="previewModule(3)">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 4: Generative AI Security -->
+                <div class="module-card" data-module="4">
+                    <div class="module-header">
+                        <div class="module-icon generative-bg">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="module-info">
+                            <h3>Module 4: Generative AI Security</h3>
+                            <div class="module-meta">
+                                <span class="difficulty advanced">Advanced</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 14-18 hours</span>
+                            </div>
+                        </div>
+                        <div class="module-status">
+                            <div class="progress-circle" data-progress="0">
+                                <span class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content">
+                        <p class="module-description">
+                            Specialized training in generative AI security, covering GAN attacks, LLM vulnerabilities, prompt injection, and advanced generative AI threat scenarios.
+                        </p>
+                        
+                        <div class="learning-objectives">
+                            <h4>Learning Objectives</h4>
+                            <ul>
+                                <li>Understand generative AI fundamentals and security implications</li>
+                                <li>Execute GAN-based attacks and deepfake detection</li>
+                                <li>Master LLM security testing and prompt injection</li>
+                                <li>Implement advanced generative AI attack techniques</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-topics">
+                            <h4>Key Topics</h4>
+                            <div class="topic-tags">
+                                <span class="topic-tag">Generative AI Fundamentals</span>
+                                <span class="topic-tag">GAN Security</span>
+                                <span class="topic-tag">LLM Security</span>
+                                <span class="topic-tag">Prompt Injection</span>
+                                <span class="topic-tag">Advanced GenAI Attacks</span>
+                            </div>
+                        </div>
+
+                        <div class="practical-exercises">
+                            <h4>Practical Exercises</h4>
+                            <ul class="exercise-list">
+                                <li><i class="fas fa-video"></i> Create and detect deepfakes</li>
+                                <li><i class="fas fa-comment-dots"></i> Execute prompt injection attacks on LLMs</li>
+                                <li><i class="fas fa-brain"></i> Poison LLM training data</li>
+                            </ul>
+                        </div>
+
+                        <div class="prerequisites">
+                            <h4>Prerequisites</h4>
+                            <p>Module 3 completion, knowledge of transformer architectures</p>
+                        </div>
+                    </div>
+
+                    <div class="module-actions">
+                        <button class="btn btn-primary module-start disabled" onclick="startModule(4)" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
+                        <button class="btn btn-secondary module-preview" onclick="previewModule(4)">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 5: Defensive Strategies and Operations -->
+                <div class="module-card" data-module="5">
+                    <div class="module-header">
+                        <div class="module-icon defensive-bg">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="module-info">
+                            <h3>Module 5: Defensive Strategies and Operations</h3>
+                            <div class="module-meta">
+                                <span class="difficulty advanced">Advanced</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 12-16 hours</span>
+                            </div>
+                        </div>
+                        <div class="module-status">
+                            <div class="progress-circle" data-progress="0">
+                                <span class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content">
+                        <p class="module-description">
+                            Comprehensive defensive strategies, implementing secure-by-design AI systems, MLSecOps practices, and enterprise AI security governance.
+                        </p>
+                        
+                        <div class="learning-objectives">
+                            <h4>Learning Objectives</h4>
+                            <ul>
+                                <li>Design and implement secure-by-design AI systems</li>
+                                <li>Establish MLSecOps pipelines and practices</li>
+                                <li>Deploy enterprise AI security governance</li>
+                                <li>Create comprehensive AI security monitoring and response</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-topics">
+                            <h4>Key Topics</h4>
+                            <div class="topic-tags">
+                                <span class="topic-tag">Secure-by-Design AI</span>
+                                <span class="topic-tag">MLSecOps</span>
+                                <span class="topic-tag">Enterprise Security</span>
+                                <span class="topic-tag">Security Monitoring</span>
+                            </div>
+                        </div>
+
+                        <div class="practical-exercises">
+                            <h4>Practical Exercises</h4>
+                            <ul class="exercise-list">
+                                <li><i class="fas fa-cogs"></i> Build secure ML deployment pipeline</li>
+                                <li><i class="fas fa-chart-line"></i> Implement AI security monitoring</li>
+                                <li><i class="fas fa-building"></i> Design enterprise AI governance framework</li>
+                            </ul>
+                        </div>
+
+                        <div class="prerequisites">
+                            <h4>Prerequisites</h4>
+                            <p>Module 4 completion, enterprise security experience</p>
+                        </div>
+                    </div>
+
+                    <div class="module-actions">
+                        <button class="btn btn-primary module-start disabled" onclick="startModule(5)" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
+                        <button class="btn btn-secondary module-preview" onclick="previewModule(5)">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification Track -->
+            <div class="certification-section">
+                <h3 class="certification-title">Certification Tracks</h3>
+                <div class="certification-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h4>AI Security Associate</h4>
+                        <p>Complete Modules 1-2 to earn your foundational certification</p>
+                        <div class="cert-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/2 Modules</span>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-medal"></i></div>
+                        <h4>AI Security Professional</h4>
+                        <p>Complete Modules 1-4 to earn professional certification</p>
+                        <div class="cert-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/4 Modules</span>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>AI Security Expert</h4>
+                        <p>Complete all 5 modules to earn expert certification</p>
+                        <div class="cert-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/5 Modules</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="resources-section" id="resources">
+            <h2 style="margin-bottom: 1.5rem;">Additional Resources</h2>
+            <div class="resource-links">
+                <a href="https://atlas.mitre.org/" class="resource-link" target="_blank">
+                    <strong>MITRE ATLAS</strong><br>
+                    <small>Adversarial Threat Landscape for AI Systems</small>
+                </a>
+                <a href="https://cloudsecurityalliance.org/research/working-groups/artificial-intelligence/" class="resource-link" target="_blank">
+                    <strong>CSA AI Working Group</strong><br>
+                    <small>Cloud Security Alliance AI Guidelines</small>
+                </a>
+                <a href="https://www.partnershiponai.org/" class="resource-link" target="_blank">
+                    <strong>Partnership on AI</strong><br>
+                    <small>Industry Collaboration on AI Safety</small>
+                </a>
+                <a href="https://standards.ieee.org/project/2857.html" class="resource-link" target="_blank">
+                    <strong>IEEE 2857</strong><br>
+                    <small>Privacy Engineering for AI/ML Systems</small>
+                </a>
+                <a href="https://www.iso.org/committee/45020.html" class="resource-link" target="_blank">
+                    <strong>ISO/IEC JTC 1/SC 42</strong><br>
+                    <small>Artificial Intelligence Standards Committee</small>
+                </a>
+                <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" class="resource-link" target="_blank">
+                    <strong>NIST AI Trustworthiness</strong><br>
+                    <small>Characteristics of Trustworthy AI</small>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const themeIcon = document.getElementById('theme-icon');
+            
+            document.body.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'light') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+
+            // Initialize training modules functionality
+            initializeTrainingModules();
+        });
+
+        // Training Modules JavaScript Functionality
+        let moduleProgress = {
+            1: 0, 2: 0, 3: 0, 4: 0, 5: 0
+        };
+        let completedModules = [];
+
+        function initializeTrainingModules() {
+            // Load saved progress from localStorage
+            const savedProgress = localStorage.getItem('rar-module-progress');
+            const savedCompleted = localStorage.getItem('rar-completed-modules');
+            
+            if (savedProgress) {
+                moduleProgress = JSON.parse(savedProgress);
+            }
+            if (savedCompleted) {
+                completedModules = JSON.parse(savedCompleted);
+            }
+
+            updateProgressDisplay();
+            updateModuleStates();
+        }
+
+        function startModule(moduleNumber) {
+            if (isModuleUnlocked(moduleNumber)) {
+                // Simulate starting a module
+                alert(`Starting Module ${moduleNumber}: ${getModuleName(moduleNumber)}\n\nThis would redirect to the actual training environment or LMS system.`);
+                
+                // For demo purposes, simulate some progress
+                moduleProgress[moduleNumber] = Math.min(moduleProgress[moduleNumber] + 25, 100);
+                saveProgress();
+                updateProgressDisplay();
+                updateModuleStates();
+            }
+        }
+
+        function previewModule(moduleNumber) {
+            const moduleName = getModuleName(moduleNumber);
+            const moduleDescription = getModuleDescription(moduleNumber);
+            
+            alert(`Preview: ${moduleName}\n\n${moduleDescription}\n\nThis would show a detailed preview with sample content, learning objectives, and estimated time commitment.`);
+        }
+
+        function isModuleUnlocked(moduleNumber) {
+            if (moduleNumber === 1) return true;
+            
+            // Check if previous module is completed (100% progress)
+            return moduleProgress[moduleNumber - 1] === 100;
+        }
+
+        function getModuleName(moduleNumber) {
+            const names = {
+                1: 'Foundations of AI Security',
+                2: 'Model Development Attacks',
+                3: 'Attacks on Deployed AI',
+                4: 'Generative AI Security',
+                5: 'Defensive Strategies and Operations'
+            };
+            return names[moduleNumber];
+        }
+
+        function getModuleDescription(moduleNumber) {
+            const descriptions = {
+                1: 'Build foundational knowledge of AI/ML systems, security principles, and establish secure development environments.',
+                2: 'Learn to execute sophisticated attacks targeting the model development phase, including poisoning and tampering.',
+                3: 'Master runtime attacks against deployed AI systems, including evasion techniques and privacy attacks.',
+                4: 'Specialized training in generative AI security, covering GAN attacks, LLM vulnerabilities, and prompt injection.',
+                5: 'Comprehensive defensive strategies, implementing secure-by-design AI systems and MLSecOps practices.'
+            };
+            return descriptions[moduleNumber];
+        }
+
+        function updateProgressDisplay() {
+            // Update overall progress stats
+            const totalModules = Object.keys(moduleProgress).length;
+            const completedCount = Object.values(moduleProgress).filter(progress => progress === 100).length;
+            const overallProgress = Math.round(Object.values(moduleProgress).reduce((sum, progress) => sum + progress, 0) / totalModules);
+
+            // Update stats dashboard
+            document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = `${completedCount}/${totalModules}`;
+            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = `${overallProgress}%`;
+            document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = getCertificatesEarned();
+
+            // Update progress circles for each module
+            Object.keys(moduleProgress).forEach(moduleNum => {
+                const progress = moduleProgress[moduleNum];
+                const circle = document.querySelector(`.module-card[data-module="${moduleNum}"] .progress-circle`);
+                const text = circle.querySelector('.progress-text');
+                
+                if (circle && text) {
+                    const degrees = (progress / 100) * 360;
+                    circle.style.background = `conic-gradient(var(--primary-color) ${degrees}deg, var(--border-color) ${degrees}deg)`;
+                    text.textContent = `${progress}%`;
+                }
+            });
+
+            // Update certification progress
+            updateCertificationProgress();
+        }
+
+        function updateModuleStates() {
+            // Update module lock/unlock states
+            for (let i = 1; i <= 5; i++) {
+                const moduleCard = document.querySelector(`.module-card[data-module="${i}"]`);
+                const startButton = moduleCard.querySelector('.module-start');
+                
+                if (isModuleUnlocked(i)) {
+                    startButton.classList.remove('disabled');
+                    startButton.disabled = false;
+                    startButton.innerHTML = '<i class="fas fa-play"></i> Start Module';
+                    
+                    if (moduleProgress[i] > 0 && moduleProgress[i] < 100) {
+                        startButton.innerHTML = '<i class="fas fa-play"></i> Continue Module';
+                    } else if (moduleProgress[i] === 100) {
+                        startButton.innerHTML = '<i class="fas fa-check"></i> Completed';
+                    }
+                } else {
+                    startButton.classList.add('disabled');
+                    startButton.disabled = true;
+                    startButton.innerHTML = '<i class="fas fa-lock"></i> Locked';
+                }
+            }
+
+            // Update path visualization
+            updateLearningPath();
+        }
+
+        function updateLearningPath() {
+            for (let i = 1; i <= 5; i++) {
+                const pathNode = document.querySelector(`.path-node[data-module="${i}"]`);
+                const progress = moduleProgress[i];
+                
+                if (pathNode) {
+                    pathNode.classList.remove('completed', 'in-progress', 'locked');
+                    
+                    if (progress === 100) {
+                        pathNode.classList.add('completed');
+                        pathNode.style.opacity = '1';
+                    } else if (progress > 0) {
+                        pathNode.classList.add('in-progress');
+                        pathNode.style.opacity = '1';
+                    } else if (isModuleUnlocked(i)) {
+                        pathNode.style.opacity = '1';
+                    } else {
+                        pathNode.classList.add('locked');
+                        pathNode.style.opacity = '0.5';
+                    }
+                }
+            }
+        }
+
+        function updateCertificationProgress() {
+            // AI Security Associate (Modules 1-2)
+            const associateProgress = Math.min(100, ((moduleProgress[1] + moduleProgress[2]) / 200) * 100);
+            const associateCompleted = [1, 2].filter(m => moduleProgress[m] === 100).length;
+            
+            // AI Security Professional (Modules 1-4)
+            const professionalProgress = Math.min(100, ((moduleProgress[1] + moduleProgress[2] + moduleProgress[3] + moduleProgress[4]) / 400) * 100);
+            const professionalCompleted = [1, 2, 3, 4].filter(m => moduleProgress[m] === 100).length;
+            
+            // AI Security Expert (Modules 1-5)
+            const expertProgress = Math.min(100, (Object.values(moduleProgress).reduce((sum, p) => sum + p, 0) / 500) * 100);
+            const expertCompleted = Object.values(moduleProgress).filter(p => p === 100).length;
+
+            // Update certification cards
+            const certCards = document.querySelectorAll('.cert-card');
+            
+            // Associate
+            if (certCards[0]) {
+                certCards[0].querySelector('.progress-fill').style.width = `${associateProgress}%`;
+                certCards[0].querySelector('.cert-progress span').textContent = `${associateCompleted}/2 Modules`;
+            }
+            
+            // Professional
+            if (certCards[1]) {
+                certCards[1].querySelector('.progress-fill').style.width = `${professionalProgress}%`;
+                certCards[1].querySelector('.cert-progress span').textContent = `${professionalCompleted}/4 Modules`;
+            }
+            
+            // Expert
+            if (certCards[2]) {
+                certCards[2].querySelector('.progress-fill').style.width = `${expertProgress}%`;
+                certCards[2].querySelector('.cert-progress span').textContent = `${expertCompleted}/5 Modules`;
+            }
+        }
+
+        function getCertificatesEarned() {
+            let certificates = 0;
+            
+            // Check Associate certification (Modules 1-2 completed)
+            if (moduleProgress[1] === 100 && moduleProgress[2] === 100) {
+                certificates++;
+            }
+            
+            // Check Professional certification (Modules 1-4 completed)
+            if (moduleProgress[1] === 100 && moduleProgress[2] === 100 && 
+                moduleProgress[3] === 100 && moduleProgress[4] === 100) {
+                certificates++;
+            }
+            
+            // Check Expert certification (All modules completed)
+            if (Object.values(moduleProgress).every(progress => progress === 100)) {
+                certificates++;
+            }
+            
+            return certificates;
+        }
+
+        function saveProgress() {
+            localStorage.setItem('rar-module-progress', JSON.stringify(moduleProgress));
+            localStorage.setItem('rar-completed-modules', JSON.stringify(completedModules));
+        }
+
+        // Add click handlers for path nodes
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.path-node')) {
+                const moduleNum = e.target.closest('.path-node').getAttribute('data-module');
+                if (moduleNum && isModuleUnlocked(parseInt(moduleNum))) {
+                    // Scroll to the corresponding module card
+                    const moduleCard = document.querySelector(`.module-card[data-module="${moduleNum}"]`);
+                    if (moduleCard) {
+                        moduleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        moduleCard.style.animation = 'pulse 2s ease-in-out';
+                        setTimeout(() => {
+                            moduleCard.style.animation = '';
+                        }, 2000);
+                    }
+                }
+            }
+        });
+
+        // Add pulse animation keyframes via CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
