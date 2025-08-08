@@ -42,11 +42,6 @@
             color: var(--text-primary);
             background: var(--bg-gradient);
             min-height: 100vh;
-            
-        html, body { overflow-x: hidden; }
-
-        img, video, svg, iframe { max-width: 100%; height: auto; }
-    
             transition: var(--transition);
         }
 
@@ -271,16 +266,11 @@
             background: var(--light-color);
             padding: 80px 0;
             min-height: 100vh;
-            
-        html, body { overflow-x: hidden; }
-
-        img, video, svg, iframe { max-width: 100%; height: auto; }
-    
         }
 
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 300px; /* mobile override added below */
             gap: 40px;
             align-items: start;
         }
@@ -957,39 +947,53 @@
         }
 
         
-        /* Mobile menu */
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            cursor: pointer;
+        /* --- Stronger Mobile Layout for index --- */
+        html, body { overflow-x: hidden; }
+        img, video, svg, iframe { max-width: 100%; height: auto; }
+        @media (max-width: 1024px) {
+            .content-grid { grid-template-columns: 2fr 1fr; gap: 24px; }
         }
-
+        @media (max-width: 900px) {
+            .content-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+            .sidebar, .right-sidebar, .sidecards, .stats-panel { order: 2; }
+            .main, .left-content { order: 1; }
+        }
         @media (max-width: 768px) {
-            .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-            .header .nav, .header .nav-container { position: relative; }
-            .nav-links {
-                display: none;
+            .prompt-examples-grid,
+            .redteam-grid,
+            .threat-matrix { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .card, .prompt-card, .matrix-card, .redteam-card { padding: 1rem; }
+            .section-header h2 { font-size: 1.125rem; line-height: 1.4; }
+            .section-header p { font-size: 0.95rem; }
+            .clamp-3 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: 4.8em;
             }
-            .nav.open .nav-links, .nav-container.open .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 0.75rem;
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                width: min(85vw, 320px);
-                background: var(--card-bg);
-                border: 1px solid var(--border-color);
-                border-radius: 12px;
-                padding: 0.75rem;
-                box-shadow: var(--shadow-lg);
-                z-index: 1001;
+            .show-more {
+                margin-top: 0.5rem;
+                background: transparent;
+                border: 1px dashed var(--border-color);
+                padding: 0.4rem 0.6rem;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                cursor: pointer;
             }
-            .nav.open .nav-links a, .nav-container.open .nav-links a { padding: 0.6rem 0.75rem; }
+            .expanded .clamp-3 {
+                -webkit-line-clamp: unset;
+                max-height: none;
+            }
+            /* Header mobile menu */
+            .menu-toggle { display: inline-flex; align-items:center; justify-content:center; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer; }
+            .nav-links { display: none; }
+            nav.open .nav-links { 
+                display: flex; flex-direction: column; gap: .6rem;
+                position: absolute; top: 60px; right: 12px; width: min(86vw, 340px);
+                background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: .75rem; box-shadow: var(--shadow-lg);
+            }
+            nav { position: relative; z-index: 1001; }
         }
     
         /* Responsive Design */
@@ -1305,12 +1309,12 @@
                 <li><a href="#tools">Tools</a></li>
                 <li><a href="#resources">Resources</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
             <div class="theme-toggle" onclick="toggleTheme()">
                 <i class="fas fa-sun theme-icon sun-icon"></i>
                 <i class="fas fa-moon theme-icon moon-icon"></i>
             </div>
-        </nav>
+            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+</nav>
     </header>
 
     <section class="hero">
@@ -5008,18 +5012,41 @@
     </script>
 
     <script>
-    (function() {
-        const nav = document.querySelector('.nav');
-        const btn = document.querySelector('.menu-toggle');
-        if (btn && nav) {
-            btn.addEventListener('click', function(e) {
+    (function(){
+        // Mobile menu
+        document.querySelectorAll('.menu-toggle').forEach(function(btn){
+            const nav = btn.closest('nav');
+            if (!nav) return;
+            btn.addEventListener('click', function(e){
                 e.stopPropagation();
                 nav.classList.toggle('open');
             });
-            document.addEventListener('click', function(e) {
-                if (!nav.contains(e.target)) nav.classList.remove('open');
+        });
+        document.addEventListener('click', function(e){
+            document.querySelectorAll('nav.open').forEach(function(n){
+                if (!n.contains(e.target)) n.classList.remove('open');
+            });
+        });
+        // Add "show more" toggles for descriptive blocks
+        function enhanceClamps() {
+            document.querySelectorAll('.card, .prompt-card, .matrix-card, .redteam-card').forEach(function(card){
+                // apply clamp to any long paragraph in cards
+                card.querySelectorAll('p').forEach(function(p){ p.classList.add('clamp-3'); });
+                if (!card.querySelector('.show-more')) {
+                    const btn = document.createElement('button');
+                    btn.className = 'show-more';
+                    btn.textContent = 'Show more';
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.addEventListener('click', function(){
+                        const expanded = card.classList.toggle('expanded');
+                        btn.textContent = expanded ? 'Show less' : 'Show more';
+                        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                    });
+                    card.appendChild(btn);
+                }
             });
         }
+        enhanceClamps();
     })();
     </script>
     
