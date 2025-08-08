@@ -42,6 +42,11 @@
             color: var(--text-primary);
             background: var(--bg-gradient);
             min-height: 100vh;
+            
+        html, body { overflow-x: hidden; }
+
+        img, video, svg, iframe { max-width: 100%; height: auto; }
+    
             transition: var(--transition);
         }
 
@@ -266,6 +271,11 @@
             background: var(--light-color);
             padding: 80px 0;
             min-height: 100vh;
+            
+        html, body { overflow-x: hidden; }
+
+        img, video, svg, iframe { max-width: 100%; height: auto; }
+    
         }
 
         .content-grid {
@@ -726,7 +736,7 @@
         /* Threat Matrix */
         .threat-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -734,7 +744,7 @@
         /* Red Teaming Grid */
         .redteam-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -791,7 +801,7 @@
         /* Prompt Examples Section */
         .prompt-examples-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -946,6 +956,42 @@
             color: var(--text-secondary);
         }
 
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+            .header .nav, .header .nav-container { position: relative; }
+            .nav-links {
+                display: none;
+            }
+            .nav.open .nav-links, .nav-container.open .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: min(85vw, 320px);
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+                padding: 0.75rem;
+                box-shadow: var(--shadow-lg);
+                z-index: 1001;
+            }
+            .nav.open .nav-links a, .nav-container.open .nav-links a { padding: 0.6rem 0.75rem; }
+        }
+    
         /* Responsive Design */
         @media (max-width: 1024px) {
             .content-grid {
@@ -1259,6 +1305,7 @@
                 <li><a href="#tools">Tools</a></li>
                 <li><a href="#resources">Resources</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
             <div class="theme-toggle" onclick="toggleTheme()">
                 <i class="fas fa-sun theme-icon sun-icon"></i>
                 <i class="fas fa-moon theme-icon moon-icon"></i>
@@ -4959,5 +5006,22 @@
             });
         });
     </script>
+
+    <script>
+    (function() {
+        const nav = document.querySelector('.nav');
+        const btn = document.querySelector('.menu-toggle');
+        if (btn && nav) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nav.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target)) nav.classList.remove('open');
+            });
+        }
+    })();
+    </script>
+    
 </body>
 </html>

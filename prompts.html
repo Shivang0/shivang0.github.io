@@ -44,6 +44,11 @@
             line-height: 1.6;
             transition: var(--transition);
             min-height: 100vh;
+            
+        html, body { overflow-x: hidden; }
+
+        img, video, svg, iframe { max-width: 100%; height: auto; }
+    
         }
 
         .header {
@@ -181,7 +186,7 @@
 
         .prompts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -360,6 +365,7 @@
                 <li><a href="index.html#tools">Tools</a></li>
                 <li><a href="index.html#resources">Resources</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </nav>
     </header>
 
@@ -3705,5 +3711,22 @@ You are an educational AI tutor. Adapt your teaching style to each learner's nee
             // Implementation depends on specific requirements
         }
     </script>
+
+    <script>
+    (function() {
+        const nav = document.querySelector('.nav-container');
+        const btn = document.querySelector('.menu-toggle');
+        if (btn && nav) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nav.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target)) nav.classList.remove('open');
+            });
+        }
+    })();
+    </script>
+    
 </body>
 </html>
