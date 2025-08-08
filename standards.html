@@ -406,6 +406,65 @@
             }
 
         }
+    
+        /* --- Mobile UX Enhancements --- */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .menu-toggle { display: inline-flex; align-items:center; justify-content:center; }
+            nav { position: relative; z-index: 1001; }
+            .nav-links { display: none; }
+            nav.open .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+                position: absolute;
+                top: 60px;
+                right: 12px;
+                width: min(86vw, 340px);
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+                padding: 0.75rem;
+                box-shadow: var(--shadow-lg);
+            }
+        }
+        @media (max-width: 768px) {
+            .prompts-grid, .standards-grid { grid-template-columns: 1fr !important; }
+            .prompt-card, .standard-card { padding: 1rem; }
+            .prompt-header, .standard-header { gap: 0.5rem; }
+            .prompt-title, .standard-title { font-size: 1rem; line-height: 1.25rem; }
+            .prompt-description, .standard-description {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: 4.8em;
+            }
+            .prompt-card.expanded .prompt-description,
+            .standard-card.expanded .standard-description {
+                -webkit-line-clamp: unset;
+                max-height: none;
+            }
+            .show-more {
+                margin-top: 0.5rem;
+                font-size: 0.9rem;
+                background: transparent;
+                border: 1px dashed var(--border-color);
+                padding: 0.4rem 0.6rem;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        }
+        html, body { overflow-x: hidden; }
+        img, video, svg, iframe { max-width: 100%; height: auto; }
     </style>
 </head>
 <body data-theme="dark">
@@ -425,11 +484,11 @@
                 <li><a href="index.html#tools">Tools</a></li>
                 <li><a href="index.html#resources">Resources</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <i class="fas fa-moon" id="theme-icon"></i>
             </button>
-        </nav>
+            <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+</nav>
     </header>
 
     <main class="container">
@@ -730,17 +789,42 @@
 
     <script>
     (function() {
-        const nav = document.querySelector('.nav-container');
-        const btn = document.querySelector('.menu-toggle');
-        if (btn && nav) {
-            btn.addEventListener('click', function(e) {
+        // Mobile menu toggles
+        document.querySelectorAll('.menu-toggle').forEach(function(btn){
+            const nav = btn.closest('nav');
+            if (!nav) return;
+            btn.addEventListener('click', function(e){
                 e.stopPropagation();
                 nav.classList.toggle('open');
             });
-            document.addEventListener('click', function(e) {
-                if (!nav.contains(e.target)) nav.classList.remove('open');
+        });
+        document.addEventListener('click', function(e){
+            document.querySelectorAll('nav.open').forEach(function(n){
+                if (!n.contains(e.target)) n.classList.remove('open');
+            });
+        });
+        // Add "Show more" toggles for prompt and standard cards on mobile
+        function addShowMore(selector, descSelector) {
+            document.querySelectorAll(selector).forEach(function(card){
+                const desc = card.querySelector(descSelector);
+                if (!desc) return;
+                // Create button if not present
+                if (!card.querySelector('.show-more')) {
+                    const btn = document.createElement('button');
+                    btn.className = 'show-more';
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.textContent = 'Show more';
+                    btn.addEventListener('click', function(){
+                        const expanded = card.classList.toggle('expanded');
+                        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                        btn.textContent = expanded ? 'Show less' : 'Show more';
+                    });
+                    card.appendChild(btn);
+                }
             });
         }
+        addShowMore('.prompt-card', '.prompt-description');
+        addShowMore('.standard-card', '.standard-description');
     })();
     </script>
     
