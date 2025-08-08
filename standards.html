@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Security Standards & Frameworks - NIST, ISO, Industry Guidelines</title>
+    <title>AI Security Standards & Frameworks - Professional Compliance Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -109,21 +109,48 @@
             background: rgba(99, 102, 241, 0.1);
         }
 
-        .theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            padding: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        /* Theme toggle removed for consistency */
+        
+        /* Enhanced Security/Tech Theme Elements */
+        .security-badge {
+            position: relative;
+            display: inline-block;
+            padding: 4px 8px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse-security 2s infinite;
         }
 
-        .theme-toggle:hover {
-            background: var(--primary-color);
-            color: white;
+        @keyframes pulse-security {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .cyber-grid-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .security-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .security-status.secure {
+            background: rgba(52, 211, 153, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(52, 211, 153, 0.3);
         }
 
         .container {
@@ -135,7 +162,10 @@
         .page-header {
             text-align: center;
             margin-bottom: 3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
         }
+        
 
         .page-title {
             font-size: 3rem;
@@ -155,9 +185,12 @@
 
         .standards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .standard-card {
@@ -287,6 +320,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
+            display: table;
         }
 
         .matrix-table th,
@@ -294,11 +328,51 @@
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
         }
 
         .matrix-table th {
             background: var(--surface-color);
             font-weight: 600;
+        }
+        
+        /* Mobile-friendly matrix cards */
+        .matrix-cards {
+            display: none;
+        }
+        
+        .matrix-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .matrix-card-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .matrix-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .matrix-card-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+        
+        .matrix-card-value {
+            flex: 0 0 auto;
         }
 
         .compliance-status {
@@ -379,6 +453,13 @@
         }
 
 
+        @media (max-width: 1024px) {
+            .standards-grid {
+                gap: 1.5rem;
+                max-width: 900px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -386,7 +467,9 @@
             
             .standards-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
+            
             
             .page-title {
                 font-size: 2rem;
@@ -396,13 +479,71 @@
                 padding: 1rem;
             }
 
+            /* Hide table on mobile, show cards */
             .matrix-table {
-                font-size: 0.875rem;
+                display: none;
             }
-
-            .matrix-table th,
-            .matrix-table td {
-                padding: 0.5rem;
+            
+            .matrix-cards {
+                display: block;
+            }
+            
+            .compliance-matrix {
+                padding: 1rem;
+            }
+            
+            .matrix-title {
+                font-size: 1.25rem;
+                text-align: center;
+            }
+            
+            /* Mobile page header */
+            .page-header {
+                padding: 100px 0 40px !important;
+                text-align: center;
+            }
+            
+            .page-title {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.5;
+                margin: 1rem 0;
+            }
+            
+            .security-badge {
+                font-size: 0.6rem;
+                padding: 3px 6px;
+            }
+            
+            .security-status {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+            
+            .cyber-grid-bg::before {
+                background-size: 15px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 80px 0 30px !important;
+            }
+            
+            .page-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem !important;
+            }
+            
+            .cyber-grid-bg::before {
+                background-size: 12px 12px;
             }
 
         }
@@ -484,9 +625,6 @@
                 <li><a href="index.html#tools">Tools</a></li>
                 <li><a href="index.html#resources">Resources</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()">
-                <i class="fas fa-moon" id="theme-icon"></i>
-            </button>
             <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
 </nav>
     </header>
@@ -608,6 +746,106 @@
             <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
                 Assessment of how our AI Security Checklist aligns with major standards and frameworks
             </p>
+            
+            <!-- Mobile-friendly matrix cards -->
+            <div class="matrix-cards">
+                <div class="matrix-card">
+                    <div class="matrix-card-header">Governance & Strategy</div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">NIST AI RMF:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">ISO/IEC 23053:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">OWASP:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-partial">Partial</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Industry:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Coverage:</span>
+                        <span class="matrix-card-value"><strong>85%</strong></span>
+                    </div>
+                </div>
+                
+                <div class="matrix-card">
+                    <div class="matrix-card-header">Secure Design</div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">NIST AI RMF:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">ISO/IEC 23053:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">OWASP:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Industry:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Coverage:</span>
+                        <span class="matrix-card-value"><strong>95%</strong></span>
+                    </div>
+                </div>
+                
+                <div class="matrix-card">
+                    <div class="matrix-card-header">Development Security</div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">NIST AI RMF:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-partial">Partial</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">ISO/IEC 23053:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">OWASP:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Industry:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Coverage:</span>
+                        <span class="matrix-card-value"><strong>90%</strong></span>
+                    </div>
+                </div>
+                
+                <div class="matrix-card">
+                    <div class="matrix-card-header">Runtime Security</div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">NIST AI RMF:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">ISO/IEC 23053:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-partial">Partial</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">OWASP:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Industry:</span>
+                        <span class="matrix-card-value"><span class="compliance-status status-covered">Covered</span></span>
+                    </div>
+                    <div class="matrix-card-row">
+                        <span class="matrix-card-label">Coverage:</span>
+                        <span class="matrix-card-value"><strong>88%</strong></span>
+                    </div>
+                </div>
+            </div>
+            
             <table class="matrix-table">
                 <thead>
                     <tr>
@@ -745,34 +983,8 @@
 
     <script>
         // Theme toggle functionality
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
-            
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Load saved theme
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            const themeIcon = document.getElementById('theme-icon');
-            
-            document.body.setAttribute('data-theme', savedTheme);
-            if (savedTheme === 'light') {
-                themeIcon.className = 'fas fa-sun';
-            } else {
-                themeIcon.className = 'fas fa-moon';
-            }
-
-        });
+        // Theme toggle removed for consistent dark theme
+        
 
 
         // Add pulse animation keyframes via CSS
