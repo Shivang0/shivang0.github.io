@@ -12,7 +12,7 @@ Run locally:
 Or manually:
 ```bash
 python3 -m http.server 8000
-# Open: http://localhost:8000/ai_security_checklist.html
+# Open: http://localhost:8000/index.html
 ```
 
 ## Features
@@ -37,7 +37,7 @@ python3 -m http.server 8000
 
 ## File Structure
 ```
-├── ai_security_checklist.html  # Main application
+├── index.html  # Main application
 ├── prompts.html                # 100+ security testing prompts
 ├── standards.html              # NIST, ISO, industry frameworks
 ├── launch.sh                   # Launch script

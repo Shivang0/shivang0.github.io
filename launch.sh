@@ -21,11 +21,11 @@ if command -v python3 &> /dev/null; then
     
     # Open the AI Security Checklist in browser
     if command -v open &> /dev/null; then
-        open http://localhost:8000/ai_security_checklist.html
+        open http://localhost:8000/index.html
     elif command -v xdg-open &> /dev/null; then
-        xdg-open http://localhost:8000/ai_security_checklist.html
+        xdg-open http://localhost:8000/index.html
     else
-        echo "🌐 Manual: Open http://localhost:8000/ai_security_checklist.html in your browser"
+        echo "🌐 Manual: Open http://localhost:8000/index.html in your browser"
     fi
     
     echo "✅ AI Security Checklist is now running!"
@@ -55,11 +55,11 @@ elif command -v python &> /dev/null; then
     sleep 2
     
     if command -v open &> /dev/null; then
-        open http://localhost:8000/ai_security_checklist.html
+        open http://localhost:8000/index.html
     elif command -v xdg-open &> /dev/null; then
-        xdg-open http://localhost:8000/ai_security_checklist.html
+        xdg-open http://localhost:8000/index.html
     else
-        echo "🌐 Manual: Open http://localhost:8000/ai_security_checklist.html in your browser"
+        echo "🌐 Manual: Open http://localhost:8000/index.html in your browser"
     fi
     
     echo "✅ AI Security Checklist is now running!"
@@ -72,8 +72,8 @@ else
     echo "❌ Python not found. Please install Python or use alternative method:"
     echo ""
     echo "📁 Direct File Access:"
-    echo "   open ai_security_checklist.html"
+    echo "   open index.html"
     echo ""
-    echo "🌐 Or drag ai_security_checklist.html into your web browser"
+    echo "🌐 Or drag index.html into your web browser"
     exit 1
 fi
