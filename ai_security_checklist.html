@@ -14,31 +14,9 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #ec4899;
-            --accent-color: #8b5cf6;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --danger-color: #ef4444;
-            --dark-color: #1f2937;
-            --light-color: #f8fafc;
-            --border-color: #e2e8f0;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --prompt-bg: #1f2937;
-            --prompt-text: #e5e7eb;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #8b5cf6;
-            --secondary-color: #f472b6;
-            --accent-color: #a855f7;
+            --primary-color: #60a5fa;
+            --secondary-color: #a78bfa;
+            --accent-color: #22d3ee;
             --success-color: #34d399;
             --warning-color: #fbbf24;
             --danger-color: #f87171;
@@ -47,14 +25,16 @@
             --border-color: #374151;
             --text-primary: #f9fafb;
             --text-secondary: #d1d5db;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
-            --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --bg-gradient: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             --card-bg: #1f2937;
             --header-bg: rgba(31, 41, 55, 0.95);
             --prompt-bg: #374151;
             --prompt-text: #f9fafb;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
 
         body {
             font-family: 'Inter', sans-serif;
@@ -65,29 +45,36 @@
             transition: var(--transition);
         }
 
-        [data-theme="dark"] body {
-            background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
-            color: #f9fafb;
+
+        /* Fix all text visibility issues */
+        .redteam-category h3 {
+            color: var(--primary-color) !important;
         }
 
-        [data-theme="dark"] .checklist-item {
-            background: #1f2937;
-            color: #f9fafb;
-            border-color: #374151;
+        .test-method h4 {
+            color: var(--text-primary) !important;
         }
 
-        [data-theme="dark"] .item-title {
-            color: #f9fafb;
+        .test-method p {
+            color: var(--text-primary) !important;
         }
 
-        [data-theme="dark"] .item-description {
-            color: #d1d5db;
+        .test-method p strong {
+            color: var(--primary-color) !important;
         }
 
-        [data-theme="dark"] .checklist-item.completed {
-            background: rgba(52, 211, 153, 0.15);
-            border-color: #34d399;
+        .section-title {
+            color: var(--text-primary) !important;
         }
+
+        .item-title {
+            color: var(--text-primary) !important;
+        }
+
+        .item-description {
+            color: var(--text-secondary) !important;
+        }
+
 
         .container {
             max-width: 1400px;
@@ -106,6 +93,7 @@
             right: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
             animation: slideDown 0.6s ease-out;
             transition: var(--transition);
         }
@@ -345,16 +333,18 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             cursor: pointer;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 12px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
 
         .category-header:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
         }
 
         .category-icon {
@@ -371,12 +361,14 @@
         .category-title {
             font-size: 1.4rem;
             font-weight: 600;
+            color: white !important;
         }
 
         .category-progress {
             margin-left: auto;
             font-size: 0.9rem;
             opacity: 0.9;
+            color: white !important;
         }
 
         .checklist-items {
@@ -399,11 +391,12 @@
             align-items: flex-start;
             gap: 1rem;
             padding: 1.5rem;
-            background: #f8fafc;
+            background: var(--card-bg);
             border-radius: 12px;
             border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: var(--shadow);
         }
 
         .checklist-item:hover {
@@ -412,8 +405,9 @@
         }
 
         .checklist-item.completed {
-            background: #ecfdf5;
+            background: rgba(52, 211, 153, 0.15);
             border-color: var(--success-color);
+            transform: scale(0.98);
         }
 
         .checkbox {
@@ -519,9 +513,15 @@
             cursor: pointer;
             font-size: 0.875rem;
             margin-left: auto;
+            opacity: 0;
+            transform: translateX(10px);
             transition: all 0.3s ease;
         }
 
+        .category-header:hover .severity-sort-toggle {
+            opacity: 1;
+            transform: translateX(0);
+        }
         .severity-sort-toggle:hover {
             background: var(--primary-color);
         }
@@ -763,7 +763,7 @@
         }
 
         .test-method {
-            background: var(--light-color);
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1rem;
@@ -780,6 +780,7 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
             line-height: 1.4;
+            color: var(--text-primary);
         }
 
         .test-method p strong {
@@ -1382,6 +1383,7 @@
                             </div>
                             <h3 class="category-title">Secure Design & Architecture</h3>
                             <span class="category-progress">0/10 Complete</span>
+                            <button class="severity-sort-toggle" onclick="toggleSeveritySort('design', event)">Sort by Severity</button>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="checklist-items" id="design-items">
@@ -1486,6 +1488,7 @@
                             </div>
                             <h3 class="category-title">Secure Development</h3>
                             <span class="category-progress">0/12 Complete</span>
+                            <button class="severity-sort-toggle" onclick="toggleSeveritySort('development', event)">Sort by Severity</button>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="checklist-items" id="development-items">
@@ -1608,6 +1611,7 @@
                             </div>
                             <h3 class="category-title">Runtime Security & Operations</h3>
                             <span class="category-progress">0/11 Complete</span>
+                            <button class="severity-sort-toggle" onclick="toggleSeveritySort('runtime', event)">Sort by Severity</button>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="checklist-items" id="runtime-items">
@@ -1721,6 +1725,7 @@
                             </div>
                             <h3 class="category-title">LLM Security & Alignment</h3>
                             <span class="category-progress">0/15 Complete</span>
+                            <button class="severity-sort-toggle" onclick="toggleSeveritySort('llm-security', event)">Sort by Severity</button>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="checklist-items" id="llm-security-items">
@@ -1870,6 +1875,7 @@
                             </div>
                             <h3 class="category-title">Data Security & Privacy</h3>
                             <span class="category-progress">0/9 Complete</span>
+                            <button class="severity-sort-toggle" onclick="toggleSeveritySort('data', event)">Sort by Severity</button>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="checklist-items" id="data-items">
@@ -2833,18 +2839,21 @@
         function exportProgressJSON() {
             const progress = generateProgressData();
             downloadFile(JSON.stringify(progress, null, 2), `ai-security-checklist-progress-${new Date().toISOString().split('T')[0]}.json`, 'application/json');
+            document.getElementById('export-menu').style.display = 'none';
         }
 
         function exportProgressCSV() {
             const progress = generateProgressData();
             const csvContent = generateCSV(progress);
             downloadFile(csvContent, `ai-security-checklist-progress-${new Date().toISOString().split('T')[0]}.csv`, 'text/csv');
+            document.getElementById('export-menu').style.display = 'none';
         }
 
         function exportProgressMarkdown() {
             const progress = generateProgressData();
             const markdownContent = generateMarkdown(progress);
             downloadFile(markdownContent, `ai-security-checklist-progress-${new Date().toISOString().split('T')[0]}.md`, 'text/markdown');
+            document.getElementById('export-menu').style.display = 'none';
         }
 
         function generateProgressData() {
@@ -2959,7 +2968,7 @@
 
         // GitHub integration
         function openGitHub() {
-            window.open('https://github.com/ai-security-checklist/community', '_blank');
+            window.open('https://github.com/Shivang0/shivang0.github.com', '_blank');
         }
 
         // Community contribution
