@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 15 17 21;
+    --surface: 21 24 33;
+    --panel: 25 29 39;
+    --text: 230 232 236;
+    --muted: 154 163 175;
+    --border: 42 47 58;
+    --accent: 142 166 200;
+    --accent-600: 110 140 179;
+    --accent-700: 90 117 151;
+  }
+
+  .light {
+    --bg: 250 251 252;
+    --surface: 255 255 255;
+    --panel: 245 247 250;
+    --text: 26 32 44;
+    --muted: 74 85 104;
+    --border: 226 232 240;
+    --accent: 90 117 151;
+    --accent-600: 74 100 135;
+    --accent-700: 58 84 119;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-text font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-accent-700;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 90rem;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .glass {
+    @apply bg-surface/80 backdrop-blur-xl border border-border;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-600 to-accent bg-clip-text text-transparent;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-accent after:transition-all hover:after:w-full;
+  }
+}
