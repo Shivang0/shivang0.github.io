@@ -70,15 +70,6 @@ export default function MobileNav({ isOpen, onClose, navItems }: MobileNavProps)
               )
             })}
           </ul>
-          
-          <div className="mt-auto space-y-3">
-            <Button variant="outline" fullWidth onClick={onClose}>
-              Submit Vulnerability
-            </Button>
-            <Button variant="primary" fullWidth onClick={onClose}>
-              Request Demo
-            </Button>
-          </div>
         </div>
       </motion.nav>
     </motion.div>
