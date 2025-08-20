@@ -536,7 +536,7 @@ export default function PromptsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
                 <Terminal className="w-8 h-8 text-accent" />
                 <h1 className="text-display-2 font-display font-bold">
                   AI Security Testing Prompts
@@ -546,7 +546,7 @@ export default function PromptsPage() {
                 Comprehensive collection of {totalPrompts}+ prompts for testing AI system vulnerabilities
               </p>
               
-              <div className="flex justify-center gap-2 mb-6">
+              <div className="flex flex-wrap justify-center gap-2 mb-6">
                 <Button
                   variant="secondary"
                   size="sm"
@@ -568,7 +568,7 @@ export default function PromptsPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold gradient-text">{totalPrompts}</div>
                   <div className="text-sm text-muted">Total Prompts</div>
@@ -592,7 +592,7 @@ export default function PromptsPage() {
 
         <section className="py-8">
           <Container>
-            <div className="flex flex-col lg:flex-row gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                 <input
@@ -607,7 +607,7 @@ export default function PromptsPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
+                className="w-full px-4 py-3 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
               >
                 <option value="all">All Categories</option>
                 {allPromptCategories.map(cat => (
@@ -618,7 +618,7 @@ export default function PromptsPage() {
               <select
                 value={selectedSeverity}
                 onChange={(e) => setSelectedSeverity(e.target.value)}
-                className="px-4 py-3 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
+                className="w-full px-4 py-3 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
               >
                 <option value="all">All Severities</option>
                 <option value="critical">Critical</option>
@@ -638,9 +638,9 @@ export default function PromptsPage() {
                 {filteredPrompts.map((prompt: any) => (
                   <motion.div key={prompt.id} variants={fadeInUp}>
                     <Card className="p-6">
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4">
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
                             <Badge variant="outline" size="sm">{prompt.id}</Badge>
                             <h3 className="font-semibold">{prompt.title}</h3>
                             <Badge 
@@ -653,7 +653,7 @@ export default function PromptsPage() {
                             </Badge>
                             <Badge variant="outline" size="sm">{prompt.categoryTitle}</Badge>
                           </div>
-                          <div className="bg-panel rounded-lg p-4 font-mono text-sm">
+                          <div className="bg-panel rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm break-words overflow-x-auto">
                             {prompt.prompt}
                           </div>
                           <div className="mt-2 text-sm text-muted">
@@ -700,9 +700,9 @@ export default function PromptsPage() {
                           })
                           .map(prompt => (
                             <Card key={prompt.id} className="p-6">
-                              <div className="flex items-start justify-between gap-4">
+                              <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4">
                                 <div className="flex-1">
-                                  <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex flex-wrap items-center gap-2 mb-2">
                                     <Badge variant="outline" size="sm">{prompt.id}</Badge>
                                     <h3 className="font-semibold">{prompt.title}</h3>
                                     <Badge 
@@ -714,7 +714,7 @@ export default function PromptsPage() {
                                       {prompt.severity}
                                     </Badge>
                                   </div>
-                                  <div className="bg-panel rounded-lg p-4 font-mono text-sm">
+                                  <div className="bg-panel rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm break-words overflow-x-auto">
                                     {prompt.prompt}
                                   </div>
                                   <div className="mt-2 text-sm text-muted">

@@ -520,7 +520,7 @@ export default function ThreatTaxonomyPage() {
                 Comprehensive classification of AI security threats, attack vectors, and mitigation strategies
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold text-red-400">{totalThreats}</div>
                   <div className="text-sm text-muted">Total Threats</div>
@@ -626,7 +626,7 @@ export default function ThreatTaxonomyPage() {
                                   exit={{ opacity: 0, height: 0 }}
                                   className="space-y-6 pt-6 border-t border-border"
                                 >
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div>
                                       <h4 className="font-semibold mb-3">Attack Techniques</h4>
                                       <ul className="space-y-2">

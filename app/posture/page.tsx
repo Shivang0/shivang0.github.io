@@ -252,7 +252,7 @@ export default function PosturePage() {
               metrics && (
                 <div className="space-y-8">
                   {/* Score Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     <Card className="p-6 text-center">
                       <div className={cn("text-4xl font-bold mb-2", getScoreColor(metrics.overallScore))}>
                         {metrics.overallScore}%
@@ -280,7 +280,7 @@ export default function PosturePage() {
                   </div>
 
                   {/* Strengths and Weaknesses */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6">
                     <Card className="p-6">
                       <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                         <CheckCircle className="w-5 h-5 text-success" />

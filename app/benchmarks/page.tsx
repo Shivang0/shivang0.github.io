@@ -530,7 +530,7 @@ export default function BenchmarksPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
                 <BarChart className="w-8 h-8 text-accent" />
                 <h1 className="text-display-2 font-display font-bold">
                   AI Security Benchmarks
@@ -541,7 +541,7 @@ export default function BenchmarksPage() {
                 security vulnerabilities, and safety issues
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold gradient-text">{benchmarkStats.totalBenchmarks}</div>
                   <div className="text-sm text-muted">Total Benchmarks</div>
@@ -560,7 +560,7 @@ export default function BenchmarksPage() {
                 </Card>
               </div>
 
-              <div className="flex justify-center gap-2">
+              <div className="flex flex-wrap justify-center gap-2">
                 <Button
                   variant="secondary"
                   size="sm"
@@ -576,7 +576,7 @@ export default function BenchmarksPage() {
 
         <section className="py-8">
           <Container>
-            <div className="flex flex-col lg:flex-row gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8">
               <div className="flex flex-wrap gap-2 flex-1">
                 <Badge
                   variant={selectedCategory === null ? 'primary' : 'outline'}
@@ -600,7 +600,7 @@ export default function BenchmarksPage() {
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="px-4 py-2 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
+                className="w-full sm:w-auto px-4 py-2 bg-surface border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
               >
                 <option value="all">All Difficulties</option>
                 <option value="Low">Low</option>
@@ -646,9 +646,9 @@ export default function BenchmarksPage() {
                             onClick={() => toggleBenchmark(benchmark.name)}
                           >
                             <div className="p-6">
-                              <div className="flex items-start justify-between mb-4">
+                              <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 mb-4">
                                 <div className="flex-1">
-                                  <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex flex-wrap items-center gap-2 mb-2">
                                     <h3 className="text-xl font-semibold">{benchmark.name}</h3>
                                     <Badge
                                       variant={

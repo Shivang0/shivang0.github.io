@@ -454,7 +454,7 @@ export default function LLMFrameworkPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold gradient-text">{redTeamingFramework.length}</div>
                   <div className="text-sm text-muted">Phases</div>
@@ -601,7 +601,7 @@ export default function LLMFrameworkPage() {
           <Container>
             <h2 className="text-2xl font-semibold mb-8">Test Coverage Matrix</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {testCategories.map((category, index) => (
                 <motion.div
                   key={index}

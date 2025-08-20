@@ -206,7 +206,7 @@ export default function ChecklistPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
                 <Shield className="w-8 h-8 text-accent" />
                 <h1 className="text-display-2 font-display font-bold">
                   AI Security Checklist
@@ -216,7 +216,7 @@ export default function ChecklistPage() {
                 Comprehensive OWASP-based security guidelines for AI applications, LLMs, and agentic systems
               </p>
               
-              <div className="flex justify-center gap-4 mb-6">
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <Button
                   variant="primary"
                   size="sm"
@@ -227,7 +227,7 @@ export default function ChecklistPage() {
                 </Button>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold gradient-text">{totalItems}</div>
                   <div className="text-sm text-muted">Total Items</div>
@@ -260,7 +260,7 @@ export default function ChecklistPage() {
 
         <section className="py-8">
           <Container>
-            <div className="flex flex-col lg:flex-row gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                 <input
@@ -284,7 +284,7 @@ export default function ChecklistPage() {
                   </Button>
                 ))}
                 
-                <div className="flex gap-2 ml-4 pl-4 border-l border-border">
+                <div className="flex gap-2 sm:ml-4 sm:pl-4 sm:border-l border-border">
                   <Button
                     variant="secondary"
                     size="sm"
@@ -336,8 +336,8 @@ export default function ChecklistPage() {
                         className="p-6 cursor-pointer hover:bg-panel/50 transition-colors"
                         onClick={() => toggleCategory(category.id)}
                       >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4">
+                          <div className="flex items-center gap-3">
                             <div className="p-3 rounded-lg bg-accent/10 text-accent">
                               <IconComponent className="w-6 h-6" />
                             </div>
@@ -353,7 +353,7 @@ export default function ChecklistPage() {
                               </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-3">
                             <div className="w-32 bg-panel rounded-full h-2 overflow-hidden">
                               <div
                                 className="h-full bg-accent transition-all"

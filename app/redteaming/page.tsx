@@ -201,7 +201,7 @@ export default function RedTeamingPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold text-red-400">6</div>
                   <div className="text-sm text-muted">Attack Vectors</div>
@@ -267,7 +267,7 @@ export default function RedTeamingPage() {
                         >
                           <div>
                             <h4 className="font-semibold mb-3">Techniques</h4>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {methodology.techniques.map((technique, index) => (
                                 <div key={index} className="flex items-center gap-2">
                                   <ChevronRight className="w-4 h-4 text-accent" />
@@ -277,7 +277,7 @@ export default function RedTeamingPage() {
                             </div>
                           </div>
                           
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                               <h4 className="font-semibold mb-3">Tools</h4>
                               <div className="flex flex-wrap gap-2">
@@ -322,7 +322,7 @@ export default function RedTeamingPage() {
           <Container>
             <h2 className="text-2xl font-semibold mb-8">AI Attack Kill Chain</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {killChain.map((phase, index) => {
                 const Icon = phase.icon
                 return (
