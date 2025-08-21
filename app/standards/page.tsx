@@ -1,15 +1,19 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FileText, CheckCircle, AlertTriangle, TrendingUp, Shield, Award, Globe, BookOpen } from 'lucide-react'
+import { FileText, CheckCircle, AlertTriangle, TrendingUp, Shield, Award, Globe, BookOpen, ExternalLink, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Container from '@/components/ui/Container'
 import Card from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
+import Button from '@/components/ui/Button'
 import AnimeBackground from '@/components/graphics/AnimeBackground'
 import { fadeInUp, staggerContainer } from '@/components/motion/variants'
 import { cn } from '@/lib/utils'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs'
+import { frameworks } from '@/content/data/ai-security-research'
 
 const standards = [
   {
@@ -99,57 +103,53 @@ const standards = [
       },
       {
         name: 'Risk Analysis',
-        description: 'Risk assessment and prioritization',
-        items: ['Likelihood', 'Impact', 'Velocity', 'Interconnection']
+        description: 'Comprehensive risk assessment',
+        items: ['Likelihood', 'Impact', 'Vulnerability', 'Exposure']
+      },
+      {
+        name: 'Risk Evaluation',
+        description: 'Risk prioritization and decisions',
+        items: ['Severity', 'Acceptability', 'Trade-offs', 'Thresholds']
       },
       {
         name: 'Risk Treatment',
-        description: 'Risk mitigation strategies',
+        description: 'Mitigation and control measures',
         items: ['Avoidance', 'Reduction', 'Transfer', 'Acceptance']
-      },
-      {
-        name: 'Risk Monitoring',
-        description: 'Continuous risk tracking',
-        items: ['Indicators', 'Thresholds', 'Reporting', 'Review']
       }
     ],
     resources: [
-      { type: 'Standard', url: 'https://www.iso.org/standard/77304.html' }
+      { type: 'Standard', url: 'https://www.iso.org/standard/77304.html' },
+      { type: 'Guidelines', url: 'https://www.iso.org/committee/6794475.html' }
     ]
   },
   {
-    id: 'owasp-top10-llm',
-    title: 'OWASP Top 10 for LLM Applications',
-    organization: 'Open Web Application Security Project',
-    year: '2024',
-    icon: Shield,
-    coverage: 95,
-    description: 'Critical security risks for Large Language Model applications',
+    id: 'ieee-7000',
+    title: 'IEEE 7000-2021',
+    organization: 'Institute of Electrical and Electronics Engineers',
+    year: '2021',
+    icon: Award,
+    coverage: 82,
+    description: 'Model process for addressing ethical concerns during system design',
     keyComponents: [
       {
-        name: 'LLM01: Prompt Injection',
-        description: 'Manipulating LLM via crafted inputs',
-        items: ['Direct injection', 'Indirect injection', 'System prompt override']
+        name: 'Ethical Value Elicitation',
+        description: 'Identify stakeholder values',
+        items: ['Stakeholder Analysis', 'Value Identification', 'Prioritization', 'Documentation']
       },
       {
-        name: 'LLM02: Insecure Output Handling',
-        description: 'Insufficient validation of LLM outputs',
-        items: ['XSS', 'SQL injection', 'Code execution', 'SSRF']
+        name: 'Ethical Requirements',
+        description: 'Transform values into requirements',
+        items: ['Value Translation', 'Requirement Specification', 'Validation', 'Traceability']
       },
       {
-        name: 'LLM03: Training Data Poisoning',
-        description: 'Manipulation of training data',
-        items: ['Backdoors', 'Bias injection', 'Degradation attacks']
-      },
-      {
-        name: 'LLM04: Model Denial of Service',
-        description: 'Resource exhaustion attacks',
-        items: ['Context window flooding', 'Recursive prompts', 'Variable-length attacks']
+        name: 'Ethical Risk Analysis',
+        description: 'Assess ethical implications',
+        items: ['Risk Scenarios', 'Impact Assessment', 'Mitigation Strategies', 'Monitoring']
       }
     ],
     resources: [
-      { type: 'Guide', url: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/' },
-      { type: 'Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/LLM_AI_Security_Checklist.html' }
+      { type: 'Standard', url: 'https://standards.ieee.org/standard/7000-2021.html' },
+      { type: 'Implementation Guide', url: 'https://ethicsinaction.ieee.org/' }
     ]
   },
   {
@@ -157,68 +157,54 @@ const standards = [
     title: 'EU AI Act',
     organization: 'European Union',
     year: '2024',
-    icon: Award,
-    coverage: 78,
-    description: 'Comprehensive AI regulation framework for the European Union',
+    icon: Globe,
+    coverage: 90,
+    description: 'Comprehensive regulatory framework for AI systems in the EU',
     keyComponents: [
       {
         name: 'Risk Categories',
-        description: 'AI system risk classification',
-        items: ['Unacceptable risk', 'High risk', 'Limited risk', 'Minimal risk']
+        description: 'Four-tier risk classification',
+        items: ['Unacceptable Risk', 'High Risk', 'Limited Risk', 'Minimal Risk']
       },
       {
-        name: 'Requirements for High-Risk AI',
-        description: 'Mandatory compliance measures',
-        items: ['Risk management', 'Data governance', 'Documentation', 'Human oversight']
-      },
-      {
-        name: 'Transparency Obligations',
-        description: 'Disclosure requirements',
-        items: ['AI interaction disclosure', 'Emotion recognition', 'Biometric categorization', 'Deepfake labeling']
+        name: 'Compliance Requirements',
+        description: 'Mandatory obligations',
+        items: ['Conformity Assessment', 'CE Marking', 'Documentation', 'Registration']
       },
       {
         name: 'Governance Structure',
-        description: 'Regulatory framework',
-        items: ['AI Board', 'National authorities', 'Conformity assessment', 'Market surveillance']
+        description: 'Regulatory oversight',
+        items: ['AI Board', 'National Authorities', 'Notified Bodies', 'Sandboxes']
       }
     ],
     resources: [
-      { type: 'Regulation Text', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+      { type: 'Legal Text', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206' },
       { type: 'Compliance Guide', url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai' }
     ]
   },
   {
-    id: 'ieee-p7000',
-    title: 'IEEE P7000 Series',
-    organization: 'Institute of Electrical and Electronics Engineers',
-    year: '2021-2024',
-    icon: BookOpen,
-    coverage: 82,
-    description: 'Model process for addressing ethical concerns in system design',
+    id: 'owasp-top-10',
+    title: 'OWASP Top 10 for LLM Applications',
+    organization: 'Open Web Application Security Project',
+    year: '2024',
+    icon: Shield,
+    coverage: 88,
+    description: 'Security and safety risks in LLM applications',
     keyComponents: [
       {
-        name: 'IEEE 7000-2021',
-        description: 'Ethical design processes',
-        items: ['Stakeholder analysis', 'Value elicitation', 'Ethical risk assessment']
+        name: 'Top Vulnerabilities',
+        description: 'Critical security risks',
+        items: ['Prompt Injection', 'Data Leakage', 'Inadequate Sandboxing', 'Unauthorized Code Execution']
       },
       {
-        name: 'IEEE 7001',
-        description: 'Transparency of autonomous systems',
-        items: ['Transparency levels', 'Explanation interfaces', 'Audit trails']
-      },
-      {
-        name: 'IEEE 7002',
-        description: 'Data privacy process',
-        items: ['Privacy by design', 'Data minimization', 'User control']
-      },
-      {
-        name: 'IEEE 7003',
-        description: 'Algorithmic bias considerations',
-        items: ['Bias identification', 'Mitigation strategies', 'Impact assessment']
+        name: 'Mitigation Strategies',
+        description: 'Security controls',
+        items: ['Input Validation', 'Output Encoding', 'Access Control', 'Monitoring']
       }
     ],
     resources: [
-      { type: 'Standards Portal', url: 'https://standards.ieee.org/industry-connections/ec/autonomous-systems/' }
+      { type: 'Documentation', url: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/' },
+      { type: 'GitHub', url: 'https://github.com/OWASP/www-project-top-10-for-large-language-model-applications' }
     ]
   }
 ]
@@ -233,6 +219,16 @@ const complianceMatrix = [
 ]
 
 export default function StandardsPage() {
+  const [selectedFramework, setSelectedFramework] = useState<number | null>(null)
+  const [expandedStandard, setExpandedStandard] = useState<string | null>(null)
+
+  const getComplianceColor = (score: number) => {
+    if (score >= 90) return 'text-success'
+    if (score >= 80) return 'text-warning'
+    if (score >= 70) return 'text-accent'
+    return 'text-danger'
+  }
+
   return (
     <>
       <AnimeBackground variant="rings" />
@@ -246,20 +242,20 @@ export default function StandardsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
                 <FileText className="w-8 h-8 text-accent" />
-                <h1 className="text-display-2 font-display font-bold">
-                  AI Security Standards & Compliance
+                <h1 className="text-2xl sm:text-display-2 font-display font-bold">
+                  AI Security Standards & Frameworks
                 </h1>
               </div>
-              <p className="text-lg text-muted mb-8">
-                International standards and regulatory frameworks for AI/ML security and governance
+              <p className="text-base sm:text-lg text-muted mb-8 px-4 sm:px-0">
+                International standards, regulatory frameworks, and industry best practices for AI/ML security
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 px-4 sm:px-0">
                 <Card className="p-4 text-center">
-                  <div className="text-2xl font-bold gradient-text">6</div>
-                  <div className="text-sm text-muted">Major Standards</div>
+                  <div className="text-2xl font-bold gradient-text">{standards.length + frameworks.length}</div>
+                  <div className="text-sm text-muted">Total Standards</div>
                 </Card>
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold text-accent">87%</div>
@@ -271,7 +267,7 @@ export default function StandardsPage() {
                 </Card>
                 <Card className="p-4 text-center">
                   <div className="text-2xl font-bold text-success">150+</div>
-                  <div className="text-sm text-muted">Countries</div>
+                  <div className="text-sm text-muted">Requirements</div>
                 </Card>
               </div>
             </motion.div>
@@ -280,198 +276,287 @@ export default function StandardsPage() {
 
         <section className="py-12">
           <Container>
-            <motion.div
-              className="space-y-8"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              {standards.map((standard) => {
-                const Icon = standard.icon
-                return (
-                  <motion.div key={standard.id} variants={fadeInUp}>
-                    <Card className="overflow-hidden">
-                      <div className="p-8">
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-lg bg-accent/10 text-accent">
-                              <Icon className="w-8 h-8" />
-                            </div>
-                            <div>
-                              <h2 className="text-2xl font-semibold mb-1">{standard.title}</h2>
-                              <p className="text-muted">{standard.organization} • {standard.year}</p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-2xl font-bold text-accent">{standard.coverage}%</div>
-                            <div className="text-sm text-muted">Coverage</div>
-                          </div>
-                        </div>
-                        
-                        <p className="text-lg mb-8">{standard.description}</p>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                          {standard.keyComponents.map((component, index) => (
-                            <div key={index} className="bg-panel rounded-lg p-6">
-                              <h3 className="font-semibold mb-2">{component.name}</h3>
-                              <p className="text-sm text-muted mb-4">{component.description}</p>
-                              <div className="flex flex-wrap gap-2">
-                                {component.items.map((item, itemIndex) => (
-                                  <Badge key={itemIndex} variant="outline" size="sm">
-                                    {item}
-                                  </Badge>
-                                ))}
+            <Tabs defaultValue="standards" className="space-y-8">
+              <TabsList>
+                <TabsTrigger value="standards">ISO & Regulatory Standards</TabsTrigger>
+                <TabsTrigger value="frameworks">Industry Frameworks</TabsTrigger>
+                <TabsTrigger value="compliance">Compliance Matrix</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="standards">
+                <motion.div
+                  className="space-y-6"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {standards.map((standard) => {
+                    const Icon = standard.icon
+                    const isExpanded = expandedStandard === standard.id
+                    
+                    return (
+                      <motion.div key={standard.id} variants={fadeInUp}>
+                        <Card 
+                          variant="elevated"
+                          className="overflow-hidden cursor-pointer"
+                          onClick={() => setExpandedStandard(isExpanded ? null : standard.id)}
+                        >
+                          <div className="p-6">
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="flex items-start gap-4">
+                                <div className="p-3 rounded-lg bg-accent/10 text-accent">
+                                  <Icon className="w-6 h-6" />
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-3 mb-2">
+                                    <h3 className="text-xl font-semibold">{standard.title}</h3>
+                                    <Badge variant="outline" size="sm">{standard.year}</Badge>
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-sm text-muted">Coverage:</span>
+                                      <span className={cn(
+                                        "text-sm font-semibold",
+                                        getComplianceColor(standard.coverage)
+                                      )}>
+                                        {standard.coverage}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <p className="text-sm text-muted mb-1">{standard.organization}</p>
+                                  <p className="text-muted">{standard.description}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center">
+                                {isExpanded ? (
+                                  <ChevronUp className="w-5 h-5 text-muted" />
+                                ) : (
+                                  <ChevronDown className="w-5 h-5 text-muted" />
+                                )}
                               </div>
                             </div>
-                          ))}
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-4">
-                          {standard.resources.map((resource, index) => (
-                            <a
-                              key={index}
-                              href={resource.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-colors"
-                            >
-                              <FileText className="w-4 h-4" />
-                              {resource.type}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    </Card>
+                            
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-6 pt-6 border-t border-border"
+                              >
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                                  {standard.keyComponents.map((component, idx) => (
+                                    <div key={idx} className="space-y-2">
+                                      <h4 className="font-semibold text-accent">{component.name}</h4>
+                                      <p className="text-sm text-muted">{component.description}</p>
+                                      <ul className="grid grid-cols-2 gap-2">
+                                        {component.items.map((item, itemIdx) => (
+                                          <li key={itemIdx} className="text-sm text-muted flex items-center gap-2">
+                                            <CheckCircle className="w-3 h-3 text-success" />
+                                            {item}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                                
+                                <div className="flex flex-wrap gap-2">
+                                  {standard.resources.map((resource, idx) => (
+                                    <Button
+                                      key={idx}
+                                      variant="outline"
+                                      size="sm"
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        window.open(resource.url, '_blank')
+                                      }}
+                                    >
+                                      {resource.type}
+                                      <ExternalLink className="w-3 h-3 ml-2" />
+                                    </Button>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </div>
+                        </Card>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
+              </TabsContent>
+
+              <TabsContent value="frameworks">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-2xl font-semibold">Industry Framework Comparison</h2>
+                    <Badge variant="secondary" size="lg">{frameworks.length} Frameworks</Badge>
+                  </div>
+                  <motion.div
+                    className="grid gap-6"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+                    {frameworks.map((framework, index) => {
+                      const Icon = framework.icon
+                      const isExpanded = selectedFramework === index
+                      
+                      return (
+                        <motion.div key={index} variants={fadeInUp}>
+                          <Card 
+                            variant="elevated" 
+                            className="p-6 cursor-pointer transition-all"
+                            onClick={() => setSelectedFramework(isExpanded ? null : index)}
+                          >
+                            <div className="flex items-start gap-4">
+                              <div className="p-3 rounded-lg bg-accent/10 text-accent">
+                                <Icon className="w-6 h-6" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                                  <div>
+                                    <h3 className="text-xl font-semibold">{framework.name}</h3>
+                                    <p className="text-sm text-muted">{framework.organization}</p>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline">{framework.coverage}</Badge>
+                                    {framework.url && (
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          window.open(framework.url, '_blank');
+                                        }}
+                                      >
+                                        <ExternalLink className="w-4 h-4" />
+                                      </Button>
+                                    )}
+                                  </div>
+                                </div>
+                                <p className="text-muted mb-4">{framework.description}</p>
+                                {isExpanded && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="space-y-3 pt-4 border-t border-border"
+                                  >
+                                    <p className="text-sm font-medium text-accent">Key Strengths:</p>
+                                    <ul className="space-y-2">
+                                      {framework.strengths.map((strength, idx) => (
+                                        <li key={idx} className="text-sm text-muted flex items-start gap-2">
+                                          <ChevronRight className="w-4 h-4 text-accent mt-0.5" />
+                                          {strength}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                    {framework.docsUrl && (
+                                      <div className="pt-4">
+                                        <Button
+                                          variant="outline"
+                                          size="sm"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            window.open(framework.docsUrl, '_blank');
+                                          }}
+                                        >
+                                          View Documentation
+                                          <ExternalLink className="w-4 h-4 ml-2" />
+                                        </Button>
+                                      </div>
+                                    )}
+                                  </motion.div>
+                                )}
+                              </div>
+                            </div>
+                          </Card>
+                        </motion.div>
+                      )
+                    })}
                   </motion.div>
-                )
-              })}
-            </motion.div>
-            
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <h2 className="text-2xl font-semibold mb-8">Compliance Coverage Matrix</h2>
-              
-              <Card className="p-8">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b border-border">
-                        <th className="text-left py-4 px-4">Category</th>
-                        <th className="text-center py-4 px-4">NIST</th>
-                        <th className="text-center py-4 px-4">ISO</th>
-                        <th className="text-center py-4 px-4">OWASP</th>
-                        <th className="text-center py-4 px-4">EU AI Act</th>
-                        <th className="text-center py-4 px-4">IEEE</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {complianceMatrix.map((row, index) => (
-                        <tr key={index} className="border-b border-border/50">
-                          <td className="py-4 px-4 font-medium">{row.category}</td>
-                          <td className="text-center py-4 px-4">
-                            <div className={cn(
-                              "inline-flex items-center justify-center w-16 h-8 rounded-full font-semibold text-sm",
-                              row.nist >= 90 ? "bg-green-500/20 text-green-400" :
-                              row.nist >= 80 ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-red-500/20 text-red-400"
-                            )}>
-                              {row.nist}%
-                            </div>
-                          </td>
-                          <td className="text-center py-4 px-4">
-                            <div className={cn(
-                              "inline-flex items-center justify-center w-16 h-8 rounded-full font-semibold text-sm",
-                              row.iso >= 90 ? "bg-green-500/20 text-green-400" :
-                              row.iso >= 80 ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-red-500/20 text-red-400"
-                            )}>
-                              {row.iso}%
-                            </div>
-                          </td>
-                          <td className="text-center py-4 px-4">
-                            <div className={cn(
-                              "inline-flex items-center justify-center w-16 h-8 rounded-full font-semibold text-sm",
-                              row.owasp >= 90 ? "bg-green-500/20 text-green-400" :
-                              row.owasp >= 80 ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-red-500/20 text-red-400"
-                            )}>
-                              {row.owasp}%
-                            </div>
-                          </td>
-                          <td className="text-center py-4 px-4">
-                            <div className={cn(
-                              "inline-flex items-center justify-center w-16 h-8 rounded-full font-semibold text-sm",
-                              row.eu >= 90 ? "bg-green-500/20 text-green-400" :
-                              row.eu >= 80 ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-red-500/20 text-red-400"
-                            )}>
-                              {row.eu}%
-                            </div>
-                          </td>
-                          <td className="text-center py-4 px-4">
-                            <div className={cn(
-                              "inline-flex items-center justify-center w-16 h-8 rounded-full font-semibold text-sm",
-                              row.ieee >= 90 ? "bg-green-500/20 text-green-400" :
-                              row.ieee >= 80 ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-red-500/20 text-red-400"
-                            )}>
-                              {row.ieee}%
-                            </div>
-                          </td>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="compliance">
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-semibold mb-6">Compliance Coverage Matrix</h2>
+                  <Card variant="elevated" className="p-6 overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-border">
+                          <th className="text-left py-3 px-4">Category</th>
+                          <th className="text-center py-3 px-4">NIST</th>
+                          <th className="text-center py-3 px-4">ISO</th>
+                          <th className="text-center py-3 px-4">OWASP</th>
+                          <th className="text-center py-3 px-4">EU AI Act</th>
+                          <th className="text-center py-3 px-4">IEEE</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                
-                <div className="mt-8 flex items-center justify-center gap-8">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-green-500/20"></div>
-                    <span className="text-sm text-muted">90%+ Coverage</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-yellow-500/20"></div>
-                    <span className="text-sm text-muted">80-89% Coverage</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-red-500/20"></div>
-                    <span className="text-sm text-muted">&lt;80% Coverage</span>
-                  </div>
-                </div>
-              </Card>
-              
-              <Card className="mt-8 p-8 bg-accent/5 border-accent/20">
-                <h3 className="text-xl font-semibold mb-4">Implementation Roadmap</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    { phase: 'Phase 1', title: 'Assessment', duration: '2-4 weeks', tasks: ['Gap analysis', 'Risk assessment', 'Stakeholder mapping'] },
-                    { phase: 'Phase 2', title: 'Planning', duration: '3-6 weeks', tasks: ['Standard selection', 'Resource allocation', 'Timeline creation'] },
-                    { phase: 'Phase 3', title: 'Implementation', duration: '3-6 months', tasks: ['Process updates', 'Tool deployment', 'Training'] },
-                    { phase: 'Phase 4', title: 'Validation', duration: '4-8 weeks', tasks: ['Testing', 'Auditing', 'Certification'] },
-                    { phase: 'Phase 5', title: 'Monitoring', duration: 'Ongoing', tasks: ['Continuous monitoring', 'Updates', 'Improvements'] },
-                    { phase: 'Phase 6', title: 'Maturity', duration: '12+ months', tasks: ['Optimization', 'Innovation', 'Leadership'] },
-                  ].map((phase, index) => (
-                    <div key={index} className="bg-surface rounded-lg p-6">
-                      <Badge variant="primary" size="sm" className="mb-2">{phase.phase}</Badge>
-                      <h4 className="font-semibold mb-1">{phase.title}</h4>
-                      <p className="text-sm text-muted mb-3">{phase.duration}</p>
-                      <ul className="space-y-1">
-                        {phase.tasks.map((task, taskIndex) => (
-                          <li key={taskIndex} className="flex items-center gap-2 text-sm">
-                            <CheckCircle className="w-3 h-3 text-accent" />
-                            {task}
-                          </li>
+                      </thead>
+                      <tbody>
+                        {complianceMatrix.map((row, idx) => (
+                          <tr key={idx} className="border-b border-border/50">
+                            <td className="py-3 px-4 font-medium">{row.category}</td>
+                            <td className={cn("text-center py-3 px-4 font-semibold", getComplianceColor(row.nist))}>
+                              {row.nist}%
+                            </td>
+                            <td className={cn("text-center py-3 px-4 font-semibold", getComplianceColor(row.iso))}>
+                              {row.iso}%
+                            </td>
+                            <td className={cn("text-center py-3 px-4 font-semibold", getComplianceColor(row.owasp))}>
+                              {row.owasp}%
+                            </td>
+                            <td className={cn("text-center py-3 px-4 font-semibold", getComplianceColor(row.eu))}>
+                              {row.eu}%
+                            </td>
+                            <td className={cn("text-center py-3 px-4 font-semibold", getComplianceColor(row.ieee))}>
+                              {row.ieee}%
+                            </td>
+                          </tr>
                         ))}
+                      </tbody>
+                    </table>
+                  </Card>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <Card className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <TrendingUp className="w-6 h-6 text-success" />
+                        <h3 className="font-semibold">Strengths</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        <li className="text-sm text-muted">Strong risk management coverage (91% avg)</li>
+                        <li className="text-sm text-muted">Comprehensive data protection (90% avg)</li>
+                        <li className="text-sm text-muted">Robust human oversight requirements</li>
                       </ul>
-                    </div>
-                  ))}
+                    </Card>
+                    
+                    <Card className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <AlertTriangle className="w-6 h-6 text-warning" />
+                        <h3 className="font-semibold">Gaps</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        <li className="text-sm text-muted">Inconsistent transparency requirements</li>
+                        <li className="text-sm text-muted">Varying model security standards</li>
+                        <li className="text-sm text-muted">Limited technical implementation guidance</li>
+                      </ul>
+                    </Card>
+                    
+                    <Card className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <BookOpen className="w-6 h-6 text-accent" />
+                        <h3 className="font-semibold">Recommendations</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        <li className="text-sm text-muted">Adopt multi-framework approach</li>
+                        <li className="text-sm text-muted">Prioritize risk-based compliance</li>
+                        <li className="text-sm text-muted">Implement continuous monitoring</li>
+                      </ul>
+                    </Card>
+                  </div>
                 </div>
-              </Card>
-            </motion.div>
+              </TabsContent>
+            </Tabs>
           </Container>
         </section>
       </main>

@@ -2,15 +2,17 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { AlertTriangle, Shield, Zap, Brain, Database, Lock, Eye, Terminal, Package, Cpu, TrendingUp, Key, Archive, Download, ChevronRight, Info } from 'lucide-react'
+import { AlertTriangle, Shield, Zap, Brain, Database, Lock, Eye, Terminal, Package, Cpu, TrendingUp, Key, Archive, Download, ChevronRight, Info, Target, Users, Globe } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Container from '@/components/ui/Container'
 import Card from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
+import Button from '@/components/ui/Button'
 import AnimeBackground from '@/components/graphics/AnimeBackground'
 import { fadeInUp, staggerContainer } from '@/components/motion/variants'
 import { cn } from '@/lib/utils'
+import { emergingThreats } from '@/content/data/ai-security-research'
 
 const threatTaxonomy = [
   {
@@ -668,6 +670,74 @@ export default function ThreatTaxonomyPage() {
                     </div>
                   </motion.div>
                 ))}
+            </motion.div>
+          </Container>
+        </section>
+
+        <section className="py-12 bg-panel">
+          <Container>
+            <h2 className="text-2xl font-semibold mb-8 flex items-center gap-2">
+              <TrendingUp className="w-6 h-6 text-warning" />
+              Emerging AI Threats & Attack Vectors
+            </h2>
+            <p className="text-muted mb-8">
+              Next-generation threats requiring proactive defense strategies and continuous research
+            </p>
+            
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {emergingThreats.map((threat, index) => {
+                const Icon = threat.icon
+                
+                return (
+                  <motion.div key={index} variants={fadeInUp}>
+                    <Card variant="elevated" hoverable className="h-full p-6">
+                      <div className="flex items-start gap-3 mb-4">
+                        <div className="p-2 rounded-lg bg-warning/10 text-warning">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold">{threat.threat}</h3>
+                          <Badge variant="outline" size="sm" className="mt-1">{threat.researchStatus}</Badge>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-3 text-sm">
+                        <div>
+                          <span className="font-medium text-muted">Description:</span>
+                          <p className="text-muted mt-1">{threat.description}</p>
+                        </div>
+                        <div>
+                          <span className="font-medium text-danger">Impact:</span>
+                          <p className="text-danger mt-1">{threat.impact}</p>
+                        </div>
+                        <div>
+                          <span className="font-medium text-success">Mitigation:</span>
+                          <p className="text-success mt-1">{threat.mitigation}</p>
+                        </div>
+                        {threat.referenceUrl && (
+                          <div className="pt-2">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              fullWidth
+                              onClick={() => window.open(threat.referenceUrl, '_blank')}
+                            >
+                              View Research
+                              <ChevronRight className="w-3 h-3 ml-2" />
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </Card>
+                  </motion.div>
+                )
+              })}
             </motion.div>
           </Container>
         </section>
