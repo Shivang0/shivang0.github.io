@@ -932,6 +932,248 @@ export const securityTools: SecurityTool[] = [
       'Reporting'
     ],
     maintainer: 'MITRE'
+  },
+
+  // Additional Tools (Phase 2)
+  {
+    id: 'tool-051',
+    name: 'DeepTeam',
+    description: 'Open-source LLM red teaming framework with guardrail testing capabilities',
+    category: 'red-teaming',
+    url: 'https://github.com/confident-ai/deepteam',
+    github: 'https://github.com/confident-ai/deepteam',
+    stars: '1.2k',
+    tags: ['Red Team', 'Guardrails', 'Open Source', 'LLM'],
+    features: [
+      'Guardrail bypass testing',
+      'Multi-turn attacks',
+      'Jailbreak generation',
+      'Safety evaluation'
+    ],
+    maintainer: 'Confident AI'
+  },
+  {
+    id: 'tool-052',
+    name: 'FuzzyAI',
+    description: 'Automated fuzzing framework using genetic algorithms for AI model testing',
+    category: 'fuzzing',
+    url: 'https://github.com/cyberark/FuzzyAI',
+    github: 'https://github.com/cyberark/FuzzyAI',
+    stars: '850',
+    tags: ['CyberArk', 'Fuzzing', 'Genetic Algorithms', 'Automated'],
+    features: [
+      'Genetic algorithm optimization',
+      'Automated attack generation',
+      'Multi-provider support',
+      'Jailbreak detection'
+    ],
+    maintainer: 'CyberArk'
+  },
+  {
+    id: 'tool-053',
+    name: 'ARTKIT',
+    description: 'Framework for multi-turn attacker-target simulations in LLM systems',
+    category: 'adversarial-testing',
+    url: 'https://github.com/bcgov/artkit',
+    github: 'https://github.com/bcgov/artkit',
+    stars: '420',
+    tags: ['Multi-turn', 'Simulation', 'Attack Patterns', 'Open Source'],
+    features: [
+      'Multi-turn conversation testing',
+      'Attacker persona simulation',
+      'Target behavior analysis',
+      'Attack chain tracking'
+    ]
+  },
+  {
+    id: 'tool-054',
+    name: 'AutoRTAI',
+    description: 'Agent-based automated red teaming at scale for AI systems',
+    category: 'red-teaming',
+    url: 'https://hiddenlayer.com/',
+    tags: ['HiddenLayer', 'Agent-based', 'Scalable', 'Enterprise'],
+    features: [
+      'Autonomous agent attacks',
+      'Scalable testing',
+      'Continuous assessment',
+      'Enterprise integration'
+    ],
+    maintainer: 'HiddenLayer'
+  },
+  {
+    id: 'tool-055',
+    name: 'Mindgard DAST-AI',
+    description: 'Dynamic application security testing specialized for AI systems',
+    category: 'vulnerability-scanner',
+    url: 'https://mindgard.ai/',
+    tags: ['DAST', 'Dynamic Testing', 'Enterprise', 'AI Security'],
+    features: [
+      'Runtime vulnerability detection',
+      'AI-specific attack vectors',
+      'Continuous monitoring',
+      'Compliance reporting'
+    ],
+    maintainer: 'Mindgard'
+  },
+  {
+    id: 'tool-056',
+    name: 'Woodpecker',
+    description: 'AI, Kubernetes, and API vulnerability testing platform',
+    category: 'vulnerability-scanner',
+    url: 'https://operant.ai/',
+    tags: ['Operant AI', 'K8s', 'API', 'Infrastructure'],
+    features: [
+      'AI model scanning',
+      'Kubernetes security',
+      'API vulnerability testing',
+      'Infrastructure assessment'
+    ],
+    maintainer: 'Operant AI'
+  },
+  {
+    id: 'tool-057',
+    name: 'Lakera Guard',
+    description: 'Runtime protection layer for generative AI applications',
+    category: 'llm-defense',
+    url: 'https://www.lakera.ai/lakera-guard',
+    tags: ['Lakera', 'Runtime Protection', 'Guardrails', 'Enterprise'],
+    features: [
+      'Prompt injection detection',
+      'Real-time protection',
+      'Low latency filtering',
+      'Multi-language support'
+    ],
+    maintainer: 'Lakera'
+  },
+  {
+    id: 'tool-058',
+    name: 'JailbreakBench',
+    description: 'Standardized benchmark for evaluating LLM jailbreak defenses',
+    category: 'evaluation',
+    url: 'https://jailbreakbench.github.io/',
+    github: 'https://github.com/JailbreakBench/jailbreakbench',
+    stars: '650',
+    tags: ['NeurIPS 2024', 'Benchmark', 'Jailbreak', 'Evaluation'],
+    features: [
+      'Standardized jailbreak dataset',
+      'Defense evaluation metrics',
+      'Leaderboard ranking',
+      'Reproducible testing'
+    ]
+  },
+  {
+    id: 'tool-059',
+    name: 'HELM Safety',
+    description: 'Stanford safety benchmark suite for holistic LLM evaluation',
+    category: 'evaluation',
+    url: 'https://crfm.stanford.edu/helm/',
+    github: 'https://github.com/stanford-crfm/helm',
+    stars: '1.9k',
+    tags: ['Stanford', 'Benchmark', 'Safety', 'Holistic'],
+    features: [
+      'Comprehensive safety metrics',
+      'Multiple risk categories',
+      'Standardized evaluation',
+      'Research-grade analysis'
+    ],
+    maintainer: 'Stanford CRFM'
+  },
+  {
+    id: 'tool-060',
+    name: 'OS-HARM',
+    description: 'Safety benchmark for computer-use AI agents',
+    category: 'evaluation',
+    url: 'https://github.com/OSHarm-Benchmark/os-harm',
+    github: 'https://github.com/OSHarm-Benchmark/os-harm',
+    stars: '180',
+    tags: ['Agent Safety', 'Computer Use', 'Benchmark', 'Research'],
+    features: [
+      'Computer use risk assessment',
+      'Agent harm evaluation',
+      'Autonomous action safety',
+      'OS-level security testing'
+    ]
+  },
+  {
+    id: 'tool-061',
+    name: 'OpenAI Evals',
+    description: 'Framework for evaluating LLM behavior and capabilities',
+    category: 'evaluation',
+    url: 'https://github.com/openai/evals',
+    github: 'https://github.com/openai/evals',
+    stars: '14.5k',
+    tags: ['OpenAI', 'Evaluation', 'Benchmarking', 'Open Source'],
+    features: [
+      'Custom eval creation',
+      'Model comparison',
+      'Capability assessment',
+      'Safety benchmarks'
+    ],
+    maintainer: 'OpenAI'
+  },
+  {
+    id: 'tool-062',
+    name: 'BrokenHill',
+    description: 'GCG-based jailbreak attack generator for LLM security testing',
+    category: 'adversarial-testing',
+    url: 'https://github.com/BishopFox/BrokenHill',
+    github: 'https://github.com/BishopFox/BrokenHill',
+    stars: '520',
+    tags: ['Bishop Fox', 'GCG', 'Jailbreak', 'Adversarial'],
+    features: [
+      'GCG attack generation',
+      'Gradient-based optimization',
+      'Custom suffix creation',
+      'Multi-model support'
+    ],
+    maintainer: 'Bishop Fox'
+  },
+  {
+    id: 'tool-063',
+    name: 'BurpGPT',
+    description: 'LLM-integrated extension for Burp Suite web security testing',
+    category: 'vulnerability-scanner',
+    url: 'https://github.com/aress31/burpgpt',
+    github: 'https://github.com/aress31/burpgpt',
+    stars: '1.1k',
+    tags: ['Burp Suite', 'Web Security', 'LLM Integration', 'Pentesting'],
+    features: [
+      'AI-assisted analysis',
+      'Vulnerability detection',
+      'Report generation',
+      'Custom prompt support'
+    ]
+  },
+  {
+    id: 'tool-064',
+    name: 'Crucible',
+    description: 'AI/ML vulnerability practice platform by Dreadnode',
+    category: 'red-teaming',
+    url: 'https://crucible.dreadnode.io/',
+    tags: ['Dreadnode', 'Practice', 'CTF', 'Learning'],
+    features: [
+      'Hands-on challenges',
+      'Real vulnerability scenarios',
+      'Progressive difficulty',
+      'Community leaderboard'
+    ],
+    maintainer: 'Dreadnode'
+  },
+  {
+    id: 'tool-065',
+    name: 'Galah',
+    description: 'LLM-powered web honeypot for threat intelligence gathering',
+    category: 'monitoring',
+    url: 'https://github.com/0x4D31/galah',
+    github: 'https://github.com/0x4D31/galah',
+    stars: '380',
+    tags: ['Honeypot', 'Threat Intel', 'LLM-powered', 'Detection'],
+    features: [
+      'Dynamic response generation',
+      'Attack pattern learning',
+      'Threat intelligence',
+      'Low maintenance operation'
+    ]
   }
 ]
 

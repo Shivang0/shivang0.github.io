@@ -1675,6 +1675,89 @@ export const communityResources: CommunityResource[] = [
       'Expert speakers'
     ],
     tags: ['sans', 'technical', 'summit', 'hands-on']
+  },
+
+  // Additional Resources (Phase 2)
+  {
+    id: 'comm-098',
+    name: 'AIBlade',
+    type: 'github',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Directory of AI red teaming tools and resources for security researchers.',
+    url: 'https://aiblade.net',
+    free: true,
+    highlights: [
+      'Tool directory',
+      'Curated resources',
+      'Red teaming focus',
+      'Regular updates'
+    ],
+    tags: ['directory', 'tools', 'red-teaming', 'reference']
+  },
+  {
+    id: 'comm-099',
+    name: 'EmbraceTheRed',
+    type: 'blog',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Practical AI red team experiments and research blog by Johann Rehberger.',
+    url: 'https://embracethered.com',
+    free: true,
+    highlights: [
+      'Practical experiments',
+      'Real-world attacks',
+      'LLM vulnerabilities',
+      'Research insights'
+    ],
+    tags: ['blog', 'research', 'practical', 'experiments']
+  },
+  {
+    id: 'comm-100',
+    name: 'For Humanity: An AI Safety Podcast',
+    type: 'podcast',
+    focus: ['ai-security', 'research'],
+    description: 'Deep-dive podcast on AI alignment, safety research, and existential risk.',
+    url: 'https://forhumanity.center/podcast',
+    frequency: 'monthly',
+    free: true,
+    highlights: [
+      'AI safety focus',
+      'Expert interviews',
+      'Research discussions',
+      'Alignment topics'
+    ],
+    tags: ['podcast', 'safety', 'alignment', 'research']
+  },
+  {
+    id: 'comm-101',
+    name: 'David Bombal',
+    type: 'youtube',
+    focus: ['general-security', 'ai-security'],
+    description: 'Popular cybersecurity YouTube channel with AI security content and expert interviews.',
+    url: 'https://www.youtube.com/@davidbombal',
+    free: true,
+    highlights: [
+      '2M+ subscribers',
+      'AI security videos',
+      'Expert interviews',
+      'Practical tutorials'
+    ],
+    tags: ['youtube', 'tutorials', 'interviews', 'popular']
+  },
+  {
+    id: 'comm-102',
+    name: 'TCM Security Discord',
+    type: 'discord',
+    focus: ['general-security', 'red-teaming'],
+    description: 'Active security community from TCM Security with AI hacking discussions.',
+    url: 'https://discord.gg/tcm',
+    free: true,
+    highlights: [
+      'Active community',
+      'AI hacking channels',
+      'Career resources',
+      'Study groups'
+    ],
+    tags: ['discord', 'community', 'active', 'learning']
   }
 ]
 
