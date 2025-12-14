@@ -139,7 +139,16 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-2 lg:gap-3">
-              {/* Search Button */}
+              {/* Mobile Search Icon - visible only on small screens */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="sm:hidden p-2 text-muted hover:text-text transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+
+              {/* Desktop Search Button */}
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm text-muted bg-surface border border-border rounded-lg hover:bg-panel hover:text-text transition-colors"
@@ -170,6 +179,7 @@ export default function Navbar() {
           <MobileNav
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
+            onSearchOpen={() => setIsSearchOpen(true)}
             navItems={[...navItems, ...moreNavItems]}
           />
         )}
