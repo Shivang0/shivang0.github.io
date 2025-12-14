@@ -29,7 +29,7 @@ import {
   learningPaths,
   pathStats,
   type LearningPath,
-  type PathModule,
+  type LearningModule,
 } from '@/content/data/learning-paths'
 import type { Difficulty } from '@/content/data/types'
 
@@ -43,7 +43,7 @@ const difficultyColors: Record<Difficulty, string> = {
 const PROGRESS_KEY = 'ai-security-learning-progress'
 
 interface ModuleCardProps {
-  module: PathModule
+  module: LearningModule
   pathId: string
   moduleIndex: number
   isCompleted: boolean
@@ -74,7 +74,7 @@ function ModuleCard({ module, pathId, moduleIndex, isCompleted, onToggleComplete
               <div className="flex items-center gap-3 mt-2 text-xs text-muted">
                 <span className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
-                  {module.estimatedHours}h
+                  {module.duration}
                 </span>
               </div>
             </div>
@@ -133,10 +133,10 @@ function ModuleCard({ module, pathId, moduleIndex, isCompleted, onToggleComplete
                         rel="noopener noreferrer"
                         className="text-sm text-accent hover:underline inline-flex items-center gap-1"
                       >
-                        {resource.title}
+                        {resource.label}
                         <ExternalLink className="w-3 h-3" />
                       </a>
-                      <span className="text-xs text-muted ml-2">({resource.type})</span>
+                      {resource.type && <span className="text-xs text-muted ml-2">({resource.type})</span>}
                     </li>
                   ))}
                 </ul>
@@ -214,11 +214,7 @@ function PathCard({
                   </span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    {path.estimatedWeeks} weeks
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Target className="w-4 h-4" />
-                    {path.totalHours} hours
+                    {path.duration}
                   </span>
                 </div>
               </div>
@@ -524,12 +520,16 @@ export default function LearningPathsPage() {
                 Track your progress as you work through modules and build practical AI security skills.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Button variant="primary" href="/labs">
-                  Practice in Labs
-                </Button>
-                <Button variant="secondary" href="/certifications">
-                  View Certifications
-                </Button>
+                <Link href="/labs">
+                  <Button variant="primary">
+                    Practice in Labs
+                  </Button>
+                </Link>
+                <Link href="/certifications">
+                  <Button variant="secondary">
+                    View Certifications
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

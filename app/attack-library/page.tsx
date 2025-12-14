@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Swords,
@@ -39,7 +40,7 @@ import {
 } from '@/content/data/attack-library'
 import type { Severity, Difficulty, AttackVector } from '@/content/data/types'
 
-const severityColors: Record<Severity, string> = {
+const severityColors: Record<Severity, 'primary' | 'secondary' | 'success' | 'warning' | 'danger'> = {
   critical: 'danger',
   high: 'warning',
   medium: 'primary',
@@ -421,12 +422,16 @@ export default function AttackLibraryPage() {
                 applications and implementing effective mitigations.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Button variant="secondary" href="/threat-taxonomy">
-                  View Threat Taxonomy
-                </Button>
-                <Button variant="secondary" href="/labs">
-                  Practice in Labs
-                </Button>
+                <Link href="/threat-taxonomy">
+                  <Button variant="secondary">
+                    View Threat Taxonomy
+                  </Button>
+                </Link>
+                <Link href="/labs">
+                  <Button variant="secondary">
+                    Practice in Labs
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

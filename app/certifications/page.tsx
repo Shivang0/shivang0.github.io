@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Award,
@@ -251,15 +252,17 @@ function CertCard({ cert }: { cert: Certification }) {
 
             {/* CTA */}
             <div className="flex gap-3">
-              <Button
-                variant="primary"
+              <a
                 href={cert.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1"
               >
-                Learn More
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </Button>
+                <Button variant="primary" className="w-full">
+                  Learn More
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -484,9 +487,11 @@ export default function CertificationsPage() {
               </div>
 
               <div className="flex justify-center mt-8">
-                <Button variant="secondary" href="/learning-paths">
-                  View Learning Paths
-                </Button>
+                <Link href="/learning-paths">
+                  <Button variant="secondary">
+                    View Learning Paths
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

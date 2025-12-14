@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Users,
@@ -410,12 +411,16 @@ export default function CommunityPage() {
               </div>
 
               <div className="flex justify-center mt-8 gap-3">
-                <Button variant="secondary" href="/learning-paths">
-                  Learning Paths
-                </Button>
-                <Button variant="secondary" href="/certifications">
-                  Certifications
-                </Button>
+                <Link href="/learning-paths">
+                  <Button variant="secondary">
+                    Learning Paths
+                  </Button>
+                </Link>
+                <Link href="/certifications">
+                  <Button variant="secondary">
+                    Certifications
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

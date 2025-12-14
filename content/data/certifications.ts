@@ -527,5 +527,5 @@ export const certStats = {
     foundational: getCertsByAIRelevance('foundational').length,
   },
   avgExamCost: Math.round(certifications.reduce((sum, c) => sum + c.cost.exam, 0) / certifications.length),
-  providers: [...new Set(certifications.map(c => c.providerName))].length
+  providers: Array.from(new Set(certifications.map(c => c.providerName))).length
 }

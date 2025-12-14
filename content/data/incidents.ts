@@ -579,6 +579,6 @@ export const incidentStats = {
     medium: getIncidentsBySeverity('medium').length,
     low: getIncidentsBySeverity('low').length,
   },
-  organizations: [...new Set(incidents.map(i => i.organization))].length,
-  years: [...new Set(incidents.map(i => new Date(i.date).getFullYear()))].sort((a, b) => b - a)
+  organizations: Array.from(new Set(incidents.map(i => i.organization))).length,
+  years: Array.from(new Set(incidents.map(i => new Date(i.date).getFullYear()))).sort((a, b) => b - a)
 }

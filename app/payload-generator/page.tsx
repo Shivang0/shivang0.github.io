@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo, useCallback } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   Code2,
@@ -483,12 +484,16 @@ export default function PayloadGeneratorPage() {
                 access or testing is illegal and unethical.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Button variant="secondary" href="/attack-library">
-                  View Attack Library
-                </Button>
-                <Button variant="secondary" href="/pentest-scoping">
-                  Scoping Questionnaire
-                </Button>
+                <Link href="/attack-library">
+                  <Button variant="secondary">
+                    View Attack Library
+                  </Button>
+                </Link>
+                <Link href="/pentest-scoping">
+                  <Button variant="secondary">
+                    Scoping Questionnaire
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

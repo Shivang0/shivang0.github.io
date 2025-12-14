@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   AlertOctagon,
@@ -35,7 +36,7 @@ import {
   type IncidentSeverity,
 } from '@/content/data/incidents'
 
-const severityColors: Record<IncidentSeverity, string> = {
+const severityColors: Record<IncidentSeverity, 'primary' | 'secondary' | 'success' | 'warning' | 'danger'> = {
   critical: 'danger',
   high: 'warning',
   medium: 'primary',
@@ -399,9 +400,11 @@ export default function IncidentsPage() {
               </div>
 
               <div className="flex justify-center mt-8">
-                <Button variant="secondary" href="/attack-library">
-                  View Attack Library
-                </Button>
+                <Link href="/attack-library">
+                  <Button variant="secondary">
+                    View Attack Library
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   BookOpen,
@@ -469,12 +470,16 @@ export default function GlossaryPage() {
                 explore our learning paths or check out the attack library for practical examples.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Button variant="secondary" href="/learning-paths">
-                  Learning Paths
-                </Button>
-                <Button variant="secondary" href="/attack-library">
-                  Attack Library
-                </Button>
+                <Link href="/learning-paths">
+                  <Button variant="secondary">
+                    Learning Paths
+                  </Button>
+                </Link>
+                <Link href="/attack-library">
+                  <Button variant="secondary">
+                    Attack Library
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </Container>

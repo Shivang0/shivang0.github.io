@@ -1,0 +1,46 @@
+Not a whitepaper. Not a consulting pitch. A free, open tool. I've spent the last few months building what I believe every AI team needs but few have: a complete security platform.
+
+Today, I'm releasing 12 new capabilities:
+
+→ Attack Library
+→ OWASP LLM Top 10 (2025) Interactive
+→ Payload Generator
+→ Pentest Scoping Tool
+→ Labs Directory
+→ Learning Paths
+→ Security Glossary
+→ Incidents Database
+→ Certifications Guide
+→ Bug Bounty Directory
+→ Community Hub
+→ Global Search
+
+This adds to what I shipped earlier: 170+ security controls, 280+ red teaming prompts, benchmarking, threat taxonomy, and posture analysis.
+
+Here's my thesis:
+
+The security gap in AI isn't a tooling problem.
+
+It's an access problem.
+
+The best defenders can't protect what they don't understand and right now, the knowledge is locked behind $5,000 courses and enterprise contracts.
+
+That changes today.
+
+We're shipping AI faster than we're securing it.
+
+That's not innovation. That's technical debt with existential risk.
+
+Everything is free. Everything is open-source.
+
+https://shivang0.github.io
+
+If you're shipping AI in production, this is your security baseline.
+
+If you're not using something like this, you're one prompt injection away from a headline.
+
+Build fast. But build secure.
+
+What's the biggest security gap you're seeing in AI systems right now?
+
+#AISecurity #LLMSecurity #OpenSource
