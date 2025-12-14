@@ -155,7 +155,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onOpenChange }:
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className="fixed left-1/2 top-[20%] z-50 w-full max-w-2xl -translate-x-1/2 px-4"
+            className="fixed inset-x-4 top-[10%] sm:top-[20%] z-50 sm:inset-x-auto sm:left-1/2 sm:w-full sm:max-w-2xl sm:-translate-x-1/2"
           >
             <Command
               className="overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
@@ -184,7 +184,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onOpenChange }:
               </div>
 
               {/* Results */}
-              <Command.List className="max-h-[400px] overflow-y-auto p-2">
+              <Command.List className="max-h-[60vh] sm:max-h-[400px] overflow-y-auto p-2">
                 {/* Empty state */}
                 {query && results.length === 0 && (
                   <Command.Empty className="py-6 text-center text-sm text-muted">
@@ -283,7 +283,7 @@ export default function CommandPalette({ isOpen: controlledOpen, onOpenChange }:
 
               {/* Footer */}
               <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs text-muted">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4">
                   <span className="flex items-center gap-1">
                     <kbd className="rounded bg-panel px-1.5 py-0.5">↑↓</kbd>
                     navigate
@@ -292,12 +292,12 @@ export default function CommandPalette({ isOpen: controlledOpen, onOpenChange }:
                     <kbd className="rounded bg-panel px-1.5 py-0.5">↵</kbd>
                     select
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="hidden sm:flex items-center gap-1">
                     <kbd className="rounded bg-panel px-1.5 py-0.5">esc</kbd>
                     close
                   </span>
                 </div>
-                <span>Powered by Fuse.js</span>
+                <span className="hidden sm:inline">Powered by Fuse.js</span>
               </div>
             </Command>
           </motion.div>
