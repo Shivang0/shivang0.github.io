@@ -14,7 +14,6 @@ export type ResourceType =
   | 'ctf'
   | 'training'
   | 'reddit'
-  | 'linkedin'
   | 'bootcamp'
   | 'professional-org'
 
@@ -58,7 +57,6 @@ export const resourceTypes: { id: ResourceType; label: string; icon: string }[] 
   { id: 'ctf', label: 'CTF', icon: 'Flag' },
   { id: 'training', label: 'Training', icon: 'GraduationCap' },
   { id: 'reddit', label: 'Reddit', icon: 'MessageSquare' },
-  { id: 'linkedin', label: 'LinkedIn', icon: 'Linkedin' },
   { id: 'bootcamp', label: 'Bootcamp', icon: 'BookOpen' },
   { id: 'professional-org', label: 'Professional Org', icon: 'Building' }
 ]
@@ -762,56 +760,6 @@ export const communityResources: CommunityResource[] = [
       'AI security questions'
     ],
     tags: ['reddit', 'career', 'news', 'community']
-  },
-
-  // LinkedIn Influencers
-  {
-    id: 'comm-041',
-    name: 'Diana Kelley - CISO Protect AI',
-    type: 'linkedin',
-    focus: ['ai-security', 'policy'],
-    description: 'CISO of Protect AI sharing insights on AI security strategy and enterprise considerations.',
-    url: 'https://linkedin.com/in/dianakelley',
-    free: true,
-    highlights: [
-      'Enterprise AI security',
-      'CISO perspectives',
-      'Strategy insights',
-      'Industry analysis'
-    ],
-    tags: ['ciso', 'enterprise', 'strategy', 'leadership']
-  },
-  {
-    id: 'comm-042',
-    name: 'Caleb Sima - CSA AI Safety',
-    type: 'linkedin',
-    focus: ['ai-security', 'policy'],
-    description: 'Chair of CSA AI Safety Initiative, sharing AI governance and security frameworks.',
-    url: 'https://linkedin.com/in/calebsima',
-    free: true,
-    highlights: [
-      'CSA AI initiatives',
-      'Governance frameworks',
-      'Industry standards',
-      'Policy insights'
-    ],
-    tags: ['csa', 'governance', 'standards', 'leadership']
-  },
-  {
-    id: 'comm-043',
-    name: 'Steve Wilson - OWASP LLM Lead',
-    type: 'linkedin',
-    focus: ['llm-security', 'ai-security'],
-    description: 'Leader of OWASP LLM Top 10 project, sharing LLM security insights and best practices.',
-    url: 'https://linkedin.com/in/youraisecurity',
-    free: true,
-    highlights: [
-      'OWASP LLM updates',
-      'Security guidance',
-      'Industry commentary',
-      'Best practices'
-    ],
-    tags: ['owasp', 'llm', 'guidance', 'standards']
   },
 
   // Updated Conferences 2025-2026

@@ -475,15 +475,9 @@ export default function GlossaryPage() {
             >
               <h2 className="text-2xl font-semibold mb-4">Learn More</h2>
               <p className="text-muted mb-6">
-                This glossary covers key terminology used in AI security. For deeper learning,
-                explore our learning paths or check out the attack library for practical examples.
+                This glossary covers key terminology used in AI security. Check out the attack library for practical examples.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/learning-paths">
-                  <Button variant="secondary">
-                    Learning Paths
-                  </Button>
-                </Link>
                 <Link href="/attack-library">
                   <Button variant="secondary">
                     Attack Library

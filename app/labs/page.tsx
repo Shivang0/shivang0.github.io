@@ -369,11 +369,6 @@ export default function LabsPage() {
                 >
                   Start with Beginner Labs
                 </Button>
-                <Link href="/learning-paths">
-                  <Button variant="secondary">
-                    View Learning Paths
-                  </Button>
-                </Link>
               </div>
             </motion.div>
           </Container>

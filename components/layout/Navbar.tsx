@@ -23,7 +23,6 @@ const navItems = [
 
 const moreNavItems = [
   { href: '/attack-library', label: 'Attack Library' },
-  { href: '/learning-paths', label: 'Learning Paths' },
   { href: '/bug-bounties', label: 'Bug Bounties' },
   { href: '/certifications', label: 'Certifications' },
   { href: '/owasp-interactive', label: 'OWASP Interactive' },

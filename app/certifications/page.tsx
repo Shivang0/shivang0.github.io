@@ -485,14 +485,6 @@ export default function CertificationsPage() {
                   </div>
                 </Card>
               </div>
-
-              <div className="flex justify-center mt-8">
-                <Link href="/learning-paths">
-                  <Button variant="secondary">
-                    View Learning Paths
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
           </Container>
         </section>

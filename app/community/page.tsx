@@ -20,7 +20,6 @@ import {
   GraduationCap,
   Filter,
   Star,
-  Linkedin,
   BookOpen,
   Building,
 } from 'lucide-react'
@@ -62,7 +61,6 @@ const typeIcons: Record<ResourceType, React.ComponentType<{ className?: string }
   ctf: Flag,
   training: GraduationCap,
   reddit: MessageSquare,
-  linkedin: Linkedin,
   bootcamp: BookOpen,
   'professional-org': Building,
 }
@@ -417,12 +415,7 @@ export default function CommunityPage() {
                 })}
               </div>
 
-              <div className="flex justify-center mt-8 gap-3">
-                <Link href="/learning-paths">
-                  <Button variant="secondary">
-                    Learning Paths
-                  </Button>
-                </Link>
+              <div className="flex justify-center mt-8">
                 <Link href="/certifications">
                   <Button variant="secondary">
                     Certifications

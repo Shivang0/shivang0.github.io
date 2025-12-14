@@ -2,22 +2,6 @@ import { FileText, Shield, Lock, Eye, Brain, AlertTriangle, Target, Zap, Databas
 
 export const researchPapers = [
   {
-    title: 'Comprehensive AI Security Checklist Gap Analysis',
-    authors: 'Shivang Trivedi, Security Research Team',
-    date: '2025-01-20',
-    category: 'AI Security',
-    downloads: '5.2K',
-    abstract: 'Comprehensive analysis comparing leading AI security frameworks including OWASP AI Exchange, NIST AI RMF, and major tech company frameworks, identifying critical gaps and providing actionable recommendations.',
-    highlights: [
-      '70+ specific controls analyzed across frameworks',
-      'Critical gaps in prompt injection defense',
-      'Supply chain security vulnerabilities',
-      'Privacy attack prevention strategies'
-    ],
-    paperUrl: 'https://arxiv.org/abs/2401.00000',
-    pdfUrl: 'https://arxiv.org/pdf/2401.00000.pdf'
-  },
-  {
     title: 'Advanced Prompt Injection Defense Mechanisms',
     authors: 'AI Security Research Division',
     date: '2025-01-15',
