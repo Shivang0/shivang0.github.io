@@ -62,10 +62,6 @@ export const pageSEO = {
     title: 'Research',
     description: 'Latest AI security research, vulnerability disclosures, and threat intelligence reports.',
   },
-  blog: {
-    title: 'Blog',
-    description: 'Security insights, industry updates, and technical deep-dives from our research team.',
-  },
   disclosures: {
     title: 'Vulnerability Disclosures',
     description: 'Responsible disclosure program and vulnerability reports.',
