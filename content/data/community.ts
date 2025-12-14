@@ -1049,6 +1049,632 @@ export const communityResources: CommunityResource[] = [
       'Critical analysis'
     ],
     tags: ['academic', 'policy', 'critical', 'influential']
+  },
+
+  // Additional Discord Communities from JSON
+  {
+    id: 'comm-061',
+    name: 'BASI (Pliny\'s Discord)',
+    type: 'discord',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'AI red teaming community founded by Elder Plinius (Pliny the Prompter). Members share jailbreak payloads and techniques.',
+    url: 'https://discord.gg/basi',
+    free: true,
+    highlights: [
+      'Active jailbreaking discussions',
+      'Payload sharing',
+      'Red team techniques',
+      'Community challenges'
+    ],
+    tags: ['jailbreaking', 'red-team', 'payloads', 'community']
+  },
+  {
+    id: 'comm-062',
+    name: 'Adversarial Alignment Lab',
+    type: 'discord',
+    focus: ['adversarial-ml', 'research'],
+    description: 'Technical AI red teaming and adversarial attack research. Founded by Kai Greshake (indirect prompt injection paper co-author).',
+    url: 'https://discord.gg/adversarialalignment',
+    free: true,
+    highlights: [
+      'Technical research',
+      'Adversarial attacks',
+      'Expert discussions',
+      'Research collaboration'
+    ],
+    tags: ['research', 'technical', 'adversarial', 'academic']
+  },
+  {
+    id: 'comm-063',
+    name: 'BreakGPT Discord',
+    type: 'discord',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Active jailbreaking discussions with innovative approaches and frequent payload updates.',
+    url: 'https://discord.gg/breakgpt',
+    free: true,
+    highlights: [
+      'Jailbreak techniques',
+      'Payload updates',
+      'Innovative approaches',
+      'Active community'
+    ],
+    tags: ['jailbreaking', 'payloads', 'active', 'innovative']
+  },
+  {
+    id: 'comm-064',
+    name: 'Learn Prompting Discord',
+    type: 'discord',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Prompt engineering and AI red teaming community. Features HackaBot assistant for learning prompt injections.',
+    url: 'https://discord.gg/learnprompting',
+    free: true,
+    highlights: [
+      '#prompt-hacking channel',
+      'HackaPrompt 2.0',
+      'Office hours',
+      'Educational resources'
+    ],
+    tags: ['prompt-engineering', 'education', 'hackabot', 'learning']
+  },
+  {
+    id: 'comm-065',
+    name: 'Gray Swan AI Discord',
+    type: 'discord',
+    focus: ['ai-security', 'red-teaming'],
+    description: 'AI red-teaming challenges in partnership with leading AI labs.',
+    url: 'https://discord.gg/grayswan',
+    free: true,
+    highlights: [
+      'AI lab partnerships',
+      'Red team challenges',
+      'Research community',
+      'Expert network'
+    ],
+    tags: ['challenges', 'partnerships', 'red-team', 'research']
+  },
+
+  // Additional Reddit Communities
+  {
+    id: 'comm-066',
+    name: 'r/ChatGPTJailbreak',
+    type: 'reddit',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Jailbreak techniques for various LLMs including ChatGPT, Gemini, Claude, Copilot.',
+    url: 'https://reddit.com/r/ChatGPTJailbreak',
+    free: true,
+    highlights: [
+      'Multi-model jailbreaks',
+      'Technique sharing',
+      'Community testing',
+      'Payload discussion'
+    ],
+    tags: ['reddit', 'jailbreaking', 'multi-model', 'community']
+  },
+  {
+    id: 'comm-067',
+    name: 'r/ChatGptDAN',
+    type: 'reddit',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Community dedicated to DAN (Do Anything Now) prompts and techniques.',
+    url: 'https://reddit.com/r/ChatGptDAN',
+    free: true,
+    highlights: [
+      'DAN prompt evolution',
+      'Technique refinement',
+      'Version tracking',
+      'Defense bypass'
+    ],
+    tags: ['reddit', 'dan', 'jailbreaking', 'prompts']
+  },
+
+  // YouTube Channels from JSON
+  {
+    id: 'comm-068',
+    name: 'AI Village YouTube',
+    type: 'youtube',
+    focus: ['ai-security', 'research'],
+    description: 'DEF CON talks and AI security research presentations from AI Village.',
+    url: 'https://youtube.com/@AIVillage',
+    free: true,
+    highlights: [
+      'Conference talks',
+      'Research presentations',
+      'Workshop recordings',
+      'CTF writeups'
+    ],
+    tags: ['defcon', 'talks', 'research', 'official']
+  },
+  {
+    id: 'comm-069',
+    name: 'John Hammond',
+    type: 'youtube',
+    focus: ['general-security', 'ai-security'],
+    description: 'Cybersecurity content including AI security topics and CTF walkthroughs.',
+    url: 'https://youtube.com/@_JohnHammond',
+    free: true,
+    highlights: [
+      'CTF content',
+      'Educational videos',
+      'AI security coverage',
+      'Malware analysis'
+    ],
+    tags: ['ctf', 'educational', 'malware', 'popular']
+  },
+  {
+    id: 'comm-070',
+    name: 'AI Security Hub Playlist',
+    type: 'youtube',
+    focus: ['ai-security', 'research'],
+    description: 'Curated AI security talks from SAINTCON, Black Hat, BSides, NorthSec, Hack In The Box. 30+ videos monthly.',
+    url: 'https://youtube.com/playlist?list=ai-security-hub',
+    free: true,
+    highlights: [
+      'Curated content',
+      'Multi-conference',
+      '30+ videos/month',
+      'Expert speakers'
+    ],
+    tags: ['curated', 'conference-talks', 'comprehensive', 'monthly']
+  },
+
+  // Podcasts from JSON
+  {
+    id: 'comm-071',
+    name: 'MLSecOps Podcast',
+    type: 'podcast',
+    focus: ['ml-security', 'ai-security'],
+    description: 'ML security operations discussions hosted by Protect AI.',
+    url: 'https://player.fm/series/the-mlsecops-podcast',
+    frequency: 'Bi-weekly',
+    free: true,
+    highlights: [
+      'Enterprise focus',
+      'Tool discussions',
+      'Expert interviews',
+      'Industry insights'
+    ],
+    tags: ['mlsecops', 'enterprise', 'protect-ai', 'technical']
+  },
+  {
+    id: 'comm-072',
+    name: 'AI Security Podcast',
+    type: 'podcast',
+    focus: ['ai-security', 'red-teaming'],
+    description: 'AI red teaming and enterprise AI security discussions hosted by Caleb Sima and Ashish Rajan.',
+    url: 'https://aisecuritypodcast.com',
+    frequency: 'Weekly',
+    free: true,
+    highlights: [
+      'Red team insights',
+      'Enterprise security',
+      'Industry leaders',
+      'Practical advice'
+    ],
+    tags: ['red-team', 'enterprise', 'expert-hosts', 'weekly']
+  },
+  {
+    id: 'comm-073',
+    name: 'Google Cloud Security Podcast',
+    type: 'podcast',
+    focus: ['ai-security', 'general-security'],
+    description: 'Google Cloud security discussions including AI security, SOC automation, and LLM security.',
+    url: 'https://cloud.withgoogle.com/cloudsecurity/podcast/',
+    frequency: 'Weekly',
+    free: true,
+    highlights: [
+      'Google perspective',
+      'Cloud security',
+      'SOC automation',
+      'LLM coverage'
+    ],
+    tags: ['google', 'cloud', 'enterprise', 'authoritative']
+  },
+  {
+    id: 'comm-074',
+    name: 'Darknet Diaries',
+    type: 'podcast',
+    focus: ['general-security', 'ai-security'],
+    description: 'True cybersecurity stories including AI-related incidents. Hosted by Jack Rhysider.',
+    url: 'https://darknetdiaries.com',
+    frequency: 'Bi-weekly',
+    free: true,
+    highlights: [
+      'True stories',
+      'Narrative format',
+      'High production',
+      'AI incidents'
+    ],
+    tags: ['stories', 'narrative', 'popular', 'engaging']
+  },
+  {
+    id: 'comm-075',
+    name: 'AI Safety Fundamentals',
+    type: 'podcast',
+    focus: ['ai-security', 'research', 'policy'],
+    description: 'AI safety research discussions hosted by Center for AI Safety. Non-technical accessible.',
+    url: 'https://aisafetyfundamentals.com',
+    frequency: 'Monthly',
+    free: true,
+    highlights: [
+      'Accessible format',
+      'Research discussions',
+      'Expert guests',
+      'CAIS-hosted'
+    ],
+    tags: ['accessible', 'cais', 'research', 'beginner-friendly']
+  },
+
+  // Newsletters from JSON
+  {
+    id: 'comm-076',
+    name: 'Import AI by Jack Clark',
+    type: 'newsletter',
+    focus: ['ai-security', 'policy', 'research'],
+    description: 'Weekly strategic AI analysis from Jack Clark (Anthropic co-founder). 10k+ expert readers.',
+    url: 'https://importai.net',
+    frequency: 'Weekly',
+    free: true,
+    highlights: [
+      'Strategic analysis',
+      'Policy insights',
+      'Expert readership',
+      'Anthropic perspective'
+    ],
+    tags: ['strategic', 'policy', 'jack-clark', 'influential']
+  },
+  {
+    id: 'comm-077',
+    name: 'The Batch by Andrew Ng',
+    type: 'newsletter',
+    focus: ['ai-security', 'research'],
+    description: 'Weekly AI news and developments from DeepLearning.AI and Andrew Ng.',
+    url: 'https://deeplearning.ai/the-batch',
+    frequency: 'Weekly',
+    free: true,
+    highlights: [
+      'Andrew Ng curated',
+      'Comprehensive news',
+      'Industry updates',
+      'Educational content'
+    ],
+    tags: ['andrew-ng', 'comprehensive', 'educational', 'popular']
+  },
+  {
+    id: 'comm-078',
+    name: 'OWASP GenAI Newsletter',
+    type: 'newsletter',
+    focus: ['ai-security', 'llm-security'],
+    description: 'Official OWASP GenAI project updates, threat intelligence, and community highlights.',
+    url: 'https://genai.owasp.org',
+    frequency: 'Monthly',
+    free: true,
+    highlights: [
+      'Project updates',
+      'Threat intel',
+      'Community highlights',
+      'Official source'
+    ],
+    tags: ['owasp', 'official', 'threat-intel', 'community']
+  },
+  {
+    id: 'comm-079',
+    name: 'Securing AI/LLMs Substack',
+    type: 'newsletter',
+    focus: ['ai-security', 'llm-security'],
+    description: 'Practical AI security guide covering real-world implementation and defense strategies.',
+    url: 'https://softwareanalyst.substack.com',
+    frequency: 'Weekly',
+    free: true,
+    highlights: [
+      'Practical focus',
+      'Implementation guides',
+      'Defense strategies',
+      'Real-world examples'
+    ],
+    tags: ['practical', 'implementation', 'defense', 'substack']
+  },
+
+  // Research Organizations from JSON
+  {
+    id: 'comm-080',
+    name: 'Stanford Center for AI Safety',
+    type: 'research-group',
+    focus: ['ai-security', 'research', 'policy'],
+    description: 'Stanford University research center developing responsible AI assessment frameworks.',
+    url: 'https://aisafety.stanford.edu',
+    free: true,
+    highlights: [
+      'Academic research',
+      'Assessment frameworks',
+      'Policy development',
+      'Stanford reputation'
+    ],
+    tags: ['stanford', 'academic', 'frameworks', 'prestigious']
+  },
+  {
+    id: 'comm-081',
+    name: 'Berkeley CHAI',
+    type: 'research-group',
+    focus: ['ai-security', 'research'],
+    description: 'Center for Human-Compatible AI at UC Berkeley. Directed by Stuart Russell.',
+    url: 'https://humancompatible.ai',
+    free: true,
+    highlights: [
+      'Stuart Russell',
+      'Value alignment',
+      'Human-compatible AI',
+      'Foundational research'
+    ],
+    tags: ['berkeley', 'alignment', 'stuart-russell', 'foundational']
+  },
+  {
+    id: 'comm-082',
+    name: 'Frontier Model Forum',
+    type: 'professional-org',
+    focus: ['ai-security', 'policy'],
+    description: 'Industry collaboration between Anthropic, Google, Microsoft, OpenAI. $10M+ AI safety fund.',
+    url: 'https://www.frontiermodelforum.org',
+    memberCount: '4 major labs',
+    free: true,
+    highlights: [
+      'Major AI labs',
+      '$10M+ safety fund',
+      'Responsible disclosure',
+      'Industry standards'
+    ],
+    tags: ['industry', 'major-labs', 'funding', 'collaboration']
+  },
+  {
+    id: 'comm-083',
+    name: 'UK AI Safety Institute',
+    type: 'research-group',
+    focus: ['ai-security', 'policy', 'research'],
+    description: 'UK government AI safety evaluation and policy organization.',
+    url: 'https://www.gov.uk/government/organisations/ai-safety-institute',
+    free: true,
+    highlights: [
+      'Government backing',
+      'Safety evaluation',
+      'Policy development',
+      'International collaboration'
+    ],
+    tags: ['government', 'uk', 'evaluation', 'official']
+  },
+  {
+    id: 'comm-084',
+    name: 'Apollo Research',
+    type: 'research-group',
+    focus: ['ai-security', 'research'],
+    description: 'Research org detecting deceptive AI and advancing interpretability. CEO Marius Hobbhahn on TIME 100 AI list.',
+    url: 'https://apolloresearch.ai',
+    free: true,
+    highlights: [
+      'Deception detection',
+      'Interpretability',
+      'TIME 100 recognition',
+      'Cutting-edge research'
+    ],
+    tags: ['deception', 'interpretability', 'recognized', 'research']
+  },
+  {
+    id: 'comm-085',
+    name: 'METR',
+    type: 'research-group',
+    focus: ['ai-security', 'research'],
+    description: 'AI evaluation organization specializing in dangerous capability testing.',
+    url: 'https://metr.org',
+    free: true,
+    highlights: [
+      'Capability testing',
+      'Dangerous AI detection',
+      'Evaluation frameworks',
+      'Expert team'
+    ],
+    tags: ['evaluation', 'capabilities', 'testing', 'safety']
+  },
+
+  // Additional Twitter Researchers
+  {
+    id: 'comm-086',
+    name: '@elder_plinius - Elder Plinius',
+    type: 'twitter',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Prolific AI red teamer and jailbreaker. Founder of BASI Discord community.',
+    url: 'https://twitter.com/elder_plinius',
+    free: true,
+    highlights: [
+      'Jailbreak expertise',
+      'BASI founder',
+      'Active research',
+      'Community leader'
+    ],
+    tags: ['jailbreaking', 'community', 'prolific', 'expert']
+  },
+  {
+    id: 'comm-087',
+    name: '@KaiGreshake - Kai Greshake',
+    type: 'twitter',
+    focus: ['llm-security', 'research'],
+    description: 'Indirect prompt injection paper co-author. Founder of Adversarial Alignment Lab.',
+    url: 'https://twitter.com/KaiGreshake',
+    free: true,
+    highlights: [
+      'Research publications',
+      'Indirect injection expert',
+      'Academic background',
+      'Lab founder'
+    ],
+    tags: ['research', 'indirect-injection', 'academic', 'expert']
+  },
+  {
+    id: 'comm-088',
+    name: '@sama - Sam Altman',
+    type: 'twitter',
+    focus: ['ai-security', 'policy'],
+    description: 'CEO of OpenAI. Key voice in AI development and policy discussions.',
+    url: 'https://twitter.com/sama',
+    free: true,
+    highlights: [
+      'OpenAI leadership',
+      'Industry influence',
+      'Policy discussions',
+      'AI future vision'
+    ],
+    tags: ['openai', 'leadership', 'influential', 'policy']
+  },
+  {
+    id: 'comm-089',
+    name: '@DarioAmodei - Dario Amodei',
+    type: 'twitter',
+    focus: ['ai-security', 'research', 'policy'],
+    description: 'CEO of Anthropic. Leading voice on AI safety and alignment.',
+    url: 'https://twitter.com/DarioAmodei',
+    free: true,
+    highlights: [
+      'Anthropic leadership',
+      'Safety focus',
+      'Research background',
+      'Industry influence'
+    ],
+    tags: ['anthropic', 'safety', 'leadership', 'influential']
+  },
+  {
+    id: 'comm-090',
+    name: '@jackclarkSF - Jack Clark',
+    type: 'twitter',
+    focus: ['ai-security', 'policy'],
+    description: 'Anthropic co-founder and Import AI newsletter author.',
+    url: 'https://twitter.com/jackclarkSF',
+    free: true,
+    highlights: [
+      'Import AI author',
+      'Anthropic co-founder',
+      'Policy expertise',
+      'Strategic insight'
+    ],
+    tags: ['anthropic', 'newsletter', 'policy', 'strategic']
+  },
+
+  // Training and Bootcamps
+  {
+    id: 'comm-091',
+    name: 'MATS Program (ML Alignment Theory Scholars)',
+    type: 'bootcamp',
+    focus: ['ai-security', 'research'],
+    description: '12-week intensive program in Berkeley. 80% of alumni work in AI alignment at major labs.',
+    url: 'https://matsprogram.org',
+    frequency: 'Quarterly cohorts',
+    free: false,
+    highlights: [
+      '12-week intensive',
+      '80% alignment career rate',
+      'Major lab placements',
+      'Berkeley-based'
+    ],
+    tags: ['intensive', 'alignment', 'career', 'prestigious']
+  },
+
+  // Industry Working Groups
+  {
+    id: 'comm-092',
+    name: 'OpenSSF AI/ML Security Working Group',
+    type: 'professional-org',
+    focus: ['ml-security', 'ai-security'],
+    description: 'Open source AI/ML security working group under the Linux Foundation.',
+    url: 'https://github.com/ossf/ai-ml-security',
+    free: true,
+    highlights: [
+      'Open source focus',
+      'Linux Foundation',
+      'Security standards',
+      'Community driven'
+    ],
+    tags: ['open-source', 'linux-foundation', 'standards', 'community']
+  },
+
+  // Online Platforms
+  {
+    id: 'comm-093',
+    name: 'FlowGPT',
+    type: 'forum',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Largest open-source AI app creator community with millions of MAU. Includes jailbroken apps.',
+    url: 'https://flowgpt.com',
+    free: true,
+    highlights: [
+      'Large community',
+      'AI app creation',
+      'Uncensored content',
+      'Active discussions'
+    ],
+    tags: ['platform', 'apps', 'community', 'uncensored']
+  },
+  {
+    id: 'comm-094',
+    name: 'InjectPrompt',
+    type: 'github',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Catalogue of jailbreaks, prompt injections, and system prompt leaks.',
+    url: 'https://github.com/injectprompt/injectprompt',
+    free: true,
+    highlights: [
+      'Curated catalogue',
+      'Prompt injections',
+      'System prompt leaks',
+      'Reference resource'
+    ],
+    tags: ['catalogue', 'reference', 'jailbreaks', 'injections']
+  },
+  {
+    id: 'comm-095',
+    name: 'Jailbreak Tracker',
+    type: 'github',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Live dashboard for monitoring known jailbreak prompts across LLMs.',
+    url: 'https://jailbreaktracker.com',
+    free: true,
+    highlights: [
+      'Live tracking',
+      'Multi-model coverage',
+      'Status updates',
+      'Research resource'
+    ],
+    tags: ['tracker', 'live', 'monitoring', 'jailbreaks']
+  },
+
+  // Additional Conferences
+  {
+    id: 'comm-096',
+    name: 'NeurIPS 2025',
+    type: 'conference',
+    focus: ['research', 'ai-security'],
+    description: 'Premier ML conference with AI safety workshops. December 2025.',
+    url: 'https://neurips.cc',
+    frequency: 'December 2025',
+    free: false,
+    highlights: [
+      'Safety workshops',
+      'Research papers',
+      'Top researchers',
+      'Academic focus'
+    ],
+    tags: ['neurips', 'academic', 'research', 'prestigious']
+  },
+  {
+    id: 'comm-097',
+    name: 'AI Cybersecurity Summit 2025',
+    type: 'conference',
+    focus: ['ai-security', 'general-security'],
+    description: 'SANS-hosted technical summit bridging AI and cybersecurity.',
+    url: 'https://www.sans.org/ai-cybersecurity-summit',
+    free: false,
+    highlights: [
+      'SANS quality',
+      'Technical depth',
+      'Hands-on labs',
+      'Expert speakers'
+    ],
+    tags: ['sans', 'technical', 'summit', 'hands-on']
   }
 ]
 

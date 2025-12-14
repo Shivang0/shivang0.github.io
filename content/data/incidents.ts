@@ -1140,6 +1140,546 @@ export const incidents: Incident[] = [
       { name: 'The Hacker News', url: 'https://thehackernews.com/' }
     ],
     tags: ['lastpass', 'deepfake', 'voice-clone', 'prevention', 'security-awareness', '2024']
+  },
+  {
+    id: 'inc-031',
+    title: 'Singapore Multinational Deepfake Video Fraud',
+    date: '2024-01-29',
+    organization: 'Undisclosed Multinational',
+    category: 'deepfake',
+    severity: 'critical',
+    description: '$39 million stolen in what is believed to be the largest deepfake-enabled video call fraud. Attackers used real-time deepfake technology to impersonate multiple company executives simultaneously during a video conference.',
+    impact: '$39 million in direct financial losses. Largest known deepfake video call fraud, demonstrating sophisticated real-time deepfake capabilities against corporate targets.',
+    technicalDetails: [
+      'Real-time deepfake video generation for multiple participants',
+      'Impersonated CFO and other senior executives simultaneously',
+      'Video call appeared completely legitimate to victim',
+      'Multiple wire transfers authorized during call',
+      'Attack conducted against Singapore-based multinational'
+    ],
+    lessonsLearned: [
+      'Multi-person deepfake video calls are now possible',
+      'Video conferences require additional verification for financial decisions',
+      'Even sophisticated finance professionals can be deceived',
+      'Pre-established code words and callback verification essential',
+      'Technology solutions alone insufficient for defense'
+    ],
+    mitigations: [
+      'Mandatory callback verification for large transfers',
+      'Pre-established verification codes for executives',
+      'Multi-channel confirmation for financial decisions',
+      'Employee training on multi-party deepfake scenarios',
+      'Deepfake detection tools for video conferencing'
+    ],
+    sources: [
+      { name: 'South China Morning Post', url: 'https://www.scmp.com/' },
+      { name: 'Bloomberg', url: 'https://www.bloomberg.com/' }
+    ],
+    tags: ['deepfake', 'singapore', '$39m', 'video-call', 'multi-party', '2024']
+  },
+  {
+    id: 'inc-032',
+    title: 'WormGPT - Malicious LLM for Cybercrime',
+    date: '2023-07-13',
+    organization: 'Underground Forums',
+    category: 'misuse',
+    severity: 'critical',
+    description: 'WormGPT emerged as the first widely-available malicious LLM specifically designed for cybercrime, trained on malware data and marketed to threat actors for creating phishing emails, BEC attacks, and malware code.',
+    impact: 'Democratized sophisticated cybercrime capabilities, enabling less-skilled attackers to generate convincing phishing content and malware. Marked the emergence of dedicated criminal AI tools.',
+    technicalDetails: [
+      'Based on GPT-J 6B model with malicious fine-tuning',
+      'Trained on malware source code and phishing templates',
+      'No ethical guardrails or content restrictions',
+      'Sold as subscription service on dark web forums',
+      'Generated convincing BEC (Business Email Compromise) content'
+    ],
+    lessonsLearned: [
+      'Open-source LLMs can be weaponized for cybercrime',
+      'Criminal AI tools eliminate need for social engineering skills',
+      'Traditional phishing detection may fail against AI-generated content',
+      'AI safety measures can be removed from base models',
+      'Underground economy for malicious AI is emerging'
+    ],
+    mitigations: [
+      'Advanced email security with AI detection',
+      'Employee training on AI-generated phishing',
+      'Behavioral analysis for email authentication',
+      'Multi-factor authentication for sensitive actions',
+      'Zero-trust security architecture'
+    ],
+    sources: [
+      { name: 'SlashNext Research', url: 'https://slashnext.com/' },
+      { name: 'Hacker News', url: 'https://thehackernews.com/' }
+    ],
+    tags: ['wormgpt', 'malicious-llm', 'cybercrime', 'phishing', 'bec', '2023']
+  },
+  {
+    id: 'inc-033',
+    title: 'FraudGPT - Dark Web AI Fraud Tool',
+    date: '2023-07-25',
+    organization: 'Underground Forums',
+    category: 'misuse',
+    severity: 'high',
+    description: 'FraudGPT appeared on dark web markets shortly after WormGPT, offering AI-powered fraud capabilities including phishing page generation, carding tools, and scam script creation.',
+    impact: 'Expanded the criminal AI ecosystem, providing specialized tools for various fraud types. Demonstrated rapid commercialization of malicious AI services.',
+    technicalDetails: [
+      'Subscription-based malicious AI service',
+      'Specialized for financial fraud and carding',
+      'Generated phishing pages and scam scripts',
+      'Provided malware code generation',
+      'Marketed at $200/month on dark web'
+    ],
+    lessonsLearned: [
+      'Malicious AI services are rapidly commoditizing',
+      'Multiple criminal AI tools emerging simultaneously',
+      'Fraud-specific AI tools bypass generic protections',
+      'Price point makes tools accessible to many criminals',
+      'Need for AI-based fraud detection systems'
+    ],
+    mitigations: [
+      'AI-powered fraud detection systems',
+      'Real-time transaction monitoring',
+      'Enhanced identity verification',
+      'Cross-platform fraud intelligence sharing',
+      'Behavioral biometrics for authentication'
+    ],
+    sources: [
+      { name: 'Netenrich Research', url: 'https://netenrich.com/' },
+      { name: 'Dark Reading', url: 'https://www.darkreading.com/' }
+    ],
+    tags: ['fraudgpt', 'malicious-llm', 'fraud', 'carding', 'dark-web', '2023']
+  },
+  {
+    id: 'inc-034',
+    title: 'RAG Poisoning in Enterprise Search',
+    date: '2024-05-15',
+    organization: 'Multiple Enterprises',
+    category: 'data-leak',
+    severity: 'high',
+    description: 'Security researchers demonstrated practical RAG poisoning attacks where malicious documents injected into enterprise knowledge bases could manipulate AI responses and exfiltrate sensitive data.',
+    impact: 'Enterprise AI systems using RAG shown vulnerable to document-based attacks. Attackers could manipulate AI responses to include misinformation or extract confidential data.',
+    technicalDetails: [
+      'Malicious documents embedded with hidden instructions',
+      'Exploits retrieval mechanism to influence responses',
+      'Can exfiltrate data through crafted AI outputs',
+      'Affects document search and Q&A systems',
+      'Persistent attack via document repositories'
+    ],
+    lessonsLearned: [
+      'RAG systems inherit document security issues',
+      'Document sanitization essential for AI processing',
+      'Input validation needed at retrieval stage',
+      'Monitoring for unusual retrieval patterns important',
+      'Document provenance tracking required'
+    ],
+    mitigations: [
+      'Document sanitization before indexing',
+      'Content security scanning for hidden text',
+      'Provenance tracking for retrieved documents',
+      'Output monitoring for data exfiltration patterns',
+      'Separation of trusted and untrusted document sources'
+    ],
+    sources: [
+      { name: 'Security Research', url: 'https://arxiv.org/' },
+      { name: 'Enterprise AI Security Blog', url: 'https://embracethered.com/' }
+    ],
+    tags: ['rag', 'poisoning', 'enterprise', 'document', 'exfiltration', '2024']
+  },
+  {
+    id: 'inc-035',
+    title: 'LangChain Arbitrary Code Execution',
+    date: '2023-08-09',
+    organization: 'LangChain',
+    category: 'rce',
+    severity: 'critical',
+    description: 'CVE-2023-36258 - Critical arbitrary code execution vulnerability in LangChain allowed attackers to execute arbitrary code through specially crafted prompts when using certain LangChain components.',
+    impact: 'Applications built with LangChain could be compromised to execute arbitrary code, potentially leading to full system compromise of AI applications.',
+    technicalDetails: [
+      'CVE-2023-36258 affecting LangChain',
+      'Arbitrary code execution via prompt injection',
+      'Affected PAL and other code execution chains',
+      'Could lead to full system compromise',
+      'Wide impact due to LangChain popularity'
+    ],
+    lessonsLearned: [
+      'AI framework vulnerabilities have wide impact',
+      'Code execution features need strict sandboxing',
+      'Regular security updates essential for AI frameworks',
+      'Input validation critical for all LLM inputs',
+      'Defense in depth for AI applications'
+    ],
+    mitigations: [
+      'Update LangChain to patched version',
+      'Sandbox code execution features',
+      'Input validation and sanitization',
+      'Restrict code execution to trusted contexts',
+      'Monitor for unusual code execution patterns'
+    ],
+    sources: [
+      { name: 'CVE Database', url: 'https://cve.mitre.org/' },
+      { name: 'LangChain Security', url: 'https://github.com/langchain-ai/langchain/security' }
+    ],
+    tags: ['langchain', 'rce', 'cve', 'framework', 'code-execution', '2023']
+  },
+  {
+    id: 'inc-036',
+    title: 'GPT-4 Vision Jailbreak via Images',
+    date: '2023-11-06',
+    organization: 'OpenAI',
+    category: 'jailbreak',
+    severity: 'high',
+    description: 'Researchers discovered that GPT-4 Vision could be jailbroken through carefully crafted images containing hidden text or visual patterns that bypassed safety measures.',
+    impact: 'Multimodal AI systems shown vulnerable to image-based jailbreaks, opening new attack surface beyond text-based prompt injection.',
+    technicalDetails: [
+      'Images with embedded text instructions',
+      'Visual patterns triggering specific behaviors',
+      'Bypassed text-based safety filters',
+      'Combined with prompt engineering for higher success',
+      'Affected all GPT-4 Vision deployments'
+    ],
+    lessonsLearned: [
+      'Multimodal AI expands attack surface significantly',
+      'Image processing needs security consideration',
+      'Text in images can bypass text filters',
+      'Visual adversarial attacks are practical',
+      'Safety training must include image modalities'
+    ],
+    mitigations: [
+      'OCR-based text detection in images',
+      'Image content classification before processing',
+      'Multi-modal safety training',
+      'Rate limiting for image inputs',
+      'Monitoring for unusual image patterns'
+    ],
+    sources: [
+      { name: 'AI Safety Research', url: 'https://arxiv.org/' },
+      { name: 'Security Researchers on X', url: 'https://twitter.com/' }
+    ],
+    tags: ['gpt-4', 'vision', 'jailbreak', 'multimodal', 'images', '2023']
+  },
+  {
+    id: 'inc-037',
+    title: 'AI-Generated Code Introduces Vulnerabilities',
+    date: '2024-03-12',
+    organization: 'Stanford/NYU Research',
+    category: 'misuse',
+    severity: 'high',
+    description: 'Research demonstrated that developers using AI coding assistants produced significantly more security vulnerabilities. 40% of code generated by LLMs contained exploitable security flaws.',
+    impact: 'Widespread use of AI coding assistants may be introducing security vulnerabilities at scale. Developers trusting AI-generated code without review creating systemic risk.',
+    technicalDetails: [
+      '40% of AI-generated code contained vulnerabilities',
+      'Common issues: SQL injection, XSS, path traversal',
+      'Developers less likely to review AI-generated code',
+      'AI copied vulnerable patterns from training data',
+      'False confidence in AI code quality'
+    ],
+    lessonsLearned: [
+      'AI-generated code requires security review',
+      'Developers should not blindly trust AI output',
+      'Security training needed for AI-assisted development',
+      'Automated security scanning essential for AI code',
+      'AI coding assistants need security-aware training'
+    ],
+    mitigations: [
+      'Mandatory security review for AI-generated code',
+      'Integrate security scanning in AI coding workflows',
+      'Developer training on AI code risks',
+      'Use AI coding assistants with security features',
+      'Implement secure coding standards for AI output'
+    ],
+    sources: [
+      { name: 'Stanford Research', url: 'https://cs.stanford.edu/' },
+      { name: 'ACM Digital Library', url: 'https://dl.acm.org/' }
+    ],
+    tags: ['ai-coding', 'vulnerabilities', 'research', 'security', 'developers', '2024']
+  },
+  {
+    id: 'inc-038',
+    title: 'Notion AI Data Exposure',
+    date: '2024-06-20',
+    organization: 'Notion',
+    category: 'data-leak',
+    severity: 'medium',
+    description: 'Security researchers discovered that Notion AI could be manipulated to access and expose content from private pages that the user did not have direct access to, through carefully crafted queries.',
+    impact: 'Private Notion workspace content could potentially be accessed through AI feature, representing privacy risk for enterprise users.',
+    technicalDetails: [
+      'AI feature had broader access than intended',
+      'Could access content from private pages',
+      'Prompt manipulation revealed hidden content',
+      'Affected workspace-level AI features',
+      'Required authenticated access to exploit'
+    ],
+    lessonsLearned: [
+      'AI features must respect access controls',
+      'Data access for AI needs careful scoping',
+      'Prompt manipulation can bypass intended access',
+      'Enterprise AI features need security review',
+      'Regular security testing of AI integrations'
+    ],
+    mitigations: [
+      'Strict access control enforcement for AI queries',
+      'Audit logging for AI data access',
+      'User permission verification per query',
+      'Content filtering in AI responses',
+      'Security review of AI feature permissions'
+    ],
+    sources: [
+      { name: 'Security Research', url: 'https://embracethered.com/' },
+      { name: 'Notion Security', url: 'https://www.notion.so/security' }
+    ],
+    tags: ['notion', 'data-exposure', 'access-control', 'enterprise', '2024']
+  },
+  {
+    id: 'inc-039',
+    title: 'Character.AI Safety Bypass Leading to Harm',
+    date: '2024-02-22',
+    organization: 'Character.AI',
+    category: 'misuse',
+    severity: 'critical',
+    description: 'Reports emerged of Character.AI chatbots providing harmful advice to vulnerable users, including minors, after safety guardrails were bypassed through roleplay scenarios.',
+    impact: 'Real-world harm to vulnerable users. Highlighted risks of AI companions and need for robust safety measures in consumer AI applications.',
+    technicalDetails: [
+      'Safety bypassed through roleplay scenarios',
+      'Harmful content generated to vulnerable users',
+      'Persistent conversations developed unsafe dynamics',
+      'Age verification insufficiently enforced',
+      'Emotional manipulation through character interactions'
+    ],
+    lessonsLearned: [
+      'Consumer AI needs robust safety measures',
+      'Roleplay creates safety bypass opportunities',
+      'Vulnerable user protections essential',
+      'Age verification must be enforced',
+      'Monitoring for harmful conversation patterns'
+    ],
+    mitigations: [
+      'Strengthened content moderation',
+      'Enhanced age verification',
+      'Conversation monitoring for harmful patterns',
+      'Improved roleplay safety training',
+      'Crisis intervention integration'
+    ],
+    sources: [
+      { name: 'Washington Post', url: 'https://www.washingtonpost.com/' },
+      { name: 'Character.AI Safety', url: 'https://character.ai/safety' }
+    ],
+    tags: ['character.ai', 'safety', 'consumer-ai', 'vulnerable-users', 'harm', '2024']
+  },
+  {
+    id: 'inc-040',
+    title: 'AI Model Stealing via API Side Channels',
+    date: '2024-04-18',
+    organization: 'Multiple Providers',
+    category: 'model-theft',
+    severity: 'high',
+    description: 'Researchers demonstrated techniques to extract model architecture and weights through side-channel analysis of API responses, including timing attacks and response pattern analysis.',
+    impact: 'Proprietary model intellectual property at risk. API-based model serving shown vulnerable to extraction attacks beyond simple output analysis.',
+    technicalDetails: [
+      'Timing side-channels revealed model architecture',
+      'Response patterns indicated model size and type',
+      'Query-efficient extraction techniques',
+      'Worked across multiple commercial APIs',
+      'Combined with distillation for model replication'
+    ],
+    lessonsLearned: [
+      'API responses leak model information',
+      'Timing normalization needed for APIs',
+      'Rate limiting alone insufficient for protection',
+      'Model architecture is extractable from behavior',
+      'Defense requires multiple countermeasures'
+    ],
+    mitigations: [
+      'Response time normalization',
+      'Output perturbation techniques',
+      'Query pattern detection',
+      'Rate limiting with pattern analysis',
+      'Model watermarking for theft detection'
+    ],
+    sources: [
+      { name: 'ML Security Research', url: 'https://arxiv.org/' },
+      { name: 'USENIX Security', url: 'https://www.usenix.org/conference/usenixsecurity24' }
+    ],
+    tags: ['model-theft', 'side-channel', 'api', 'extraction', 'research', '2024']
+  },
+  {
+    id: 'inc-041',
+    title: 'Anthropic Claude Jailbreak via Multi-Turn Attacks',
+    date: '2024-08-20',
+    organization: 'Anthropic',
+    category: 'jailbreak',
+    severity: 'medium',
+    description: 'Security researchers demonstrated that Claude could be jailbroken through sophisticated multi-turn conversation attacks that gradually shifted context and bypassed Constitutional AI safety training.',
+    impact: 'Demonstrated that even advanced safety techniques like Constitutional AI can be bypassed with sophisticated attack strategies over extended conversations.',
+    technicalDetails: [
+      'Multi-turn conversation manipulation',
+      'Gradual context shifting techniques',
+      'Exploited conversation history handling',
+      'Required 10-20 turn conversations',
+      'Bypassed Constitutional AI training'
+    ],
+    lessonsLearned: [
+      'Long conversations create jailbreak opportunities',
+      'Context accumulation can undermine safety',
+      'Multi-turn attacks harder to detect',
+      'Safety training must consider conversation dynamics',
+      'Continuous monitoring needed throughout conversations'
+    ],
+    mitigations: [
+      'Conversation-level safety monitoring',
+      'Context window safety checks',
+      'Multi-turn pattern detection',
+      'Periodic safety re-evaluation in long conversations',
+      'Rate limiting for extended interactions'
+    ],
+    sources: [
+      { name: 'Anthropic Safety Research', url: 'https://www.anthropic.com/research' },
+      { name: 'AI Safety Research', url: 'https://arxiv.org/' }
+    ],
+    tags: ['claude', 'jailbreak', 'multi-turn', 'constitutional-ai', 'anthropic', '2024']
+  },
+  {
+    id: 'inc-042',
+    title: 'Google Gemini Image Safety Bypass',
+    date: '2024-02-21',
+    organization: 'Google',
+    category: 'jailbreak',
+    severity: 'high',
+    description: 'Shortly after launch, researchers discovered that Google Gemini could be manipulated to generate harmful content by embedding instructions in images or using specific image-text combinations.',
+    impact: 'Demonstrated vulnerabilities in multimodal safety systems at launch, affecting Google\'s flagship AI product and raising concerns about multimodal AI safety.',
+    technicalDetails: [
+      'Image-embedded prompt injection',
+      'Text-image combination attacks',
+      'Bypassed content safety filters',
+      'Affected Gemini Pro Vision',
+      'Generated harmful imagery descriptions'
+    ],
+    lessonsLearned: [
+      'Multimodal launch requires extensive safety testing',
+      'Image-text interactions create complex attack surface',
+      'Safety training must cover cross-modal attacks',
+      'Rapid response capability essential at launch',
+      'Public testing reveals attacks missed in internal review'
+    ],
+    mitigations: [
+      'Enhanced multimodal safety training',
+      'Cross-modal content analysis',
+      'Image preprocessing and filtering',
+      'Improved safety evaluation benchmarks',
+      'Rapid patching capability'
+    ],
+    sources: [
+      { name: 'Google Security', url: 'https://security.google/' },
+      { name: 'AI Safety Research', url: 'https://arxiv.org/' }
+    ],
+    tags: ['gemini', 'google', 'multimodal', 'jailbreak', 'images', '2024']
+  },
+  {
+    id: 'inc-043',
+    title: 'PyTorch Dependency Confusion Attack',
+    date: '2022-12-30',
+    organization: 'PyTorch',
+    category: 'supply-chain',
+    severity: 'critical',
+    description: 'A malicious package was uploaded to PyPI that matched a private PyTorch dependency name, allowing attackers to execute code on machines installing PyTorch during a specific time window.',
+    impact: 'PyTorch installations between Dec 25-30, 2022 potentially compromised. Demonstrated supply chain vulnerabilities in ML framework ecosystem.',
+    technicalDetails: [
+      'Dependency confusion attack on torchtriton package',
+      'Malicious package uploaded to PyPI',
+      'Executed during pip install of nightly PyTorch',
+      'Exfiltrated system information',
+      'Affected Linux installations'
+    ],
+    lessonsLearned: [
+      'ML frameworks vulnerable to supply chain attacks',
+      'Private package names must be protected',
+      'Dependency verification essential',
+      'Nightly builds have higher supply chain risk',
+      'Package signing and verification needed'
+    ],
+    mitigations: [
+      'Package name reservation on public registries',
+      'Dependency hash verification',
+      'Private package registry usage',
+      'Security scanning of dependencies',
+      'Signed package requirements'
+    ],
+    sources: [
+      { name: 'PyTorch Blog', url: 'https://pytorch.org/blog/compromised-nightly-dependency/' },
+      { name: 'Security Advisory', url: 'https://github.com/pytorch/pytorch/security/advisories' }
+    ],
+    tags: ['pytorch', 'supply-chain', 'dependency-confusion', 'pypi', '2022']
+  },
+  {
+    id: 'inc-044',
+    title: 'AI Hallucination Causes Legal Filing Error',
+    date: '2023-06-08',
+    organization: 'Mata v. Avianca Airlines',
+    category: 'misuse',
+    severity: 'medium',
+    description: 'An attorney used ChatGPT to research case law and filed a legal brief citing six non-existent cases that the AI had hallucinated, leading to sanctions from the court.',
+    impact: 'Attorney sanctioned, case delayed. Highlighted risks of using AI for professional work without verification and potential liability issues.',
+    technicalDetails: [
+      'ChatGPT hallucinated six fake case citations',
+      'Attorney filed brief without verifying citations',
+      'Fake cases included plausible-sounding names and citations',
+      'Court unable to find cited cases',
+      'Attorney initially claimed cases were real'
+    ],
+    lessonsLearned: [
+      'AI outputs must be verified for professional use',
+      'Hallucinations can be convincing and detailed',
+      'Professional liability extends to AI-assisted work',
+      'Training needed for professional AI use',
+      'Clear disclosure of AI use may be required'
+    ],
+    mitigations: [
+      'Verify all AI-generated factual claims',
+      'Use AI for drafting, not final research',
+      'Implement citation verification workflows',
+      'Disclose AI use where required',
+      'Professional training on AI limitations'
+    ],
+    sources: [
+      { name: 'New York Times', url: 'https://www.nytimes.com/' },
+      { name: 'Court Filing', url: 'https://www.courtlistener.com/' }
+    ],
+    tags: ['hallucination', 'legal', 'chatgpt', 'professional', 'sanctions', '2023']
+  },
+  {
+    id: 'inc-045',
+    title: 'OpenAI GPT Store Malicious Apps',
+    date: '2024-01-25',
+    organization: 'OpenAI',
+    category: 'misuse',
+    severity: 'medium',
+    description: 'Security researchers discovered malicious custom GPTs in the OpenAI GPT Store designed to harvest user data, spread misinformation, or bypass content policies through hidden system prompts.',
+    impact: 'Users exposed to data harvesting and policy-violating content through official GPT Store. Highlighted challenges of app store security for AI platforms.',
+    technicalDetails: [
+      'Custom GPTs with hidden malicious instructions',
+      'Data harvesting through conversation manipulation',
+      'Policy-violating content through layered prompts',
+      'Impersonation of legitimate services',
+      'Phishing through trusted platform'
+    ],
+    lessonsLearned: [
+      'AI app stores need robust security review',
+      'Hidden system prompts enable abuse',
+      'User trust in platforms can be exploited',
+      'Automated detection of malicious GPTs needed',
+      'Clear reporting mechanisms essential'
+    ],
+    mitigations: [
+      'Enhanced GPT review process',
+      'System prompt analysis for malicious patterns',
+      'User reporting mechanisms',
+      'Behavioral monitoring of published GPTs',
+      'Clear terms of service enforcement'
+    ],
+    sources: [
+      { name: 'Security Research', url: 'https://arxiv.org/' },
+      { name: 'OpenAI Safety', url: 'https://openai.com/safety' }
+    ],
+    tags: ['gpt-store', 'openai', 'malicious-apps', 'data-harvesting', '2024']
   }
 ]
 
