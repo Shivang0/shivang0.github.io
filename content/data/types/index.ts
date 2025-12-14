@@ -40,10 +40,31 @@ export type CertProvider =
   | 'aws'
   | 'azure'
   | 'google'
+  | 'practical-devsecops'
+  | 'secops-group'
+  | 'learn-prompting'
   | 'vendor-specific';
 
 // Community resource types
-export type CommunityType = 'discord' | 'slack' | 'forum' | 'podcast' | 'newsletter' | 'conference' | 'meetup';
+export type CommunityType =
+  | 'discord'
+  | 'slack'
+  | 'forum'
+  | 'podcast'
+  | 'newsletter'
+  | 'conference'
+  | 'meetup'
+  | 'reddit'
+  | 'twitter'
+  | 'linkedin'
+  | 'bootcamp'
+  | 'professional-org'
+  | 'youtube'
+  | 'blog'
+  | 'github'
+  | 'training'
+  | 'ctf'
+  | 'research-group';
 
 // Glossary categories
 export type GlossaryCategory =
@@ -52,7 +73,19 @@ export type GlossaryCategory =
   | 'architecture'
   | 'compliance'
   | 'ml-concepts'
-  | 'security-concepts';
+  | 'security-concepts'
+  | 'prompt-injection'
+  | 'jailbreaking'
+  | 'rag-security'
+  | 'agent-security'
+  | 'named-attacks'
+  | 'llm-architecture'
+  | 'safety-alignment'
+  | 'adversarial-ml'
+  | 'frameworks'
+  | 'tools'
+  | 'governance'
+  | 'llm-concepts';
 
 // Cross-reference interface for linking between data types
 export interface CrossReference {

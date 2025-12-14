@@ -13,6 +13,10 @@ export type ResourceType =
   | 'research-group'
   | 'ctf'
   | 'training'
+  | 'reddit'
+  | 'linkedin'
+  | 'bootcamp'
+  | 'professional-org'
 
 export type ResourceFocus =
   | 'ai-security'
@@ -52,7 +56,11 @@ export const resourceTypes: { id: ResourceType; label: string; icon: string }[] 
   { id: 'meetup', label: 'Meetup', icon: 'Users' },
   { id: 'research-group', label: 'Research Group', icon: 'Microscope' },
   { id: 'ctf', label: 'CTF', icon: 'Flag' },
-  { id: 'training', label: 'Training', icon: 'GraduationCap' }
+  { id: 'training', label: 'Training', icon: 'GraduationCap' },
+  { id: 'reddit', label: 'Reddit', icon: 'MessageSquare' },
+  { id: 'linkedin', label: 'LinkedIn', icon: 'Linkedin' },
+  { id: 'bootcamp', label: 'Bootcamp', icon: 'BookOpen' },
+  { id: 'professional-org', label: 'Professional Org', icon: 'Building' }
 ]
 
 export const resourceFocuses: { id: ResourceFocus; label: string }[] = [
@@ -580,6 +588,519 @@ export const communityResources: CommunityResource[] = [
       'Research highlights'
     ],
     tags: ['research', 'papers', 'vulnerabilities', 'technical']
+  },
+
+  // Additional Discord Communities
+  {
+    id: 'comm-031',
+    name: 'Anthropic Discord',
+    type: 'discord',
+    focus: ['ai-security', 'research'],
+    description: 'Official Anthropic community Discord for Claude users and AI safety researchers.',
+    url: 'https://discord.gg/anthropic',
+    memberCount: '50,000+',
+    free: true,
+    highlights: [
+      'Direct community engagement',
+      'Safety research discussions',
+      'Claude best practices',
+      'Feature announcements'
+    ],
+    tags: ['anthropic', 'claude', 'official', 'safety']
+  },
+  {
+    id: 'comm-032',
+    name: 'OpenAI Discord',
+    type: 'discord',
+    focus: ['ai-security', 'llm-security'],
+    description: 'Official OpenAI community Discord for GPT users, researchers, and developers.',
+    url: 'https://discord.gg/openai',
+    memberCount: '100,000+',
+    free: true,
+    highlights: [
+      'API discussions',
+      'Safety guidelines',
+      'Community projects',
+      'Official updates'
+    ],
+    tags: ['openai', 'gpt', 'official', 'developers']
+  },
+  {
+    id: 'comm-033',
+    name: 'Adversary Village Discord',
+    type: 'discord',
+    focus: ['red-teaming', 'general-security'],
+    description: 'DEF CON Adversary Village community focused on red teaming and adversary simulation.',
+    url: 'https://discord.gg/adversaryvillage',
+    memberCount: '5,000+',
+    free: true,
+    highlights: [
+      'Red team methodologies',
+      'Adversary simulation',
+      'DEF CON coordination',
+      'Purple team discussions'
+    ],
+    tags: ['defcon', 'red-team', 'adversary', 'simulation']
+  },
+  {
+    id: 'comm-034',
+    name: 'NahamSec Discord',
+    type: 'discord',
+    focus: ['general-security', 'red-teaming'],
+    description: 'Bug bounty and security research community with growing AI security discussions.',
+    url: 'https://discord.gg/nahamsec',
+    memberCount: '30,000+',
+    free: true,
+    highlights: [
+      'Bug bounty tips',
+      'Tool discussions',
+      'Mentorship',
+      'AI vulnerability hunting'
+    ],
+    tags: ['bug-bounty', 'mentorship', 'community', 'hunting']
+  },
+  {
+    id: 'comm-035',
+    name: 'Hack The Box Discord',
+    type: 'discord',
+    focus: ['general-security', 'ai-security'],
+    description: 'Official Hack The Box community with AI security challenges and training paths.',
+    url: 'https://discord.gg/hackthebox',
+    memberCount: '200,000+',
+    free: true,
+    highlights: [
+      'CTF coordination',
+      'AI challenge help',
+      'Career advice',
+      'Tool support'
+    ],
+    tags: ['htb', 'ctf', 'training', 'community']
+  },
+
+  // Reddit Communities
+  {
+    id: 'comm-036',
+    name: 'r/MachineLearning',
+    type: 'reddit',
+    focus: ['ml-security', 'research'],
+    description: 'Largest ML subreddit with regular discussions on adversarial ML and model security.',
+    url: 'https://reddit.com/r/MachineLearning',
+    memberCount: '3M+',
+    free: true,
+    highlights: [
+      'Research paper discussions',
+      'Industry news',
+      'Career advice',
+      'Tool recommendations'
+    ],
+    tags: ['reddit', 'research', 'news', 'community']
+  },
+  {
+    id: 'comm-037',
+    name: 'r/netsec',
+    type: 'reddit',
+    focus: ['general-security', 'ai-security'],
+    description: 'Technical security subreddit with increasing coverage of AI security topics.',
+    url: 'https://reddit.com/r/netsec',
+    memberCount: '600K+',
+    free: true,
+    highlights: [
+      'Vulnerability discussions',
+      'Tool releases',
+      'Research papers',
+      'Industry news'
+    ],
+    tags: ['reddit', 'technical', 'vulnerabilities', 'news']
+  },
+  {
+    id: 'comm-038',
+    name: 'r/LocalLLaMA',
+    type: 'reddit',
+    focus: ['llm-security', 'ml-security'],
+    description: 'Community focused on local LLM deployment with security and privacy discussions.',
+    url: 'https://reddit.com/r/LocalLLaMA',
+    memberCount: '500K+',
+    free: true,
+    highlights: [
+      'Model security',
+      'Privacy considerations',
+      'Deployment advice',
+      'Tool recommendations'
+    ],
+    tags: ['reddit', 'local-llm', 'privacy', 'deployment']
+  },
+  {
+    id: 'comm-039',
+    name: 'r/ControlProblem',
+    type: 'reddit',
+    focus: ['ai-security', 'research', 'policy'],
+    description: 'AI alignment and control problem discussions with security implications.',
+    url: 'https://reddit.com/r/ControlProblem',
+    memberCount: '50K+',
+    free: true,
+    highlights: [
+      'Alignment research',
+      'Safety discussions',
+      'Research papers',
+      'Policy implications'
+    ],
+    tags: ['reddit', 'alignment', 'safety', 'research']
+  },
+  {
+    id: 'comm-040',
+    name: 'r/cybersecurity',
+    type: 'reddit',
+    focus: ['general-security', 'ai-security'],
+    description: 'General cybersecurity subreddit with AI security career and news discussions.',
+    url: 'https://reddit.com/r/cybersecurity',
+    memberCount: '800K+',
+    free: true,
+    highlights: [
+      'Career advice',
+      'Certification discussions',
+      'Industry news',
+      'AI security questions'
+    ],
+    tags: ['reddit', 'career', 'news', 'community']
+  },
+
+  // LinkedIn Influencers
+  {
+    id: 'comm-041',
+    name: 'Diana Kelley - CISO Protect AI',
+    type: 'linkedin',
+    focus: ['ai-security', 'policy'],
+    description: 'CISO of Protect AI sharing insights on AI security strategy and enterprise considerations.',
+    url: 'https://linkedin.com/in/dianakelley',
+    free: true,
+    highlights: [
+      'Enterprise AI security',
+      'CISO perspectives',
+      'Strategy insights',
+      'Industry analysis'
+    ],
+    tags: ['ciso', 'enterprise', 'strategy', 'leadership']
+  },
+  {
+    id: 'comm-042',
+    name: 'Caleb Sima - CSA AI Safety',
+    type: 'linkedin',
+    focus: ['ai-security', 'policy'],
+    description: 'Chair of CSA AI Safety Initiative, sharing AI governance and security frameworks.',
+    url: 'https://linkedin.com/in/calebsima',
+    free: true,
+    highlights: [
+      'CSA AI initiatives',
+      'Governance frameworks',
+      'Industry standards',
+      'Policy insights'
+    ],
+    tags: ['csa', 'governance', 'standards', 'leadership']
+  },
+  {
+    id: 'comm-043',
+    name: 'Steve Wilson - OWASP LLM Lead',
+    type: 'linkedin',
+    focus: ['llm-security', 'ai-security'],
+    description: 'Leader of OWASP LLM Top 10 project, sharing LLM security insights and best practices.',
+    url: 'https://linkedin.com/in/youraisecurity',
+    free: true,
+    highlights: [
+      'OWASP LLM updates',
+      'Security guidance',
+      'Industry commentary',
+      'Best practices'
+    ],
+    tags: ['owasp', 'llm', 'guidance', 'standards']
+  },
+
+  // Updated Conferences 2025-2026
+  {
+    id: 'comm-044',
+    name: 'DEF CON 33 - AI Village',
+    type: 'conference',
+    focus: ['ai-security', 'red-teaming', 'adversarial-ml'],
+    description: 'DEF CON 33 AI Village featuring AI red team challenges, talks, and workshops. August 7-10, 2025.',
+    url: 'https://aivillage.org',
+    frequency: 'August 7-10, 2025',
+    free: true,
+    highlights: [
+      'AI red team challenge 2025',
+      'GenAI security talks',
+      'Hands-on workshops',
+      'Networking opportunities'
+    ],
+    tags: ['defcon', '2025', 'red-team', 'village']
+  },
+  {
+    id: 'comm-045',
+    name: 'Black Hat USA 2025',
+    type: 'conference',
+    focus: ['general-security', 'ai-security'],
+    description: 'Premier security conference with extensive AI security research track. August 2025.',
+    url: 'https://blackhat.com',
+    frequency: 'August 2025',
+    free: false,
+    highlights: [
+      'AI security research',
+      'Arsenal tools',
+      'Training courses',
+      'Vendor briefings'
+    ],
+    tags: ['blackhat', '2025', 'professional', 'research']
+  },
+  {
+    id: 'comm-046',
+    name: 'RSA Conference 2025',
+    type: 'conference',
+    focus: ['ai-security', 'policy', 'general-security'],
+    description: 'Enterprise security conference with AI security track. April 28 - May 1, 2025.',
+    url: 'https://rsaconference.com',
+    frequency: 'April 28 - May 1, 2025',
+    free: false,
+    highlights: [
+      'AI security summit',
+      'Enterprise focus',
+      'Policy discussions',
+      'Vendor expo'
+    ],
+    tags: ['rsa', '2025', 'enterprise', 'policy']
+  },
+  {
+    id: 'comm-047',
+    name: 'CAMLIS 2025',
+    type: 'conference',
+    focus: ['adversarial-ml', 'ml-security', 'research'],
+    description: 'Conference on Applied Machine Learning for Information Security. October 22-24, 2025.',
+    url: 'https://camlis.org',
+    frequency: 'October 22-24, 2025',
+    free: false,
+    highlights: [
+      'Academic research',
+      'Applied ML security',
+      'Paper presentations',
+      'Industry collaboration'
+    ],
+    tags: ['camlis', '2025', 'academic', 'research']
+  },
+  {
+    id: 'comm-048',
+    name: 'OWASP Global AppSec 2025',
+    type: 'conference',
+    focus: ['ai-security', 'llm-security', 'general-security'],
+    description: 'OWASP flagship conference with LLM security track. November 6-7, 2025.',
+    url: 'https://owasp.org/events',
+    frequency: 'November 6-7, 2025',
+    free: false,
+    highlights: [
+      'LLM Top 10 updates',
+      'Application security',
+      'Community networking',
+      'Training sessions'
+    ],
+    tags: ['owasp', '2025', 'appsec', 'llm']
+  },
+  {
+    id: 'comm-049',
+    name: 'Agentic AI Security Summit Europe',
+    type: 'conference',
+    focus: ['ai-security', 'llm-security'],
+    description: 'Focused summit on agent security and autonomous AI systems. December 10, 2025.',
+    url: 'https://agenticsecurity.org',
+    frequency: 'December 10, 2025',
+    free: false,
+    highlights: [
+      'Agent security focus',
+      'European perspective',
+      'Industry leaders',
+      'Emerging threats'
+    ],
+    tags: ['agents', '2025', 'europe', 'summit']
+  },
+
+  // Bootcamps & Intensive Training
+  {
+    id: 'comm-050',
+    name: 'Berkeley AI Red-Teaming Bootcamp',
+    type: 'bootcamp',
+    focus: ['ai-security', 'red-teaming'],
+    description: 'Intensive bootcamp at UC Berkeley focusing on AI red teaming. July 27 - August 1, 2025.',
+    url: 'https://security.berkeley.edu',
+    frequency: 'July 27 - Aug 1, 2025',
+    free: false,
+    highlights: [
+      'Academic rigor',
+      'Hands-on labs',
+      'Expert instructors',
+      'Certification'
+    ],
+    tags: ['berkeley', 'bootcamp', 'academic', 'intensive']
+  },
+  {
+    id: 'comm-051',
+    name: 'Hack The Box AI Red Teamer Path',
+    type: 'training',
+    focus: ['ai-security', 'red-teaming'],
+    description: 'HTB learning path focused on AI system red teaming with hands-on labs.',
+    url: 'https://hackthebox.com/ai-red-teamer',
+    free: false,
+    highlights: [
+      'Progressive difficulty',
+      'Real-world scenarios',
+      'AI-specific challenges',
+      'Certificate'
+    ],
+    tags: ['htb', 'path', 'hands-on', 'red-team']
+  },
+  {
+    id: 'comm-052',
+    name: 'Learn Prompting AIRTP+ Masterclass',
+    type: 'training',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'AI Red Teaming Professional+ certification course covering advanced prompt security.',
+    url: 'https://learnprompting.org/certification',
+    free: false,
+    highlights: [
+      'Professional certification',
+      'Prompt engineering',
+      'Red team techniques',
+      'Industry recognized'
+    ],
+    tags: ['certification', 'prompting', 'professional', 'advanced']
+  },
+
+  // Professional Organizations
+  {
+    id: 'comm-053',
+    name: 'CSA AI Safety Initiative',
+    type: 'professional-org',
+    focus: ['ai-security', 'policy'],
+    description: 'Cloud Security Alliance AI Safety Initiative with 1,500+ expert members.',
+    url: 'https://cloudsecurityalliance.org/research/ai-safety/',
+    memberCount: '1,500+',
+    free: true,
+    highlights: [
+      'AI governance frameworks',
+      'Working groups',
+      'Industry standards',
+      'Expert network'
+    ],
+    tags: ['csa', 'governance', 'standards', 'professional']
+  },
+  {
+    id: 'comm-054',
+    name: 'Center for AI Safety (CAIS)',
+    type: 'professional-org',
+    focus: ['ai-security', 'research', 'policy'],
+    description: 'Research organization focused on reducing societal-scale risks from AI.',
+    url: 'https://safe.ai',
+    free: true,
+    highlights: [
+      'Safety research',
+      'Policy advocacy',
+      'Grants and fellowships',
+      'Research publications'
+    ],
+    tags: ['research', 'safety', 'policy', 'advocacy']
+  },
+  {
+    id: 'comm-055',
+    name: 'Future of Life Institute',
+    type: 'professional-org',
+    focus: ['ai-security', 'policy'],
+    description: 'Organization working on AI safety policy and existential risk mitigation.',
+    url: 'https://futureoflife.org',
+    free: true,
+    highlights: [
+      'Policy development',
+      'AI safety initiatives',
+      'Grant programs',
+      'Public advocacy'
+    ],
+    tags: ['policy', 'safety', 'advocacy', 'grants']
+  },
+  {
+    id: 'comm-056',
+    name: 'Partnership on AI',
+    type: 'professional-org',
+    focus: ['ai-security', 'policy', 'research'],
+    description: 'Multi-stakeholder organization developing AI best practices and guidelines.',
+    url: 'https://partnershiponai.org',
+    memberCount: '100+ orgs',
+    free: true,
+    highlights: [
+      'Best practices',
+      'Multi-stakeholder',
+      'Industry guidance',
+      'Research initiatives'
+    ],
+    tags: ['partnership', 'guidelines', 'multi-stakeholder', 'industry']
+  },
+
+  // Additional Twitter/X Researchers
+  {
+    id: 'comm-057',
+    name: '@simonwillison - Simon Willison',
+    type: 'twitter',
+    focus: ['llm-security', 'research'],
+    description: 'Prolific LLM researcher and blogger covering prompt injection and AI security.',
+    url: 'https://twitter.com/simonwillison',
+    free: true,
+    highlights: [
+      'Original research',
+      'Prompt injection expertise',
+      'Tool development',
+      'Industry commentary'
+    ],
+    tags: ['researcher', 'prompt-injection', 'influential', 'technical']
+  },
+  {
+    id: 'comm-058',
+    name: '@JohannRehberger - Johann Rehberger',
+    type: 'twitter',
+    focus: ['llm-security', 'red-teaming'],
+    description: 'Embrace The Red author, LLM vulnerability researcher and red teamer.',
+    url: 'https://twitter.com/JohannRehberger',
+    free: true,
+    highlights: [
+      'Vulnerability research',
+      'Red team insights',
+      'Original discoveries',
+      'Security analysis'
+    ],
+    tags: ['researcher', 'red-team', 'vulnerabilities', 'expert']
+  },
+  {
+    id: 'comm-059',
+    name: '@josephthacker - Joseph Thacker',
+    type: 'twitter',
+    focus: ['ai-security', 'red-teaming'],
+    description: 'AI security researcher sharing bug bounty and AI vulnerability findings.',
+    url: 'https://twitter.com/josephthacker',
+    free: true,
+    highlights: [
+      'Bug bounty tips',
+      'AI vulnerabilities',
+      'Practical security',
+      'Industry insights'
+    ],
+    tags: ['bug-bounty', 'researcher', 'practical', 'vulnerabilities']
+  },
+  {
+    id: 'comm-060',
+    name: '@ArvindNarayanan - Arvind Narayanan',
+    type: 'twitter',
+    focus: ['ai-security', 'policy', 'research'],
+    description: 'Princeton professor and AI Snake Oil author covering AI limitations and risks.',
+    url: 'https://twitter.com/random_walker',
+    free: true,
+    highlights: [
+      'Academic perspective',
+      'AI limitations',
+      'Policy commentary',
+      'Critical analysis'
+    ],
+    tags: ['academic', 'policy', 'critical', 'influential']
   }
 ]
 

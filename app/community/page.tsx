@@ -20,6 +20,9 @@ import {
   GraduationCap,
   Filter,
   Star,
+  Linkedin,
+  BookOpen,
+  Building,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -58,6 +61,10 @@ const typeIcons: Record<ResourceType, React.ComponentType<{ className?: string }
   'research-group': Microscope,
   ctf: Flag,
   training: GraduationCap,
+  reddit: MessageSquare,
+  linkedin: Linkedin,
+  bootcamp: BookOpen,
+  'professional-org': Building,
 }
 
 // Filter configuration

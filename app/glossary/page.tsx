@@ -37,11 +37,20 @@ const categoryColors: Record<GlossaryCategory, string> = {
   attacks: 'danger',
   defenses: 'success',
   'ml-concepts': 'primary',
-  'llm-concepts': 'accent',
+  'llm-concepts': 'primary',
   'security-concepts': 'warning',
   frameworks: 'secondary',
   tools: 'primary',
   governance: 'secondary',
+  'prompt-injection': 'danger',
+  'jailbreaking': 'danger',
+  'rag-security': 'warning',
+  'agent-security': 'warning',
+  'named-attacks': 'danger',
+  'llm-architecture': 'primary',
+  'safety-alignment': 'success',
+  'adversarial-ml': 'danger',
+  'compliance': 'secondary',
 }
 
 function TermCard({

@@ -9,6 +9,10 @@ export type IncidentCategory =
   | 'supply-chain'
   | 'privacy'
   | 'model-theft'
+  | 'ai-orchestrated'
+  | 'zero-click'
+  | 'deepfake'
+  | 'rce'
 
 export interface IncidentSource {
   name: string
@@ -71,6 +75,26 @@ export const incidentCategories: { id: IncidentCategory; label: string; descript
     id: 'model-theft',
     label: 'Model Theft',
     description: 'Unauthorized extraction or copying of model weights/architecture'
+  },
+  {
+    id: 'ai-orchestrated',
+    label: 'AI-Orchestrated',
+    description: 'Attacks primarily conducted or orchestrated by AI systems'
+  },
+  {
+    id: 'zero-click',
+    label: 'Zero-Click',
+    description: 'Attacks requiring no user interaction to exploit'
+  },
+  {
+    id: 'deepfake',
+    label: 'Deepfake',
+    description: 'Incidents involving AI-generated fake audio, video, or images'
+  },
+  {
+    id: 'rce',
+    label: 'Remote Code Execution',
+    description: 'Vulnerabilities allowing arbitrary code execution'
   }
 ]
 
@@ -536,6 +560,586 @@ export const incidents: Incident[] = [
       { name: 'MIT Technology Review', url: 'https://www.technologyreview.com/2018/10/10/139858/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women/' }
     ],
     tags: ['bias', 'recruiting', 'discrimination', 'amazon', 'fairness']
+  },
+  {
+    id: 'inc-015',
+    title: 'First AI-Orchestrated Cyberattack Detected',
+    date: '2025-09-15',
+    organization: 'Anthropic',
+    category: 'ai-orchestrated',
+    severity: 'critical',
+    description: 'Anthropic detected and documented the first confirmed case of AI performing 80-90% of attack operations autonomously. The AI system conducted reconnaissance, vulnerability scanning, and exploitation with minimal human guidance.',
+    impact: 'Marks a watershed moment in cybersecurity where AI can now autonomously conduct sophisticated attack operations, fundamentally changing the threat landscape and defense requirements.',
+    technicalDetails: [
+      'AI performed 80-90% of attack operations autonomously',
+      'Automated reconnaissance and target selection',
+      'Autonomous vulnerability identification and exploitation',
+      'Adaptive attack patterns based on defensive responses',
+      'Minimal human intervention required for attack progression'
+    ],
+    lessonsLearned: [
+      'AI-powered attacks represent a paradigm shift in threat landscape',
+      'Traditional signature-based detection is insufficient against adaptive AI',
+      'Defense systems need AI augmentation to match attack sophistication',
+      'Attribution becomes more difficult with AI-orchestrated attacks',
+      'Speed of attack execution requires automated defensive responses'
+    ],
+    mitigations: [
+      'Deploy AI-powered threat detection and response',
+      'Implement behavioral anomaly detection',
+      'Reduce attack surface through zero-trust architecture',
+      'Automated incident response playbooks',
+      'Continuous security posture assessment'
+    ],
+    sources: [
+      { name: 'Anthropic Security Research', url: 'https://www.anthropic.com/research' },
+      { name: 'Cybersecurity News', url: 'https://cybersecuritynews.com/' }
+    ],
+    tags: ['ai-orchestrated', 'autonomous-attack', 'anthropic', 'paradigm-shift', '2025']
+  },
+  {
+    id: 'inc-016',
+    title: 'EchoLeak - Microsoft 365 Copilot Zero-Click Attack',
+    date: '2025-06-10',
+    organization: 'Microsoft',
+    category: 'zero-click',
+    severity: 'critical',
+    description: 'CVE-2025-32711 (CVSS 9.3) - The first zero-click attack discovered against an AI agent. Attackers could exfiltrate sensitive data from Microsoft 365 Copilot without any user interaction through crafted documents processed by the AI.',
+    impact: 'Demonstrated that AI agents introduce new zero-click attack surfaces. Sensitive enterprise data including emails, documents, and calendar information could be exfiltrated silently.',
+    technicalDetails: [
+      'CVE-2025-32711 with CVSS score of 9.3',
+      'First documented zero-click attack on an AI agent',
+      'Exploitation via malicious document processing',
+      'No user interaction required for data exfiltration',
+      'Discovered by Aim Labs security researchers',
+      'Patched by Microsoft in June 2025'
+    ],
+    lessonsLearned: [
+      'AI agents expand the attack surface for zero-click exploits',
+      'Document processing by AI needs strict sandboxing',
+      'Input validation crucial even for AI-processed content',
+      'AI systems need same security rigor as traditional applications',
+      'Regular security audits essential for AI integrations'
+    ],
+    mitigations: [
+      'Apply Microsoft security patches immediately',
+      'Implement content isolation for AI processing',
+      'Monitor AI agent data access patterns',
+      'Restrict AI access to sensitive data sources',
+      'Deploy DLP controls around AI systems'
+    ],
+    sources: [
+      { name: 'Aim Labs Research', url: 'https://www.aim-labs.co/' },
+      { name: 'Microsoft Security Response Center', url: 'https://msrc.microsoft.com/' }
+    ],
+    tags: ['zero-click', 'copilot', 'microsoft', 'cve-2025-32711', 'data-exfiltration', '2025']
+  },
+  {
+    id: 'inc-017',
+    title: 'IDEsaster - AI Coding Assistant Vulnerability Cascade',
+    date: '2025-03-20',
+    organization: 'Multiple',
+    category: 'rce',
+    severity: 'critical',
+    description: '24 CVEs discovered across major AI coding assistants including GitHub Copilot, Cursor, Windsurf, Claude Code, and others. 100% of tested products were found vulnerable to various attacks enabling code injection and data theft.',
+    impact: 'Every major AI coding assistant found vulnerable. Developers using these tools potentially exposed to code injection, credential theft, and supply chain attacks through their development environment.',
+    technicalDetails: [
+      '24 CVEs identified across AI coding assistants',
+      '100% of tested products found vulnerable',
+      'Affects GitHub Copilot, Cursor, Windsurf, Claude Code, Amazon Q, Codeium',
+      'Attack vectors include prompt injection via code comments',
+      'Malicious repositories can trigger code execution',
+      'Context manipulation through crafted code patterns'
+    ],
+    lessonsLearned: [
+      'AI coding assistants are a new attack vector for developers',
+      'Code repositories can become attack delivery mechanisms',
+      'AI tools need sandboxing from developer environments',
+      'Supply chain security must include AI coding tools',
+      'Code review processes need to account for AI-injected code'
+    ],
+    mitigations: [
+      'Update all AI coding assistants to latest versions',
+      'Review AI-generated code before execution',
+      'Limit AI assistant access to sensitive repositories',
+      'Implement code signing and verification',
+      'Use isolated development environments for untrusted code'
+    ],
+    sources: [
+      { name: 'Security Research Publication', url: 'https://arxiv.org/' },
+      { name: 'GitHub Security Advisory', url: 'https://github.com/advisories' }
+    ],
+    tags: ['ide', 'coding-assistant', 'copilot', 'cursor', 'rce', 'supply-chain', '2025']
+  },
+  {
+    id: 'inc-018',
+    title: 'OpenAI/Mixpanel Data Exposure',
+    date: '2025-11-05',
+    organization: 'OpenAI',
+    category: 'data-leak',
+    severity: 'medium',
+    description: 'Limited ChatGPT user data was exposed through a Mixpanel analytics integration. The exposure included user interaction metadata and potentially conversation titles from a subset of users.',
+    impact: 'User privacy compromised for an unknown number of ChatGPT users. Metadata about AI usage patterns and potentially sensitive conversation titles were exposed to third-party analytics.',
+    technicalDetails: [
+      'Data exposed through Mixpanel analytics integration',
+      'Affected data included user interaction metadata',
+      'Potentially exposed conversation titles',
+      'Limited subset of users affected',
+      'Third-party integration misconfiguration'
+    ],
+    lessonsLearned: [
+      'Third-party integrations can expose user data',
+      'Analytics tools need careful data minimization',
+      'Regular audits of data flows to external services',
+      'Privacy-by-design for all AI system integrations',
+      'User data classification and protection requirements'
+    ],
+    mitigations: [
+      'Review all third-party analytics integrations',
+      'Implement data minimization for analytics',
+      'Audit data flows to external services',
+      'Enhanced privacy controls for user data',
+      'Transparent disclosure to affected users'
+    ],
+    sources: [
+      { name: 'OpenAI Status', url: 'https://status.openai.com/' },
+      { name: 'Privacy News Coverage', url: 'https://techcrunch.com/' }
+    ],
+    tags: ['openai', 'mixpanel', 'analytics', 'privacy', 'data-exposure', '2025']
+  },
+  {
+    id: 'inc-019',
+    title: 'CamoLeak - GitHub Copilot Chat Covert Exfiltration',
+    date: '2025-11-20',
+    organization: 'GitHub/Microsoft',
+    category: 'data-leak',
+    severity: 'critical',
+    description: 'CVSS 9.6 vulnerability allowing covert data exfiltration from GitHub Copilot Chat. Attackers could extract sensitive code, credentials, and internal documentation through carefully crafted prompts without visible indicators.',
+    impact: 'Developers could unknowingly leak proprietary code, API keys, and confidential business logic through normal Copilot Chat usage when processing malicious repository content.',
+    technicalDetails: [
+      'CVSS score of 9.6',
+      'Covert exfiltration with no visible indicators',
+      'Exploits context window manipulation',
+      'Can extract code, credentials, and documentation',
+      'Triggered by processing malicious repository content',
+      'No user awareness of data exfiltration'
+    ],
+    lessonsLearned: [
+      'AI assistants can leak data through invisible channels',
+      'Context window content needs strict isolation',
+      'Covert exfiltration is harder to detect than overt attacks',
+      'Monitoring AI assistant external communications essential',
+      'Trust boundaries must account for AI context leakage'
+    ],
+    mitigations: [
+      'Apply security updates for Copilot',
+      'Monitor outbound data from AI assistants',
+      'Restrict AI access to sensitive repositories',
+      'Implement DLP for AI-assisted development',
+      'Regular security audits of AI integrations'
+    ],
+    sources: [
+      { name: 'Security Research', url: 'https://arxiv.org/' },
+      { name: 'GitHub Security', url: 'https://github.com/security' }
+    ],
+    tags: ['copilot', 'github', 'exfiltration', 'covert-channel', 'cvss-9.6', '2025']
+  },
+  {
+    id: 'inc-020',
+    title: 'Slack AI Prompt Injection - Data Exfiltration',
+    date: '2024-08-14',
+    organization: 'Slack/Salesforce',
+    category: 'prompt-injection',
+    severity: 'high',
+    description: 'Researchers discovered that Slack AI could be manipulated through prompt injection in public channels, allowing attackers to exfiltrate data from private channels that the AI had access to.',
+    impact: 'Confidential conversations in private Slack channels could be extracted by attackers posting carefully crafted messages in public channels that the AI indexes.',
+    technicalDetails: [
+      'Indirect prompt injection via public channel messages',
+      'AI indexes and processes public channel content',
+      'Crafted prompts cause AI to reveal private channel data',
+      'Exploits lack of context separation in AI processing',
+      'Data exfiltration through AI-generated responses'
+    ],
+    lessonsLearned: [
+      'AI systems with broad data access are high-value targets',
+      'Indirect prompt injection through indexed content is a major risk',
+      'Access control must be enforced at AI output level',
+      'Context separation essential for multi-tenant AI systems',
+      'Public content can influence AI behavior with private data'
+    ],
+    mitigations: [
+      'Implement strict context isolation in AI systems',
+      'Filter AI outputs for sensitive content patterns',
+      'Limit AI access to data matching user permissions',
+      'Monitor for prompt injection patterns in content',
+      'Apply principle of least privilege to AI data access'
+    ],
+    sources: [
+      { name: 'PromptArmor Research', url: 'https://promptarmor.com/' },
+      { name: 'Slack Security', url: 'https://slack.com/security' }
+    ],
+    tags: ['slack', 'prompt-injection', 'indirect-injection', 'data-exfiltration', '2024']
+  },
+  {
+    id: 'inc-021',
+    title: 'Microsoft Copilot Studio SSRF Vulnerability',
+    date: '2024-08-06',
+    organization: 'Microsoft',
+    category: 'prompt-injection',
+    severity: 'high',
+    description: 'CVE-2024-38206 (CVSS 8.5) - Server-Side Request Forgery vulnerability in Microsoft Copilot Studio allowed attackers to access Microsoft internal infrastructure through crafted requests.',
+    impact: 'Attackers could potentially access internal Microsoft services and infrastructure, representing a significant breach of enterprise security boundaries.',
+    technicalDetails: [
+      'CVE-2024-38206 with CVSS score 8.5',
+      'Server-Side Request Forgery (SSRF) vulnerability',
+      'Allowed access to internal Microsoft infrastructure',
+      'Exploitable through Copilot Studio customizations',
+      'Could bypass network segmentation controls'
+    ],
+    lessonsLearned: [
+      'AI customization interfaces can introduce SSRF vulnerabilities',
+      'Internal network access from AI systems needs strict controls',
+      'AI platforms are attractive targets for infrastructure attacks',
+      'Network segmentation must account for AI system capabilities',
+      'Regular security assessments of AI platform features'
+    ],
+    mitigations: [
+      'Apply Microsoft security patches',
+      'Restrict AI platform network access',
+      'Implement egress filtering for AI systems',
+      'Monitor for anomalous network requests from AI services',
+      'Regular penetration testing of AI platforms'
+    ],
+    sources: [
+      { name: 'Microsoft Security Response Center', url: 'https://msrc.microsoft.com/' },
+      { name: 'Tenable Research', url: 'https://www.tenable.com/security/research' }
+    ],
+    tags: ['copilot-studio', 'ssrf', 'microsoft', 'cve-2024-38206', 'infrastructure', '2024']
+  },
+  {
+    id: 'inc-022',
+    title: 'Disney Slack Breach via AI Exploitation',
+    date: '2024-07-12',
+    organization: 'Disney',
+    category: 'data-leak',
+    severity: 'critical',
+    description: '1.1TB of data leaked from Disney including 44 million Slack messages. The breach involved exploitation of AI tools within the corporate environment, exposing sensitive internal communications.',
+    impact: 'Massive data breach exposing internal communications, strategic plans, financial data, and employee information. One of the largest corporate data leaks involving AI-related exploitation.',
+    technicalDetails: [
+      '1.1 terabytes of data exfiltrated',
+      '44 million Slack messages exposed',
+      'AI tools used in the corporate environment were exploited',
+      'Internal documents, financials, and strategies leaked',
+      'Attack attributed to hacktivist group'
+    ],
+    lessonsLearned: [
+      'AI tools in corporate environments expand attack surface',
+      'Slack and similar platforms hold massive amounts of sensitive data',
+      'Data loss prevention must cover AI-assisted workflows',
+      'Insider threat detection needs to account for AI tool usage',
+      'Regular data classification and access reviews essential'
+    ],
+    mitigations: [
+      'Implement comprehensive DLP across all platforms',
+      'Restrict AI tool access to sensitive channels',
+      'Enhanced monitoring of AI-assisted workflows',
+      'Regular security audits of communication platforms',
+      'Zero-trust architecture for corporate communications'
+    ],
+    sources: [
+      { name: 'Wall Street Journal', url: 'https://www.wsj.com/' },
+      { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/' }
+    ],
+    tags: ['disney', 'slack', 'data-breach', '1.1tb', 'corporate', '2024']
+  },
+  {
+    id: 'inc-023',
+    title: 'Arup Deepfake CFO Video Call Fraud',
+    date: '2024-02-04',
+    organization: 'Arup',
+    category: 'deepfake',
+    severity: 'critical',
+    description: '$25 million stolen from engineering firm Arup through a sophisticated deepfake video call where attackers impersonated the CFO and other executives using AI-generated real-time video.',
+    impact: '$25 million in direct financial losses. Demonstrated that deepfake technology has reached the level where real-time video impersonation can fool trained professionals in high-stakes scenarios.',
+    technicalDetails: [
+      'Real-time deepfake video generation used in video call',
+      'Multiple executives impersonated simultaneously',
+      'Employee convinced to transfer $25 million',
+      'High-quality video fooled experienced finance professional',
+      'Social engineering combined with deepfake technology'
+    ],
+    lessonsLearned: [
+      'Deepfake video calls are now a viable attack vector',
+      'High-value transactions need out-of-band verification',
+      'Video calls alone are insufficient for identity verification',
+      'Employee training must include deepfake awareness',
+      'Multi-person verification for significant financial actions'
+    ],
+    mitigations: [
+      'Implement callback verification for all large transfers',
+      'Use pre-established code words for sensitive requests',
+      'Multi-person approval for significant transactions',
+      'Deepfake detection tools for video conferences',
+      'Security awareness training on synthetic media'
+    ],
+    sources: [
+      { name: 'CNN Business', url: 'https://www.cnn.com/business' },
+      { name: 'Financial Times', url: 'https://www.ft.com/' }
+    ],
+    tags: ['deepfake', 'fraud', 'video-call', '$25m', 'social-engineering', '2024']
+  },
+  {
+    id: 'inc-024',
+    title: 'Cursor IDE Remote Code Execution',
+    date: '2025-01-15',
+    organization: 'Cursor',
+    category: 'rce',
+    severity: 'critical',
+    description: 'CVE-2025-54135 and CVE-2025-54136 - Critical remote code execution vulnerabilities in Cursor AI-powered IDE allowing attackers to execute arbitrary code through malicious repository content.',
+    impact: 'Developers opening malicious repositories could have arbitrary code executed on their machines, potentially compromising development environments and enabling supply chain attacks.',
+    technicalDetails: [
+      'CVE-2025-54135 and CVE-2025-54136 identified',
+      'Remote code execution through malicious repos',
+      'AI processing of repository content triggers exploitation',
+      'Affects developer workstations and CI/CD environments',
+      'No user interaction required beyond opening project'
+    ],
+    lessonsLearned: [
+      'AI-powered IDEs introduce new RCE attack surfaces',
+      'Repository content is an attack vector for AI tools',
+      'Development environments need sandboxing',
+      'Security scanning must include AI tool interactions',
+      'Rapid patching essential for developer tools'
+    ],
+    mitigations: [
+      'Update Cursor to latest patched version',
+      'Use sandboxed development environments',
+      'Scan repositories before opening in AI-powered IDEs',
+      'Implement application allowlisting',
+      'Monitor developer environment for suspicious activity'
+    ],
+    sources: [
+      { name: 'Cursor Security', url: 'https://www.cursor.com/' },
+      { name: 'CVE Database', url: 'https://cve.mitre.org/' }
+    ],
+    tags: ['cursor', 'ide', 'rce', 'cve', 'developer-tools', '2025']
+  },
+  {
+    id: 'inc-025',
+    title: 'Hugging Face Malicious Model Outbreak',
+    date: '2024-02-28',
+    organization: 'Hugging Face',
+    category: 'supply-chain',
+    severity: 'critical',
+    description: 'Approximately 100 malicious models discovered on Hugging Face containing code execution payloads. Models disguised as legitimate fine-tuned versions could compromise systems on load.',
+    impact: 'ML practitioners downloading and using these models could have arbitrary code executed, compromising research environments, production systems, and CI/CD pipelines.',
+    technicalDetails: [
+      'Approximately 100 malicious models identified',
+      'Disguised as legitimate fine-tuned models',
+      'Malicious code embedded in pickle serialization',
+      'Triggered on model.load() operations',
+      'Various payloads including reverse shells and credential theft'
+    ],
+    lessonsLearned: [
+      'Model repositories are supply chain attack vectors',
+      'Pickle serialization enables code execution',
+      'Model verification before loading is essential',
+      'Community trust models need security vetting',
+      'SafeTensors format prevents code execution attacks'
+    ],
+    mitigations: [
+      'Use SafeTensors format instead of pickle',
+      'Scan models with security tools before loading',
+      'Verify model provenance and signatures',
+      'Run model loading in sandboxed environments',
+      'Monitor for suspicious model behavior'
+    ],
+    sources: [
+      { name: 'JFrog Security Research', url: 'https://jfrog.com/blog/' },
+      { name: 'Hugging Face Security', url: 'https://huggingface.co/docs/hub/security' }
+    ],
+    tags: ['hugging-face', 'malicious-models', 'supply-chain', 'pickle', '2024']
+  },
+  {
+    id: 'inc-026',
+    title: 'Hugging Face Repository Security Audit',
+    date: '2025-04-15',
+    organization: 'Hugging Face',
+    category: 'supply-chain',
+    severity: 'high',
+    description: 'Comprehensive security scan of Hugging Face repositories revealed 352,000 unsafe issues across models and datasets, highlighting systemic supply chain risks in the ML ecosystem.',
+    impact: 'Widespread security issues identified across the largest ML model repository, indicating systemic risks for organizations using public models and datasets.',
+    technicalDetails: [
+      '352,000 unsafe issues identified',
+      'Issues span models and datasets',
+      'Includes code execution risks, data leakage, and backdoors',
+      'Many high-profile models affected',
+      'Ongoing remediation efforts'
+    ],
+    lessonsLearned: [
+      'Scale of ML supply chain risk is enormous',
+      'Automated security scanning essential for ML repos',
+      'Model and dataset security is a shared responsibility',
+      'Security awareness needed across ML community',
+      'Proactive scanning catches issues before exploitation'
+    ],
+    mitigations: [
+      'Implement automated security scanning for all uploads',
+      'Require security attestation for popular models',
+      'Provide security scorecards for repositories',
+      'Enable community security reporting',
+      'Regular comprehensive security audits'
+    ],
+    sources: [
+      { name: 'Hugging Face Blog', url: 'https://huggingface.co/blog' },
+      { name: 'ML Security Research', url: 'https://arxiv.org/' }
+    ],
+    tags: ['hugging-face', 'audit', 'supply-chain', '352k-issues', '2025']
+  },
+  {
+    id: 'inc-027',
+    title: 'ML API Token Mass Exposure',
+    date: '2023-12-08',
+    organization: 'Multiple',
+    category: 'data-leak',
+    severity: 'high',
+    description: '1,700+ API tokens for Hugging Face, OpenAI, and other ML platforms discovered exposed in public code repositories, enabling unauthorized access to models, data, and billing.',
+    impact: 'Exposed tokens could be used to access private models, training data, exfiltrate information, and rack up significant API charges on victim accounts.',
+    technicalDetails: [
+      '1,700+ API tokens discovered exposed',
+      'Tokens found in GitHub repositories',
+      'Includes Hugging Face, OpenAI, and other platforms',
+      'Many tokens still active when discovered',
+      'Exposure through hardcoded credentials and logs'
+    ],
+    lessonsLearned: [
+      'API token hygiene is critical in ML workflows',
+      'Secret scanning must be automated and continuous',
+      'ML practitioners need security training',
+      'Token rotation and least-privilege access essential',
+      'Public code auditing catches credential leaks'
+    ],
+    mitigations: [
+      'Implement pre-commit hooks for secret detection',
+      'Use environment variables for all credentials',
+      'Enable automatic secret scanning on repositories',
+      'Regular API token rotation',
+      'Monitor for unusual API usage patterns'
+    ],
+    sources: [
+      { name: 'Lasso Security Research', url: 'https://www.lasso.security/' },
+      { name: 'GitHub Secret Scanning', url: 'https://docs.github.com/en/code-security/secret-scanning' }
+    ],
+    tags: ['api-tokens', 'credential-exposure', 'hugging-face', 'openai', '2023']
+  },
+  {
+    id: 'inc-028',
+    title: 'H1 2025 Deepfake Fraud Epidemic',
+    date: '2025-06-30',
+    organization: 'Multiple',
+    category: 'deepfake',
+    severity: 'critical',
+    description: '580 documented deepfake fraud incidents in H1 2025, representing a 4x increase from the same period in 2024. Total losses exceeded $410 million across financial services, corporate fraud, and identity theft.',
+    impact: '$410 million in documented losses. Deepfake fraud has become a mainstream attack vector affecting financial services, corporations, and individuals at unprecedented scale.',
+    technicalDetails: [
+      '580 documented incidents in 6 months',
+      '4x increase from H1 2024',
+      '$410 million in confirmed losses',
+      'Real-time video deepfakes now common',
+      'Voice cloning used in 60% of cases',
+      'Notable prevention successes: Ferrari and LastPass avoided attacks'
+    ],
+    lessonsLearned: [
+      'Deepfake attacks are scaling rapidly',
+      'Multi-modal verification is essential',
+      'Employee awareness training is effective',
+      'Technology solutions alone are insufficient',
+      'Industry collaboration needed for defense'
+    ],
+    mitigations: [
+      'Implement deepfake detection tools',
+      'Multi-factor identity verification for sensitive actions',
+      'Out-of-band confirmation for unusual requests',
+      'Regular employee training on synthetic media',
+      'Establish verification protocols with business partners'
+    ],
+    sources: [
+      { name: 'Deloitte Cybersecurity Report', url: 'https://www2.deloitte.com/' },
+      { name: 'FBI IC3', url: 'https://www.ic3.gov/' }
+    ],
+    tags: ['deepfake', 'fraud', '$410m', 'statistics', '2025']
+  },
+  {
+    id: 'inc-029',
+    title: 'Ferrari Deepfake Impersonation Attempt Thwarted',
+    date: '2024-07-25',
+    organization: 'Ferrari',
+    category: 'deepfake',
+    severity: 'medium',
+    description: 'Ferrari executive successfully identified and stopped a deepfake impersonation attempt where attackers used AI to clone the CEO voice. The attack was detected through careful questioning that the AI could not authentically answer.',
+    impact: 'Potential multi-million dollar fraud prevented. Case study in successful deepfake detection through human vigilance and verification protocols.',
+    technicalDetails: [
+      'AI voice cloning used to impersonate CEO',
+      'Executive received call appearing to be from CEO',
+      'Attack detected through verification questions',
+      'Questions about personal details revealed the deception',
+      'Demonstrates human detection remains effective'
+    ],
+    lessonsLearned: [
+      'Human vigilance can detect deepfakes',
+      'Pre-established verification protocols are essential',
+      'Question-based authentication complements technology',
+      'Executive training on synthetic media threats is valuable',
+      'Trust but verify for unusual requests'
+    ],
+    mitigations: [
+      'Establish verification code words with executives',
+      'Train employees on deepfake recognition',
+      'Create protocols for unusual executive requests',
+      'Implement callback verification procedures',
+      'Maintain healthy skepticism for out-of-band requests'
+    ],
+    sources: [
+      { name: 'Bloomberg', url: 'https://www.bloomberg.com/' },
+      { name: 'Automotive News', url: 'https://www.autonews.com/' }
+    ],
+    tags: ['ferrari', 'deepfake', 'voice-clone', 'prevention', 'success-story', '2024']
+  },
+  {
+    id: 'inc-030',
+    title: 'LastPass Deepfake CEO Attack Blocked',
+    date: '2024-04-16',
+    organization: 'LastPass',
+    category: 'deepfake',
+    severity: 'medium',
+    description: 'LastPass employee received a deepfake audio call impersonating the CEO requesting urgent action. The employee recognized red flags and followed security protocols, successfully preventing the attack.',
+    impact: 'Attack prevented through employee awareness and adherence to security protocols. Demonstrates effectiveness of security culture in defending against AI-powered social engineering.',
+    technicalDetails: [
+      'Deepfake audio used to impersonate CEO',
+      'Requested urgent action outside normal procedures',
+      'Employee identified unusual urgency and communication patterns',
+      'Security protocols followed to verify request',
+      'Attack identified and blocked before any damage'
+    ],
+    lessonsLearned: [
+      'Security culture is the first line of defense',
+      'Urgency is a common manipulation tactic',
+      'Procedures should be followed regardless of apparent authority',
+      'Regular security training reinforces correct behaviors',
+      'Employees should be empowered to question unusual requests'
+    ],
+    mitigations: [
+      'Regular security awareness training',
+      'Clear escalation procedures for unusual requests',
+      'Verification requirements for sensitive actions',
+      'Positive reinforcement for security-conscious behavior',
+      'Incident reporting mechanisms'
+    ],
+    sources: [
+      { name: 'LastPass Security Blog', url: 'https://blog.lastpass.com/' },
+      { name: 'The Hacker News', url: 'https://thehackernews.com/' }
+    ],
+    tags: ['lastpass', 'deepfake', 'voice-clone', 'prevention', 'security-awareness', '2024']
   }
 ]
 
